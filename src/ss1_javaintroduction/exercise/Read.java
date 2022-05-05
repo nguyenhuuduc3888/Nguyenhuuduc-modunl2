@@ -9,7 +9,42 @@ public class Read {
         int number = sc.nextInt();
         if (number < 0 || number > 999) {
             System.out.println("số lơn hơn 3 chữ số hoặc đang là số âm");
-        } else {
+        } else if(number>=0&&number<=9){
+            switch (number) {
+                case 0:
+                    System.out.print("không");
+                    break;
+
+                case 1:
+                    System.out.println(" một.");
+                    break;
+                case 2:
+                    System.out.println(" hai.");
+                    break;
+                case 3:
+                    System.out.println(" ba.");
+                    break;
+                case 4:
+                    System.out.println(" bốn.");
+                    break;
+                case 5:
+                    System.out.println(" năm.");
+                    break;
+                case 6:
+                    System.out.println(" sáu.");
+                    break;
+                case 7:
+                    System.out.println(" bảy.");
+                    break;
+                case 8:
+                    System.out.println(" tám.");
+                    break;
+                case 9:
+                    System.out.println(" chín.");
+                    break;
+            }
+        }
+        else {
             switch (number / 100) {
 
                 case 1:
@@ -41,7 +76,9 @@ public class Read {
                     break;
             }
             switch (((number / 10) * 10) % 100) {
-
+                case 0:
+                    System.out.print(" lẻ");
+                    break;
                 case 10:
                     System.out.print(" mười");
                     break;
@@ -70,7 +107,7 @@ public class Read {
                     System.out.print(" chín mươi");
                     break;
             }
-            switch (number % 10) {
+            switch (number%10) {
                 case 1:
                     System.out.println(" một.");
                     break;
@@ -99,11 +136,11 @@ public class Read {
                     System.out.println(" chín.");
                     break;
             }
-            switch (number) {
-                case 0:
-                    System.out.println(" không");
-                    break;
-            }
+//            switch (number == 0) {
+//                case 0:
+//                    System.out.println(" không");
+//                    break;
+//            }
         }
     }
 }
