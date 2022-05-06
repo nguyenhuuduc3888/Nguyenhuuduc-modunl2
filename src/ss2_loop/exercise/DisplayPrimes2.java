@@ -2,27 +2,26 @@ package ss2_loop.exercise;
 
 import java.util.Scanner;
 
-public class DisplayPrimes {
+public class DisplayPrimes2 {
     public static void main(String[] args) {
         int number;
-        Scanner input = new Scanner(System.in);
-        number = Integer.parseInt(input.nextLine());
-        int count = 0;
+        number = 100;
         int N = 2;
-        while (count < number) {
-         boolean   check = true;
+        while (N < number) {
+            boolean   check = true;
             for (int i = 2; i < N; i++) {
                 if (N % i == 0) {
                     check = false;
                     break;
                 }
             }
-
             if (check) {
-                System.out.println( N );
-                count++;
+                System.out.println(  "số nguyên tố bé hơn 100 là :" +N);
             }
             N++;
         }
     }
 }
+
+
+
