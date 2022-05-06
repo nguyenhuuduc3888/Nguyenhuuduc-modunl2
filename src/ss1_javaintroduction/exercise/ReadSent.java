@@ -2,14 +2,14 @@ package ss1_javaintroduction.exercise;
 
 import java.util.Scanner;
 
-public class Read {
+public class ReadSent {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập số cần đọc ");
         int number = sc.nextInt();
         if (number < 0 || number > 999) {
             System.out.println("số lơn hơn 3 chữ số hoặc đang là số âm");
-        } else if(number>=0&&number<=9){
+        } else if (number <= 9) {
             switch (number) {
                 case 0:
                     System.out.print("không");
@@ -43,8 +43,7 @@ public class Read {
                     System.out.println(" chín.");
                     break;
             }
-        }
-        else {
+        } else {
             switch (number / 100) {
 
                 case 1:
@@ -107,7 +106,7 @@ public class Read {
                     System.out.print(" chín mươi");
                     break;
             }
-            switch (number%10) {
+            switch (number % 10) {
                 case 1:
                     System.out.println(" một.");
                     break;
@@ -136,11 +135,6 @@ public class Read {
                     System.out.println(" chín.");
                     break;
             }
-//            switch (number == 0) {
-//                case 0:
-//                    System.out.println(" không");
-//                    break;
-//            }
         }
     }
 }
