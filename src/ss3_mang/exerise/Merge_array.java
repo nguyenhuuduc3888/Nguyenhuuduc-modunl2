@@ -3,7 +3,7 @@ package ss3_mang.exerise;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class merge_array {
+public class Merge_array {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         int[] arr = new int[2];
