@@ -3,7 +3,7 @@ package ss3_mang.exerise;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Count_string {
+public class CountString {
     public static void main(String[] args) {
         String str = "toi la duc hoc lop c0322g1";
         char[] str1 = str.toCharArray();
