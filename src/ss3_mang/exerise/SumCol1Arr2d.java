@@ -3,7 +3,7 @@ package ss3_mang.exerise;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class SearchCol1Arr2d {
+public class SumCol1Arr2d {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Nhập độ dài hang arr");
