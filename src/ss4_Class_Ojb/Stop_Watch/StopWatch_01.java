@@ -1,7 +1,7 @@
 package ss4_Class_Ojb.Stop_Watch;
 
 public class StopWatch_01 {
-    long startTime, endTime;
+    private long startTime, endTime;
 
     public long getEndTime() {
         return endTime;
@@ -13,6 +13,10 @@ public class StopWatch_01 {
 
     public long getStartTime() {
         return startTime;
+    }
+
+    public void setStartTime(long startTime) {
+        this.startTime = startTime;
     }
 
     public StopWatch_01() {// phương thức khởi tạo không tham số...
@@ -30,7 +34,6 @@ public class StopWatch_01 {
     public long getElapsedTime() {
         return endTime - startTime;
     }
-
 }
 
 

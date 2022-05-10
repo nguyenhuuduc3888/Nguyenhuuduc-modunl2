@@ -8,7 +8,7 @@ public class Main2 {
         a=Double.parseDouble(input.nextLine());
         b=Double.parseDouble(input.nextLine());
         c=Double.parseDouble(input.nextLine());
-        QuadraticEquation qe =new QuadraticEquation(a,b,c);// khoi tao doi tuong moi chua 3 tham so (a,b,c)
+        QuadraticEquation qe =new QuadraticEquation(a,b,c);
         if(qe.getDiscriminant()<0)
             System.out.println("Phuong trinh vo nghiem");
         else if(qe.getDiscriminant()==0)

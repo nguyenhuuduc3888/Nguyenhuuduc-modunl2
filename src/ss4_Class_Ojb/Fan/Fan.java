@@ -8,15 +8,14 @@ public class Fan {
     private boolean on = false;
     private double radius = 5;
     private String color = "Xanh da trời";
-
-    /**
-     * Tạo các setter và getter cho các trường...
-     */
+    
     public int getSLOW() {
         return SLOW;
     }
 
     public int getMEDIUM() {
+
+
         return MEDIUM;
     }
 
@@ -56,27 +55,22 @@ public class Fan {
         this.color = color;
     }
 
-    /**
-     * Phương thức khởi tạo không tham số tạo đối tượng fan mặc định
-     */
     public Fan(int speed, boolean on, double radius, String color) {
         this.speed = speed;
         this.on = on;
         this.radius = radius;
         this.color = color;
     }
-    @Override //Đánh dấu phương thức ghi đè
+    @Override
     public String toString() {
-        String status = " ";
-        if (this.on) {
-            status += ("Quạt đang bật\n");
-            status += ("Tốc độ của quạt là " + this.speed + "\n");
-        } else {
-            status += ("Quạt đang tắt\n");
-        }
-        status += ("Màu sắc " + this.color + "\n");
-        status += ("Bán kinh " + this.radius + "\n");
-        return status;
+        return "Fan{" +
+                "SLOW=" + SLOW +
+                ", MEDIUM=" + MEDIUM +
+                ", FAST=" + FAST +
+                ", speed=" + speed +
+                ", on=" + on +
+                ", radius=" + radius +
+                ", color='" + color + '\'' +
+                '}';
     }
-
 }

@@ -8,14 +8,13 @@ public class QuadraticEquation {
          this.c = c;
     }
     public double  getDiscriminant(){
-        double delta = b*b -4*a*c;
-        return delta;
+        return b*b -4*a*c;
     }
-    public double getRoot1(){           //dinh nghia phuong thuc 2
+    public double getRoot1(){
         if(this.getDiscriminant()<0) return 0;
         return ((-b+Math.sqrt(this.getDiscriminant()))/(2*a));
     }
-    public double getRoot2(){        //dinh nghia phuong thuc 3
+    public double getRoot2(){
         if(this.getDiscriminant()<0) return  0;
         return  ((-b-Math.sqrt(this.getDiscriminant()))/(2*a));
     }
