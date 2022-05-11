@@ -8,8 +8,9 @@ public class Fan {
     private boolean on = false;
     private double radius = 5;
     private String color = "Xanh da trời";
-    
+
     public int getSLOW() {
+
         return SLOW;
     }
 
@@ -20,6 +21,7 @@ public class Fan {
     }
 
     public int getFAST() {
+
         return FAST;
     }
 
@@ -31,7 +33,7 @@ public class Fan {
         this.speed = speed;
     }
 
-    public boolean getOn() {
+    public boolean isOn() {
         return on;
     }
 
@@ -61,6 +63,7 @@ public class Fan {
         this.radius = radius;
         this.color = color;
     }
+
     @Override
     public String toString() {
         return "Fan{" +

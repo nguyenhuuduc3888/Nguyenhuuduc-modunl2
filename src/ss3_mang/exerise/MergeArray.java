@@ -18,6 +18,7 @@ public class MergeArray {
             arr1[i]=Integer.parseInt(input.nextLine());
         }
         System.out.println("Mang 2 la: " +Arrays.toString(arr1));
+
         int[] arr2= new int[arr.length+arr1.length];
         for (int i = 0; i <arr.length ; i++) {
             arr2[i]=arr[i];

@@ -15,9 +15,9 @@ public class Main2 {
             System.out.println("phuong trinh co 1 nghiem " +qe.getRoot1());
         else {
             System.out.println("phuong trinh co hai nghiem");
-            System.out.println("delta la"+qe.getDiscriminant());
-            System.out.println("root 1 la"+qe.getRoot1());
-            System.out.println("root 2 la"+qe.getRoot2());
+            System.out.println("delta la "+qe.getDiscriminant());
+            System.out.println("nghiem 1 la"+qe.getRoot1());
+            System.out.println("nghiem 2 la"+qe.getRoot2());
         }
     }
 }

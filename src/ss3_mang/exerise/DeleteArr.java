@@ -19,7 +19,6 @@ public class DeleteArr {
                 }
                 number[last] = 0;
                 i--;
-                last--;
             }
         }
         System.out.println("mang sau khi xoa"+ Arrays.toString(number));
