@@ -2,11 +2,10 @@ package ss5_Access_modifier.exercise;
 
 public class TestCircle {
     public static void main(String[] args) {
-        Circle circle =new Circle(5);
-        Circle circle1= new Circle();
-        System.out.println(circle.getRadius());
-        System.out.println(circle1.getRadius());
-        System.out.println(circle.getArea());
-        System.out.println(circle1.getArea());
+        Circle circle =new Circle();
+        Circle circle1=new Circle(5.0);
+
+        System.out.println("Neu ban kinh = " + circle.getRadius() + " thi dien tich la "+ circle.getArea() ) ;
+        System.out.println("Neu ban kinh = " + circle1.getRadius() + " thi dien tich la "+ circle1.getArea() );
     }
 }

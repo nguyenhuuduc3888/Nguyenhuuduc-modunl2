@@ -3,24 +3,23 @@ package ss5_Access_modifier.practice;
 public class Student {
     private int roll;
     private String name;
-    public static String college = "Duc";
+    public static  String college = "Duc";
 
     /**
      * ham khoi tao de tao bien..
      */
-    Student(int stt, String tên) {
+    Student(int stt, String name) {
         roll = stt;
-        name = tên;
+        this.name = name;
 
     }
 
     /**
      * tao phuong thuc static de thay doi gia tri cua bien static ...
      */
-    static void change() {
+    public static void change() {
         college = "Ế";
     }
-
     /**
      * tao phuong thuc hien thi gia tri
      */
