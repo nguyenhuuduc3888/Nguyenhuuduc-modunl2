@@ -14,11 +14,13 @@ public class Mains {
     }
 
     public static void main(String[] args) {
+
+
         long[] a = new long[100000];
-        StopWatch_01 sw = new StopWatch_01();
+        StopWatch sw = new StopWatch();
 
         for (int i = 0; i < 100000; i++) {
-            a[i] = (int) (Math.random() * 10000);
+            a[i] = (int) (Math.random() * 100000);// math ramdom tra ve tu den 0 tiem can 1
         }
         sw.start();
         sort(a);
