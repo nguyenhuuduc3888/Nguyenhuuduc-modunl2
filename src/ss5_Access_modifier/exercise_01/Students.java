@@ -3,7 +3,8 @@ package ss5_Access_modifier.exercise_01;
 public class Students {
     private String name = "john";
     private String classes = "CO322G1";
-    public Students(){
+
+    public Students() {
     }
 
     public String getName() {

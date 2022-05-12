@@ -24,13 +24,14 @@ public class Circle {
     public void setColor(String color) {
         this.color = color;
     }
-    public double getArea(){
-         double Area =radius*radius*Math.PI;
-         return Area;
+
+    public double getArea() {
+        double Area = radius * radius * Math.PI;
+        return Area;
     }
 
     @Override
     public String toString() {
-        return " Circle co ban kinh = " + radius + ", va mau = " + color ;
+        return " Circle co ban kinh = " + radius + ", va mau = " + color;
     }
 }

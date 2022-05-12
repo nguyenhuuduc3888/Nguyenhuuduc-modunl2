@@ -3,7 +3,8 @@ package ss6_Inheritan.exercise2;
 public class MovablePoint extends Point {
     float xSpeed;
     float ySpeed;
-    public MovablePoint(){
+
+    public MovablePoint() {
 
     }
 
@@ -43,12 +44,14 @@ public class MovablePoint extends Point {
         float[] arr = {this.xSpeed, this.ySpeed};
         return arr;
     }
-public MovablePoint move(){
 
-        x+=xSpeed;
-        y+=ySpeed;
-        return this;
-}
+    public MovablePoint move() {
+        x += xSpeed;
+        y += ySpeed;
+        return this;// trả về chính dối tượng mình đang tương tác...
+
+    }
+
     @Override
     public String toString() {
         return "MovablePoint co xSpeed = " + xSpeed + " va ySpeed = " + ySpeed + " va x=" + x + " va y=" + y;

@@ -1,6 +1,6 @@
 package ss6_Inheritan.exercise2;
 
-public class Point {
+public class Point implements Comparable<Point> {
     float x;
     float y;
 
@@ -28,17 +28,24 @@ public class Point {
     public void setY(float y) {
         this.y = y;
     }
-    public void setXY(float x,float y){
-        this.x=x;
-        this.y=y;
+
+    public void setXY(float x, float y) {
+        this.x = x;
+        this.y = y;
     }
-    public float[] getXY(){
-        float [] arr= {this.x,this.y};
+
+    public float[] getXY() {
+        float[] arr = {this.x, this.y};
         return arr;
     }
 
     @Override
     public String toString() {
-        return "Point co  x= " + x + " va y= " + y ;
+        return "Point co  x= " + x + " va y= " + y;
+    }
+
+    @Override
+    public int compareTo(Point o) {
+        return (int) (o.x - this.getX());
     }
 }
