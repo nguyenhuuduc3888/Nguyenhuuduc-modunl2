@@ -57,6 +57,6 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Stt :" + id + " ten :" + name +  " gia tien :" + price + " so luong :" + amount+"cai" + " hang san xuat :" + production ;
+        return "Stt:" + id + " Tên sản phẩm:" + name +  " Giá Tiền:" + price + " Số Lượng :" + amount+" Máy " + " Hãng sãn xuất :" + production ;
     }
 }

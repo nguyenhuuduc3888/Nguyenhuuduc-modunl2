@@ -1,0 +1,3 @@
+package ss7_Abstract_Interface.practice;
+public abstract class Fruit implements Edible{//tạo Abstract fruit mô phỏng các đối tượng trái cây cũng là 1 Edible...
+}
