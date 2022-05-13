@@ -1,9 +1,7 @@
 package ss6_Inheritan.practice;
 
 public class Square extends Rectangle {
-    /**
-     * tạo phương thức gởi tạo không tham số..
-     */
+
     public Square(){
 
     }

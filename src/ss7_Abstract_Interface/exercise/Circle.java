@@ -38,9 +38,9 @@ public class Circle extends Shape implements Resizeable {
 
     @Override
     public String toString() {
-        return "A Circle with radius="
+        return " Hình tròn có bán kính là ="
                 + getRadius()
-                + ", which is a subclass of "
+                + " là 1 lớp con của "
                 + super.toString();
     }
 }

@@ -54,7 +54,7 @@ public class MovablePoint extends Point {
 
     @Override
     public String toString() {
-        return "MovablePoint co xSpeed = " + xSpeed + " va ySpeed = " + ySpeed + " va x=" + x + " va y=" + y;
+        return " Speed = " + "(" + xSpeed + " , " + ySpeed + ")" + " , " + " (" + x + y + ")";
     }
 
 }

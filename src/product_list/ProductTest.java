@@ -38,16 +38,6 @@ public class ProductTest {
         String production = scanner.nextLine();
         productList[count] = new Product(count + 1, name, price, amount, production);
     }
-
-    public static void searchProduct() {
-        int num = Integer.parseInt(scanner.nextLine());
-        for (Product test : productList) {
-            if (test != null && test.getId() == num) {
-                System.out.println(test);
-            }
-        }
-    }
-
     public static void addNewProduct() {
         String name = scanner.nextLine();
         System.out.println("Nhập gia");
@@ -60,6 +50,16 @@ public class ProductTest {
         productList[count] = product;
         count++;
     }
+
+    public static void searchProduct() {
+        int num = Integer.parseInt(scanner.nextLine());
+        for (Product test : productList) {
+            if (test != null && test.getId() == num) {
+                System.out.println(test);
+            }
+        }
+    }
+
 
     public static void disPlayList() {
         for (Product item : productList) {

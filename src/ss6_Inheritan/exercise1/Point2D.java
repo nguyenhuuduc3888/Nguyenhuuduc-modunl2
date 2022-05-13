@@ -41,6 +41,6 @@ public class Point2D {
 
     @Override
     public String toString() {
-        return " Point2D co x = " + x + ", y=" + y;
+        return " (" + x + " , " + y + ")";
     }
 }

@@ -8,7 +8,7 @@ public class CircleTest {
         circle = new Circle(3.5);
         System.out.println(circle);
 
-        circle = new Circle(3.5, "indigo", false);
+        circle = new Circle(3.5, "Tím", false);
         System.out.println(circle);
     }
 }

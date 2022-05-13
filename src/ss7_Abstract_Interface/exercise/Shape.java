@@ -35,14 +35,7 @@ public class Shape implements Resizeable {
 
     @Override
     public String toString() {
-        return "A Shape with color of "
-                + getColor()
-                + " and "
-                + (isFilled() ? "filled" : "not filled");
+        return " Shape có màu là " + getColor() + " và " + (isFilled() ? " được tô kín " : " không được tô " +"\n");
     }
-    public static void printShape(Shape[] shape) {
-        for (Shape x : shape) {
-            System.out.println(x.toString());
-        }
-    }
+
 }

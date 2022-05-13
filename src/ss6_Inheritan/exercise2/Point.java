@@ -41,7 +41,7 @@ public class Point implements Comparable<Point> {
 
     @Override
     public String toString() {
-        return "Point co  x= " + x + " va y= " + y;
+        return "(" + x + " , "+ y +")";
     }
 
     @Override

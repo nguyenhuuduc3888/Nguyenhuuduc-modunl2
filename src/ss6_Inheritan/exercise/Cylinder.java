@@ -1,7 +1,7 @@
 package ss6_Inheritan.exercise;
 
 public class Cylinder extends Circle {
-    double height;
+    private double height;
 
     public Cylinder(double radius, String color, double height) {
         super(radius, color);
@@ -22,6 +22,6 @@ public class Cylinder extends Circle {
 
     @Override
     public String toString() {
-        return " Cylinder co chieu cao la " + height + " ban kinh = " + radius + " mau sac = " + color;
+        return " Cylinder co chieu cao la " + height + " ban kinh = " + this.getRadius() + " mau sac = " + this.getColor();
     }
 }

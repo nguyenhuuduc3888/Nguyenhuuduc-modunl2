@@ -50,11 +50,11 @@ public class Rectangle extends Shape implements Resizeable {
 
     @Override
     public String toString() {
-        return "A Rectangle with width="
+        return "Hình chữ nhật có chiều rộng ="
                 + getWidth()
-                + " and length="
+                + " và chiều cao ="
                 + getLength()
-                + ", which is a subclass of "
+                + " là 1 lớp con của  "
                 + super.toString();
     }
 }
