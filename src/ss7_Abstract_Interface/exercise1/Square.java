@@ -1,10 +1,15 @@
 package ss7_Abstract_Interface.exercise1;
 
-public class Square implements Colorable {
+public class Square extends Shape implements Colorable {
     public int side;
 
     public Square() {
 
+    }
+
+    public Square(String color, boolean filled, int side) {
+        super(color, filled);
+        this.side = side;
     }
 
     public Square(int side) {
@@ -19,6 +24,9 @@ public class Square implements Colorable {
         this.side = side;
     }
 
+    public double getArea() {
+        return side * side;
+    }
 
     @Override
     public void howToColor() {
@@ -27,6 +35,6 @@ public class Square implements Colorable {
 
     @Override
     public String toString() {
-        return "Hình vuôn có canh ="+ side;
+        return "Hình vuôn có canh =" + side;
     }
 }

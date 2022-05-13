@@ -1,6 +1,6 @@
-package ss7_Abstract_Interface.exercise;
+package ss7_Abstract_Interface.exercise1;
 
-public class Circle extends Shape implements Resizeable {
+public class Circle extends Shape {
     private double radius = 1.0;
 
     public Circle() {
@@ -32,15 +32,11 @@ public class Circle extends Shape implements Resizeable {
     }
 
     @Override
-    public void resize(double percent) {
-        this.radius = radius * percent;
-    }
-
-    @Override
     public String toString() {
-        return " Hình tròn có bán kính là ="
+        return "A Circle with radius="
                 + getRadius()
-                + " là 1 lớp con của "
+                + ", which is a subclass of "
                 + super.toString();
     }
+
 }

@@ -1,7 +1,8 @@
 package ss7_Abstract_Interface.exercise;
 
 public class Square extends Shape implements Resizeable {
- public int side;
+    public double side;
+
     public Square() {
 
     }
@@ -11,23 +12,23 @@ public class Square extends Shape implements Resizeable {
         this.side = side;
     }
 
-    public int getSide() {
+    public double getSide() {
         return side;
     }
 
-    public void setSide(int side) {
+    public void setSide(double side) {
         this.side = side;
     }
 
 
     @Override
     public void resize(double percent) {
-        super.resize(percent);
+        this.side = side * percent;
     }
 
     @Override
     public String toString() {
-        return "Hình vuông có cạnh bằng"
+        return "Hình vuông có cạnh ="
                 + getSide()
                 + " là 1 lớp con của  "
                 + super.toString();

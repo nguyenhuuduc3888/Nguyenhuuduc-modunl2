@@ -1,6 +1,6 @@
-package ss7_Abstract_Interface.exercise;
+package ss7_Abstract_Interface.exercise1;
 
-public class Shape implements Resizeable {
+public abstract class Shape {
     private String color = "green";
     private boolean filled = true;
 
@@ -28,14 +28,13 @@ public class Shape implements Resizeable {
         this.filled = filled;
     }
 
-    @Override//interface cua Resizeable...
-    public void resize(double percent) {
-
-    }
+    public abstract double getArea();
 
     @Override
     public String toString() {
-        return " Shape có màu là " + getColor() + " và " + (isFilled() ? " được tô kín " : " không được tô " + "\n");
+        return "A Shape with color of "
+                + getColor()
+                + " and "
+                + (isFilled() ? "filled" : "not filled");
     }
-
 }

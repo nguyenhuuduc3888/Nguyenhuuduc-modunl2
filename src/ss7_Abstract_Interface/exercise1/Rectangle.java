@@ -1,6 +1,6 @@
-package ss7_Abstract_Interface.exercise;
+package ss7_Abstract_Interface.exercise1;
 
-public class Rectangle extends Shape implements Resizeable {
+public class Rectangle extends Shape {
     private double width = 1.0;
     private double length = 1.0;
 
@@ -43,18 +43,12 @@ public class Rectangle extends Shape implements Resizeable {
     }
 
     @Override
-    public void resize(double percent) {
-        this.length = length * percent;
-        this.width = width * percent;
-    }
-
-    @Override
     public String toString() {
-        return "Hình chữ nhật có chiều rộng ="
+        return "A Rectangle with width="
                 + getWidth()
-                + " và chiều cao ="
+                + " and length="
                 + getLength()
-                + " là 1 lớp con của  "
+                + ", which is a subclass of "
                 + super.toString();
     }
 }
