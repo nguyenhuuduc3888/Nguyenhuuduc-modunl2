@@ -30,7 +30,7 @@ public class Square extends Shape implements Colorable {
 
     @Override
     public void howToColor() {
-        System.out.println("Tô màu cả bốn mặt");
+        System.out.println("Lớp Square tô màu cả bốn mặt");
     }
 
     @Override

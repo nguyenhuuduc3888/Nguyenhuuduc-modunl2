@@ -1,6 +1,6 @@
 package ss7_Abstract_Interface.exercise;
 
-public class Shape implements Resizeable {
+public abstract class Shape implements Resizeable {
     private String color = "green";
     private boolean filled = true;
 
@@ -27,6 +27,8 @@ public class Shape implements Resizeable {
     public void setFilled(boolean filled) {
         this.filled = filled;
     }
+
+    public abstract double getArea();
 
     @Override//interface cua Resizeable...
     public void resize(double percent) {

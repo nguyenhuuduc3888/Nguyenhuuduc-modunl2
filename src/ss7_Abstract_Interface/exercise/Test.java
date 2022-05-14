@@ -15,14 +15,14 @@ public class Test {
         shapes[1] = new Rectangle(x, y, "Đỏ", true);
         shapes[2] = new Square("Đen", true, x);
         for (Shape shape : shapes) {
-            System.out.println("Trước khi thay dổi " + shape + "\n");
+            System.out.println("Diện trước khi thay dổi " + shape.getArea() + "\n");
         }
 
         for (Shape shape : shapes) {
             shape.resize(Math.random() * 100);
         }
         for (Shape a : shapes) {
-            System.out.println("Sau khi thay đổi " + a + "\n");
+            System.out.println("Diện tích sau khi thay đổi " + a.getArea() + "\n");
         }
 
     }
