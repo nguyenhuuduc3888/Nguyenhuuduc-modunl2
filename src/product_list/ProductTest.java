@@ -9,9 +9,9 @@ public class ProductTest {
 
     static {
         productList[0] = new Product(1, "IphoneXs", 100, 100, "Apple");
-        productList[1] = new Product(2, "IphoneX1", 200, 100, "Apple");
-        productList[2] = new Product(3, "IphoneX2", 300, 100, "Apple");
-        productList[3] = new Product(4, "IphoneX3", 400, 100, "Apple");
+        productList[1] = new Product(3, "IphoneX2", 300, 100, "Apple");
+        productList[3] = new Product(2, "IphoneX1", 200, 100, "Apple");
+        productList[2] = new Product(4, "IphoneX3", 400, 100, "Apple");
         productList[4] = new Product(5, "IphoneX4", 510, 100, "Apple");
         count = 5;
     }

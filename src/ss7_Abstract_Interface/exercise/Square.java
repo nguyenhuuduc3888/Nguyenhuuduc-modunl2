@@ -9,7 +9,7 @@ public class Square extends Shape implements Resizeable {
 
     @Override
     public double getArea() {
-        return side*side;
+        return side * side;
     }
 
     public Square(String color, boolean filled, int side) {
