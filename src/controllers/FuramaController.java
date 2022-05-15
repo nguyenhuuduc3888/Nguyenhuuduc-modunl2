@@ -4,52 +4,58 @@ import java.util.Scanner;
 
 public class FuramaController {
     public static void main(String[] args) {
-        int choice = 1;
-        Scanner input = new Scanner(System.in);
-        while (choice != 0) {
-            System.out.println("Menu");
-            System.out.println("1. Employee Management");
-            System.out.println("2. Customer Management");
-            System.out.println("3. Facility Management ");
-            System.out.println("4. Booking Management");
-            System.out.println("5. Promotion Management");
-            System.out.println("6. Exit");
-            if (choice == 6) break;
-            choice = Integer.parseInt(input.nextLine());
+        displayMainMenu();
+    }
+
+    public static void displayMainMenu() {
+        do {
+            System.out.println("Menu\n" +
+                    "1. Employee Management\n" +
+                    "2. Customer Management\n" +
+                    "3. Facility Management\n" +
+                    "4. Booking Management\n" +
+                    "5. Promotion Management\n" +
+                    "6. Exit");
+            int choice;
+            System.out.println("Nhấn để chọn chức năng");
+            Scanner scanner = new Scanner(System.in);
+            choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    System.out.println("1.Display list employees");
-                    System.out.println("2.Add new employee");
-                    System.out.println("3.Edit employee");
-                    System.out.println("4.Return main menu");
+                    System.out.println("1.Display list employees\n" +
+                            "2.Add new employee\n" +
+                            "3.Edit employee\n" +
+                            "4.Return main menu");
                     break;
                 case 2:
-                    System.out.println("1.Display list customers");
-                    System.out.println("2.Add new customer");
-                    System.out.println("3.Edit customer");
-                    System.out.println("4.Return main menu");
+                    System.out.println("1.Display list customers\n" +
+                            "2.Add new customer\n" +
+                            "3.Edit customer\n" +
+                            "4.Return main menu\n");
                     break;
                 case 3:
-                    System.out.println("1.Display list facility");
-                    System.out.println("2.Add new facility");
-                    System.out.println("3.Display list facility maintenance");
-                    System.out.println("4.Return main menu");
+                    System.out.println("1.Display list facility\n" +
+                            "2.Add new facility\n" +
+                            "3.Display list facility maintenance\n" +
+                            "4.Return main menu");
                     break;
                 case 4:
-                    System.out.println("1.Add new booking");
-                    System.out.println("2.Display list booking");
-                    System.out.println("3.Create new constracts");
-                    System.out.println("4.Display list contracts");
-                    System.out.println("5.Edit contracts");
-                    System.out.println("6.Return main menu");
+                    System.out.println("1.Add new booking\n" +
+                            "2.Display list booking\n" +
+                            "3.Create new contracts\n" +
+                            "4.Display list contracts\n" +
+                            "5.Edit contracts\n" +
+                            "6.Return main menu");
                     break;
                 case 5:
-                    System.out.println("1.Display list customers use service");
-                    System.out.println("2.Display list customers get voucher");
-                    System.out.println("3.Return main menu");
+                    System.out.println("1.Display list customers use service\n" +
+                            "2.Display list customers get voucher\n" +
+                            "3.Return main menu");
                     break;
+                case 6:
+                    System.out.println("Kết thúc chương trình....");
+                    System.exit(0);
             }
-
-        }
+        } while (true);
     }
 }

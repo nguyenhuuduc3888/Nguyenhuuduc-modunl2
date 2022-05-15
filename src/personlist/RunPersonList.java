@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class RunPersonList {
     public static Person[] personList = new Person[100];
     public static int count;
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner    scanner = new Scanner(System.in);
 
     static {
         personList[0] = new Student("Đức", 18, 184309497, "NAM", 8);
@@ -13,7 +13,6 @@ public class RunPersonList {
         personList[2] = new Student("Hải", 18, 2686686, "NAM", 9);
         personList[3] = new Teacher("Quang", 29, 2688, "NAM", 12);
         count = 4;
-
     }
 
     public static void disPlayList() {
@@ -28,32 +27,25 @@ public class RunPersonList {
                 for (Person list : personList) {
                     if (list != null) {
                         System.out.println(list);
-
                     }
                 }
                 break;
-
             case 2:
                 for (Person list : personList) {
-                    if (list != null && list instanceof Student) {
+                    if (list instanceof Student) {
                         System.out.println(list);
-
                     }
                 }
                 break;
             case 3:
                 for (Person list : personList) {
-                    if (list != null && list instanceof Teacher) {
+                    if (list instanceof Teacher) {
                         System.out.println(list);
-
                     }
                 }
                 break;
-
-
         }
     }
-
 
     public static void addNewPerson() {
         do {
@@ -64,7 +56,7 @@ public class RunPersonList {
             switch (num) {
                 case 1:
                     for (Person list : personList) {
-                        if (list != null && list instanceof Student) {
+                        if (list instanceof Student) {
                             System.out.println("Nhập tên học sinh");
                             String name = scanner.nextLine();
                             System.out.println("Nhập tuổi");
@@ -85,7 +77,7 @@ public class RunPersonList {
                     break;
                 case 2:
                     for (Person list : personList) {
-                        if (list != null && list instanceof Teacher) {
+                        if (list instanceof Teacher) {
                             System.out.println("Nhập tên giáo viên ");
                             String name = scanner.nextLine();
                             System.out.println("Nhập tuổi");
@@ -103,7 +95,6 @@ public class RunPersonList {
                             break;
                         }
                     }
-
                 case 3:
                     break;
             }
@@ -122,10 +113,9 @@ public class RunPersonList {
                 case 1:
                     System.out.println("Nhập tên Student muốn tìm");
                     String name = scanner.nextLine();
-                    name = name.toUpperCase();
                     for (Person list : personList) {
-                        if (list != null && list instanceof Student) {
-                            if (list.getName().contains(name)) {
+                        if (list instanceof Student) {
+                            if (list.getName().equals(name)) {
                                 System.out.println(list);
                                 break;
                             }
@@ -135,10 +125,9 @@ public class RunPersonList {
                 case 2:
                     System.out.println("Nhập tên Teacher muốn tìm");
                     String name1 = scanner.nextLine();
-                    name1 = name1.toUpperCase();
                     for (Person list : personList) {
-                        if (list != null && list instanceof Teacher) {
-                            if (list.getName().contains(name1)) {
+                        if (list instanceof Teacher) {
+                            if (list.getName().equals(name1)) {
                                 System.out.println(list);
                                 break;
                             }
@@ -150,6 +139,7 @@ public class RunPersonList {
     }
 
     public static void deletePerson() {
+        int last = personList.length - 1;
         do {
             System.out.println("Chọn kiểu Person muốn xoá\n" +
                     "1.Student \n" +
@@ -163,9 +153,9 @@ public class RunPersonList {
                     for (int i = 0; i < personList.length; i++) {
                         if (personList[i] instanceof Student && personList[i].getName().equals(name)) {
                             for (int j = i; j < personList.length && personList[j] != null; j++) {
-                                personList[j] = null;
-                                break;
+                                personList[j] = personList[j + 1];
                             }
+                            personList[last] = null;
                         }
                     }
                     break;
@@ -174,10 +164,10 @@ public class RunPersonList {
                     String name1 = scanner.nextLine();
                     for (int i = 0; i < personList.length; i++) {
                         if (personList[i] instanceof Teacher && personList[i].getName().equals(name1)) {
-                            for (int j = i; j < personList.length && personList[j] != null; j++) {
-                                personList[j] = null;
-                                break;
+                            for (int j = i; j < personList.length - 1 && personList[j] != null; j++) {
+                                personList[j] = personList[j + 1];
                             }
+                            personList[last] = null;
                         }
                     }
             }
@@ -186,6 +176,7 @@ public class RunPersonList {
     }
 
     public static void main(String[] args) {
+
         do {
 
             System.out.println("----Quản lý Person----\n" +
