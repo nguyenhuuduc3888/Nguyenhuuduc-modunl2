@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class RunPersonList {
     public static Person[] personList = new Person[100];
     public static int count;
-    static Scanner    scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     static {
         personList[0] = new Student("Đức", 18, 184309497, "NAM", 8);
@@ -48,131 +48,125 @@ public class RunPersonList {
     }
 
     public static void addNewPerson() {
-        do {
-            System.out.println("Chọn kiểu Person muốn thêm\n" +
-                    "1.Student \n" +
-                    "2.Teacher");
-            int num = Integer.parseInt(scanner.nextLine());
-            switch (num) {
-                case 1:
-                    for (Person list : personList) {
-                        if (list instanceof Student) {
-                            System.out.println("Nhập tên học sinh");
-                            String name = scanner.nextLine();
-                            System.out.println("Nhập tuổi");
-                            int age = Integer.parseInt(scanner.nextLine());
-                            System.out.println("Nhập id");
-                            int id = Integer.parseInt(scanner.nextLine());
-                            System.out.println("Nhập giới tính");
-                            String gender = scanner.nextLine();
-                            System.out.println("Nhập Điểm");
-                            float point = Float.parseFloat(scanner.nextLine());
-                            Person student = new Student(name, age, id, gender, point);
-                            personList[count] = student;
-                            count++;
-                            System.out.println("Thêm mới student thành công");
-                            break;
-                        }
+
+        System.out.println("Chọn kiểu Person muốn thêm\n" +
+                "1.Student \n" +
+                "2.Teacher");
+        int num = Integer.parseInt(scanner.nextLine());
+        switch (num) {
+            case 1:
+                for (Person list : personList) {
+                    if (list instanceof Student) {
+                        System.out.print("Nhập tên học sinh: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Nhập tuổi: ");
+                        int age = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập id: ");
+                        int id = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập giới tính: ");
+                        String gender = scanner.nextLine();
+                        System.out.print("Nhập Điểm: ");
+                        float point = Float.parseFloat(scanner.nextLine());
+                        Person student = new Student(name, age, id, gender, point);
+                        personList[count] = student;
+                        count++;
+                        System.out.println("Thêm mới student thành công...");
+                        break;
                     }
-                    break;
-                case 2:
-                    for (Person list : personList) {
-                        if (list instanceof Teacher) {
-                            System.out.println("Nhập tên giáo viên ");
-                            String name = scanner.nextLine();
-                            System.out.println("Nhập tuổi");
-                            int age = Integer.parseInt(scanner.nextLine());
-                            System.out.println("Nhập id");
-                            int id = Integer.parseInt(scanner.nextLine());
-                            System.out.println("Nhập giới tính");
-                            String gender = scanner.nextLine();
-                            System.out.println("Nhập lương");
-                            int salary = Integer.parseInt(scanner.nextLine());
-                            Person teacher = new Teacher(name, age, id, gender, salary);
-                            personList[count] = teacher;
-                            count++;
-                            System.out.println("Thêm mới teacher thành công");
-                            break;
-                        }
+                }
+                break;
+            case 2:
+                for (Person list : personList) {
+                    if (list instanceof Teacher) {
+                        System.out.print("Nhập tên giáo viên: ");
+                        String name = scanner.nextLine();
+                        System.out.print("Nhập tuổi: ");
+                        int age = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập id: ");
+                        int id = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập giới tính: ");
+                        String gender = scanner.nextLine();
+                        System.out.print("Nhập lương: ");
+                        int salary = Integer.parseInt(scanner.nextLine());
+                        Person teacher = new Teacher(name, age, id, gender, salary);
+                        personList[count] = teacher;
+                        count++;
+                        System.out.println("Thêm mới teacher thành công......");
+                        break;
                     }
-                case 3:
-                    break;
-            }
-            break;
-        } while (true);
+                }
+            case 3:
+                break;
+        }
     }
 
     public static void searchPerson() {
-        do {
-            System.out.println("Nhập kiểu Person muốn tìm\n" +
-                    "1.Student\n" +
-                    "2.Teacher");
-            System.out.println("Nhập vị trí để chọn kiểu Person");
-            int num = Integer.parseInt(scanner.nextLine());
-            switch (num) {
-                case 1:
-                    System.out.println("Nhập tên Student muốn tìm");
-                    String name = scanner.nextLine();
-                    for (Person list : personList) {
-                        if (list instanceof Student) {
-                            if (list.getName().equals(name)) {
-                                System.out.println(list);
-                                break;
-                            }
+
+        System.out.println("Danh sách Person muốn tìm\n" +
+                "1.Student\n" +
+                "2.Teacher");
+        System.out.println("Nhập kiểu Person muốn tìm: ");
+        int num = Integer.parseInt(scanner.nextLine());
+        switch (num) {
+            case 1:
+                System.out.print("Nhập tên Student muốn tìm: ");
+                String name = scanner.nextLine();
+                for (Person list : personList) {
+                    if (list instanceof Student) {
+                        if (list.getName().equals(name)) {
+                            System.out.println(list);
+                            break;
                         }
                     }
-                    break;
-                case 2:
-                    System.out.println("Nhập tên Teacher muốn tìm");
-                    String name1 = scanner.nextLine();
-                    for (Person list : personList) {
-                        if (list instanceof Teacher) {
-                            if (list.getName().equals(name1)) {
-                                System.out.println(list);
-                                break;
-                            }
+                }
+                break;
+            case 2:
+                System.out.print("Nhập tên Teacher muốn tìm: ");
+                String name1 = scanner.nextLine();
+                for (Person list : personList) {
+                    if (list instanceof Teacher) {
+                        if (list.getName().equals(name1)) {
+                            System.out.println(list);
+                            break;
                         }
                     }
-            }
-            break;
-        } while (true);
+                }
+        }
     }
 
     public static void deletePerson() {
         int last = personList.length - 1;
-        do {
-            System.out.println("Chọn kiểu Person muốn xoá\n" +
-                    "1.Student \n" +
-                    "2.Teacher");
-            System.out.println("Vị trí kiểu muốn xoá");
-            int num = Integer.parseInt(scanner.nextLine());
-            switch (num) {
-                case 1:
-                    System.out.println("Nhập tên muốn xoá");
-                    String name = scanner.nextLine();
-                    for (int i = 0; i < personList.length; i++) {
-                        if (personList[i] instanceof Student && personList[i].getName().equals(name)) {
-                            for (int j = i; j < personList.length && personList[j] != null; j++) {
-                                personList[j] = personList[j + 1];
-                            }
-                            personList[last] = null;
+
+        System.out.println("Danh sách Person muốn xoá: \n" +
+                "1.Student \n" +
+                "2.Teacher");
+        System.out.println("Chọn kiểu Person muốn xoá: ");
+        int num = Integer.parseInt(scanner.nextLine());
+        switch (num) {
+            case 1:
+                System.out.print("Nhập tên Student muốn xoá: ");
+                String name = scanner.nextLine();
+                for (int i = 0; i < personList.length; i++) {
+                    if (personList[i] instanceof Student && personList[i].getName().equals(name)) {
+                        for (int j = i; j < personList.length && personList[j] != null; j++) {
+                            personList[j] = personList[j + 1];
                         }
+                        personList[last] = null;
                     }
-                    break;
-                case 2:
-                    System.out.println("Nhập tên muốn xoá");
-                    String name1 = scanner.nextLine();
-                    for (int i = 0; i < personList.length; i++) {
-                        if (personList[i] instanceof Teacher && personList[i].getName().equals(name1)) {
-                            for (int j = i; j < personList.length - 1 && personList[j] != null; j++) {
-                                personList[j] = personList[j + 1];
-                            }
-                            personList[last] = null;
+                }
+                break;
+            case 2:
+                System.out.print("Nhập tên Teacher muốn xoá: ");
+                String name1 = scanner.nextLine();
+                for (int i = 0; i < personList.length; i++) {
+                    if (personList[i] instanceof Teacher && personList[i].getName().equals(name1)) {
+                        for (int j = i; j < personList.length - 1 && personList[j] != null; j++) {
+                            personList[j] = personList[j + 1];
                         }
+                        personList[last] = null;
                     }
-            }
-            break;
-        } while (true);
+                }
+        }
     }
 
     public static void main(String[] args) {

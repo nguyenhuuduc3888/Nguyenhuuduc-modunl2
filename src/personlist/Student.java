@@ -1,7 +1,7 @@
 package personlist;
 
 public class Student extends Person {
-   private float point;
+    private float point;
 
     public Student() {
 
@@ -26,6 +26,6 @@ public class Student extends Person {
 
     @Override
     public String toString() {
-        return "Student có điểm là:" + point + " Tên:" + getName() + " Tuổi:" + getAge() + " CMND:" + getId() + " Giới tính:" + getGender();
+        return "Student có Tên:" + getName() + " Tuổi:" + getAge() + " CMND:" + getId() + " Giới tính:" + getGender() + " có điểm là:" + point + "\n";
     }
 }

@@ -1,7 +1,7 @@
 package personlist;
 
 public class Teacher extends Person {
-  private   int salary;
+    private int salary;
 
     public Teacher() {
     }
@@ -25,6 +25,6 @@ public class Teacher extends Person {
 
     @Override
     public String toString() {
-        return "Teacher có Lương là: " + salary +" TriệuVNĐ "+ " Tên:" + getName() + " Tuổi:" + getAge() + " CMND:" + getId() + " Giới tính:" + getGender();
+        return "Teacher có tên là:" + getName() + " Tuổi:" + getAge() + " CMND:" + getId() + " Giới tính:" + getGender() + " Lương là: " + salary + " TriệuVNĐ \n";
     }
 }
