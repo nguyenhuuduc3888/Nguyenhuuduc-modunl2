@@ -107,15 +107,16 @@ public class RunPersonList {
                 "2.Teacher");
         System.out.println("Nhập kiểu Person muốn tìm: ");
         int num = Integer.parseInt(scanner.nextLine());
+
         switch (num) {
             case 1:
                 System.out.print("Nhập tên Student muốn tìm: ");
                 String name = scanner.nextLine();
+                name=name.toUpperCase();
                 for (Person list : personList) {
                     if (list instanceof Student) {
-                        if (list.getName().equals(name)) {
+                        if (list.getName().contains(name)) {
                             System.out.println(list);
-                            break;
                         }
                     }
                 }
@@ -123,11 +124,11 @@ public class RunPersonList {
             case 2:
                 System.out.print("Nhập tên Teacher muốn tìm: ");
                 String name1 = scanner.nextLine();
+                name1=name1.toUpperCase();
                 for (Person list : personList) {
                     if (list instanceof Teacher) {
-                        if (list.getName().equals(name1)) {
+                        if (list.getName().contains(name1)) {
                             System.out.println(list);
-                            break;
                         }
                     }
                 }
