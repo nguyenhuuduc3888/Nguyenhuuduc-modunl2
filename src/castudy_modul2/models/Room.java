@@ -1,4 +1,4 @@
-package models;
+package castudy_modul2.models;
 
 public class Room extends Facility {
     private String serviceFree;

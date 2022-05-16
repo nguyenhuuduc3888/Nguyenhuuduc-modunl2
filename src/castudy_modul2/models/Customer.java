@@ -1,4 +1,4 @@
-package models;
+package castudy_modul2.models;
 
 import java.util.Scanner;
 
@@ -29,22 +29,29 @@ public class Customer extends Person {
         System.out.println("Nhập kiểu khách...\n" +
                 "1.Diamond\n" +
                 "2.Platinium\n" +
-                "3.Gold\n+" +
+                "3.Gold\n" +
                 "4.Sliver\n" +
                 "5.Member");
-        int num = Integer.parseInt(scanner.nextLine());
-        switch (num) {
-            case 1:
-                return "diamond";
-            case 2:
-                return "platinium";
-            case 3:
-                return "gold";
-            case 4:
-                return "sliver";
-            case 5:
-                return "member";
-        }
+        do {
+            int num = Integer.parseInt(scanner.nextLine());
+            if (num >= 1 && num <= 5) {
+                switch (num) {
+                    case 1:
+                        return "diamond";
+                    case 2:
+                        return "platinium";
+                    case 3:
+                        return "gold";
+                    case 4:
+                        return "sliver";
+                    case 5:
+                        return "member";
+                }
+                break;//nhap dung 1 trong cac so ten thi thoat vong lap...
+            } else {
+                System.out.println("Bạn chọn lại nha");// neu nhap sai thi nhap lai...
+            }
+        } while (true);
         return "";
     }
 

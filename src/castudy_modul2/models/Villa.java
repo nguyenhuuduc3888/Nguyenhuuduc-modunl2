@@ -1,21 +1,23 @@
-package models;
+package castudy_modul2.models;
 
-public class House extends Facility {
+public class Villa extends Facility {
     private String romStandard;//tieu chuan phong...
+    private int poolArea;//dien tich ho boi...
     private int numberFloors;// so tang ...
 
-    public House() {
-
+    public Villa() {
     }
 
-    public House(String romStandard, int numberFloors) {
+    public Villa(String romStandard, int poolArea, int numberFloors) {
         this.romStandard = romStandard;
+        this.poolArea = poolArea;
         this.numberFloors = numberFloors;
     }
 
-    public House(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType, String romStandard, int numberFloors) {
+    public Villa(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType, String romStandard, int poolArea, int numberFloors) {
         super(serviceName, usableArea, rentalCosts, peopleMaximum, rentalType);
         this.romStandard = romStandard;
+        this.poolArea = poolArea;
         this.numberFloors = numberFloors;
     }
 
@@ -25,6 +27,14 @@ public class House extends Facility {
 
     public void setRomStandard(String romStandard) {
         this.romStandard = romStandard;
+    }
+
+    public int getPoolArea() {
+        return poolArea;
+    }
+
+    public void setPoolArea(int poolArea) {
+        this.poolArea = poolArea;
     }
 
     public int getNumberFloors() {
@@ -37,12 +47,13 @@ public class House extends Facility {
 
     @Override
     public String toString() {
-        return "House co: " + romStandard +
-                " so tang: " + numberFloors +
+        return "Villa tieu chuan phong: " + romStandard +
+                " Die tich ho boi: " + poolArea +
+                " So tang: " + numberFloors +
                 "Tên dịch vụ: " + getServiceName() +
                 " Diện tích sử dụng: " + getUsableArea() +
                 " Chi phí thuê: " + getRentalCosts() +
                 " Sô người ở tối đa:" + getPeopleMaximum() +
-                " Kiểu thuê: " + getRentalType("Theo nam","Theo thang","Theo ngay","Theo gio");
+                " Kiểu thuê: " + getRentalType("Theo nam", "Theo thang", "Theo ngay", "Theo gio");
     }
 }

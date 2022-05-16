@@ -1,4 +1,4 @@
-package models;
+package castudy_modul2.models;
 
 public abstract class Person {
     private int code;//ma so...
