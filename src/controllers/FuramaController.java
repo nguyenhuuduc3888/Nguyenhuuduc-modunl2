@@ -22,12 +22,29 @@ public class FuramaController {
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    System.out.println("1.Display list employees\n" +
-                            "2.Add new employee\n" +
-                            "3.Edit employee\n" +
-                            "4.Return main menu");
-                    break;
+                    do {
+                        System.out.println("1.Display list employees\n" +
+                                "2.Add new employee\n" +
+                                "3.Edit employee\n" +
+                                "4.Return main menu");
+                        System.out.println("Nhập để chọn tính năng: ");
+                        int input = Integer.parseInt(scanner.nextLine());
+                        switch (input) {
+                            case 1:
+                                System.out.println("1.Display list employees");
+                                break;
+                            case 2:
+                                System.out.println("2.Add new employee");
+                                break;
+                            case 3:
+                                System.out.println("3.Edit employee");
+                                break;
+                            case 4:
+                                displayMainMenu();
+                        }
+                    }while (true);
                 case 2:
+
                     System.out.println("1.Display list customers\n" +
                             "2.Add new customer\n" +
                             "3.Edit customer\n" +

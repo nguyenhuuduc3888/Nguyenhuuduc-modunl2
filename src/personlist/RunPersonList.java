@@ -137,7 +137,6 @@ public class RunPersonList {
 
     public static void deletePerson() {
         int last = personList.length - 1;
-
         System.out.println("Danh sách Person muốn xoá: \n" +
                 "1.Student \n" +
                 "2.Teacher");
@@ -149,7 +148,7 @@ public class RunPersonList {
                 String name = scanner.nextLine();
                 for (int i = 0; i < personList.length; i++) {
                     if (personList[i] instanceof Student && personList[i].getName().equals(name)) {
-                        for (int j = i; j < personList.length && personList[j] != null; j++) {
+                        for (int j = i; j < personList.length -1; j++) {
                             personList[j] = personList[j + 1];
                         }
                         personList[last] = null;
@@ -161,7 +160,7 @@ public class RunPersonList {
                 String name1 = scanner.nextLine();
                 for (int i = 0; i < personList.length; i++) {
                     if (personList[i] instanceof Teacher && personList[i].getName().equals(name1)) {
-                        for (int j = i; j < personList.length - 1 && personList[j] != null; j++) {
+                        for (int j = i; j < personList.length - 1 ; j++) {
                             personList[j] = personList[j + 1];
                         }
                         personList[last] = null;
