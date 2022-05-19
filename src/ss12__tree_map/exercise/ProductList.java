@@ -1,16 +1,17 @@
 package ss12__tree_map.exercise;
+import java.util.Comparator;
 
-public class ProductList {
-    private int id=0;
+public class ProductList implements Comparator {
+    private int id = 0;
     private String name;
-    private double price;
+    private int price;
     private int amount;
     private String production;
 
     public ProductList() {
     }
 
-    public ProductList(int id, String name, double price, int amount, String production) {
+    public ProductList(int id, String name, int price, int amount, String production) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -38,7 +39,7 @@ public class ProductList {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -60,10 +61,15 @@ public class ProductList {
 
     @Override
     public String toString() {
-        return "ProductList có id: " + id +
-                " Tên: " + name + '\'' +
-                " Giá: " + price +
-                " Số lượng: " + amount +
-                " Nhà sản xuất: " + production;
+        return "Sản phẩm có mã là: " + id +
+                " ---Tên sản phẩm là: " + name +
+                " ---Giá là: " + price + "TRIỆU VND" +
+                " ---Số lượng là: " + amount + "Cái" +
+                "--- Nhà sản xuất là: " + production;
+    }
+
+    @Override
+    public int compare(Object o1, Object o2) {
+        return 0;
     }
 }

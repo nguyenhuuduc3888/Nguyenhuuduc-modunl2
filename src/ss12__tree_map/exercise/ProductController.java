@@ -23,14 +23,17 @@ public class ProductController {
                 case 1:
                     System.out.println("Thêm sản phẩm: ");
                     productManager.add();
+                    System.out.println("Mảng sau khi thêm  là: "); productManager.display();
                     break;
                 case 2:
                     System.out.println("Sửa sản phẩm: ");
                     productManager.update();
+                    System.out.println("Mảng sau khi sửa  là: "); productManager.display();
                     break;
                 case 3:
                     System.out.println("Xoá sản phẩm: ");
                     productManager.delete();
+                    System.out.println("Mảng sau khi  xoá là: "); productManager.display();
                     break;
                 case 4:
                     System.out.println("Hiển thị sanh sách sản phẩm: ");
@@ -41,8 +44,21 @@ public class ProductController {
                     productManager.search();
                     break;
                 case 6:
-                    System.out.println("Sắp xếp sản phẩm: ");
-                    productManager.sort();
+                    System.out.println("Sắp xếp sản phẩm:\n " +
+                            "Chọn 1 để xắp xếp theo giá tăng dần: \n" +
+                            "Chọn 2 để xắp xếp theo giá giảm giần:\n ");
+                    System.out.println("Nhập để chọn: ");
+                    int num = Integer.parseInt(scanner.nextLine());
+                    switch (num) {
+                        case 1:
+                            productManager.sortUp();
+                            System.out.println("Mảng sau khi sắp xếp là: "); productManager.display();
+                            break;
+                        case 2:
+                            productManager.sortLow();
+                            System.out.println("Mảng sau khi sắp xếp là: "); productManager.display();
+                            break;
+                    }
                     break;
                 case 7:
                     System.out.println("Kết thúc chương trình--GoodBye--");
