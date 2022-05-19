@@ -1,7 +1,7 @@
 package ss12__tree_map.exercise;
 
 public class ProductList {
-    private int id;
+    private int id=0;
     private String name;
     private double price;
     private int amount;
@@ -60,7 +60,7 @@ public class ProductList {
 
     @Override
     public String toString() {
-        return "ProductList có: " + id +
+        return "ProductList có id: " + id +
                 " Tên: " + name + '\'' +
                 " Giá: " + price +
                 " Số lượng: " + amount +

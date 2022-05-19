@@ -66,7 +66,6 @@ public class Genders implements Comparable<Genders> {
                 ", born=" + born +
                 '}';
     }
-
     @Override
     public int compareTo(Genders o) {
         return this.getBorn().compareTo(o.getBorn());
