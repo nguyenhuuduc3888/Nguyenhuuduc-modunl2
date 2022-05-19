@@ -54,6 +54,30 @@ public class Villa extends Facility {
                 " Diện tích sử dụng: " + getUsableArea() +
                 " Chi phí thuê: " + getRentalCosts() +
                 " Sô người ở tối đa:" + getPeopleMaximum() +
-                " Kiểu thuê: " + getRentalType("Theo nam", "Theo thang", "Theo ngay", "Theo gio");
+                " Kiểu thuê: " + getRentalType();
+    }
+
+    public Villa(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType) {
+        super(serviceName, usableArea, rentalCosts, peopleMaximum, rentalType);
+    }
+
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void upDate() {
+
+    }
+
+    @Override
+    public void delete() {
+
     }
 }

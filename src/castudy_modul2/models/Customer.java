@@ -1,8 +1,10 @@
 package castudy_modul2.models;
 
+import castudy_modul2.services.CustomerService;
+
 import java.util.Scanner;
 
-public class Customer extends Person {
+public class Customer extends Person implements CustomerService {
     private String guestType;
     private String address;
 
@@ -78,6 +80,31 @@ public class Customer extends Person {
                 " SDT: " + getNumberPhone() +
                 " Email: " + getEmail();
 
+
+    }
+
+    @Override
+    public int getCode() {
+        return super.getCode();
+    }
+
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void upDate() {
+
+    }
+
+    @Override
+    public void delete() {
 
     }
 }

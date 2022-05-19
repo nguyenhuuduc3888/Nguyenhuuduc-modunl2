@@ -43,6 +43,26 @@ public class House extends Facility {
                 " Diện tích sử dụng: " + getUsableArea() +
                 " Chi phí thuê: " + getRentalCosts() +
                 " Sô người ở tối đa:" + getPeopleMaximum() +
-                " Kiểu thuê: " + getRentalType("Theo nam","Theo thang","Theo ngay","Theo gio");
+                " Kiểu thuê: " + getRentalType();
+    }
+
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void upDate() {
+
+    }
+
+    @Override
+    public void delete() {
+
     }
 }

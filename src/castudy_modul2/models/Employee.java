@@ -1,8 +1,10 @@
 package castudy_modul2.models;
 
+import castudy_modul2.services.EmployeeService;
+
 import java.util.Scanner;
 
-public class Employee extends Person {
+public class Employee extends Person implements EmployeeService {
     Scanner scanner = new Scanner(System.in);
     private String level;// trình độ...
     private String location;//địa chỉ...
@@ -104,15 +106,35 @@ public class Employee extends Person {
 
     @Override
     public String toString() {
-        return "Employee co trinh do: " + level +
+        return "Employee Tên là: " + getFullName() +
                 " Vi tri: " + location +
-                " Luong: " + salary +
+                " Luong: " + salary + " Triệu VNĐ " +
                 "co ma so: " + getCode() +
-                " Ho ten: " + getFullName() +
+                " Trình độ: " + level +
                 " Gioi tinh: " + getGenDer() +
                 " id: " + getId() +
                 " SDT: " + getNumberPhone() +
                 " Email: " + getEmail();
+
+    }
+
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public void add() {
+
+    }
+
+    @Override
+    public void upDate() {
+
+    }
+
+    @Override
+    public void delete() {
 
     }
 }

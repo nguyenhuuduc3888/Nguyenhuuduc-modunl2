@@ -1,6 +1,7 @@
 package castudy_modul2.controllers;
 
-import castudy_modul2.services.Service;
+import castudy_modul2.services.BookingServiceIpl;
+import castudy_modul2.services.EmployeeServiceIpl;
 
 import java.util.Scanner;
 
@@ -10,7 +11,9 @@ public class FuramaController {
     }
 
     public static void displayMainMenu() {
-//        do {
+        do {
+            EmployeeServiceIpl employeeServiceIpl = new EmployeeServiceIpl();
+            BookingServiceIpl bookingServiceIpl = new BookingServiceIpl();
             System.out.println("Menu\n" +
                     "1. Employee Management\n" +
                     "2. Customer Management\n" +
@@ -34,12 +37,15 @@ public class FuramaController {
                         switch (input) {
                             case 1:
                                 System.out.println("1.Display list employees");
+                                employeeServiceIpl.display();
                                 break;
                             case 2:
                                 System.out.println("2.Add new employee");
+                                employeeServiceIpl.add();
                                 break;
                             case 3:
                                 System.out.println("3.Edit employee");
+                                employeeServiceIpl.upDate();
                                 break;
                             case 4:
                                 displayMainMenu();
@@ -55,11 +61,14 @@ public class FuramaController {
                         int input1 = Integer.parseInt(scanner.nextLine());
                         switch (input1) {
                             case 1:
-
+                                System.out.println("1.Display list customers");
+                                break;
                             case 2:
-
+                                System.out.println("2.Add new customer");
+                                break;
                             case 3:
-
+                                System.out.println("3.Edit customer");
+                                break;
                             case 4:
                                 displayMainMenu();
                         }
@@ -74,8 +83,14 @@ public class FuramaController {
                         int input2 = Integer.parseInt(scanner.nextLine());
                         switch (input2) {
                             case 1:
+                                System.out.println("1.Display list facility");
+                                break;
                             case 2:
+                                System.out.println("2.Add new facility");
+                                break;
                             case 3:
+                                System.out.println("3.Display list facility maintenance");
+                                break;
                             case 4:
                                 displayMainMenu();
                         }
@@ -92,10 +107,20 @@ public class FuramaController {
                         int input3 = Integer.parseInt(scanner.nextLine());
                         switch (input3) {
                             case 1:
+                                System.out.println("1.Add new booking");
+                                break;
                             case 2:
+                                System.out.println("2.Display list booking ");
                             case 3:
+                                System.out.println("3.Create new contracts");
+                                break;
                             case 4:
+                                System.out.println("4.Display list contracts");
+                                break;
                             case 5:
+                                System.out.println("5.Edit contracts");
+                                break;
+
                             case 6:
                                 displayMainMenu();
                         }
@@ -109,7 +134,11 @@ public class FuramaController {
                         int input4 = Integer.parseInt(scanner.nextLine());
                         switch (input4) {
                             case 1:
+                                System.out.println("1.Display list customers use service");
+                                break;
                             case 2:
+                                System.out.println("2.Display list customers get voucher");
+                                break;
                             case 3:
                                 displayMainMenu();
                         }
@@ -118,6 +147,6 @@ public class FuramaController {
                     System.out.println("Kết thúc chương trình   ---Good Bye---");
                     System.exit(0);
             }
-//        } while (true);
+        } while (true);
     }
 }

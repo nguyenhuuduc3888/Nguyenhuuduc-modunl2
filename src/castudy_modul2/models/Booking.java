@@ -13,7 +13,8 @@ public class Booking implements BookingService {
     public Booking() {
     }
 
-    public Booking(int bookingCode, int dayStart, int daySop, int customerCode, String serviceName, String typeOfService) {
+    public Booking(int bookingCode, int dayStart, int daySop,
+                   int customerCode, String serviceName, String typeOfService) {
         this.bookingCode = bookingCode;
         this.dayStart = dayStart;
         this.daySop = daySop;

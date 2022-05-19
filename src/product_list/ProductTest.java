@@ -28,16 +28,28 @@ public class ProductTest {
     }
 
     public static void upDateProduct() {
-        System.out.println(" Nhập tên ");
-        String name = scanner.nextLine();
-        System.out.println("Nhập giá");
-        int price = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập số lượng");
-        int amount = Integer.parseInt(scanner.nextLine());
-        System.out.println("Nhập hãng sãn xuất");
-        String production = scanner.nextLine();
-        productList[count] = new Product(count + 1, name, price, amount, production);
+        System.out.println("Tìm vị trí muốn sửa");
+        int num = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < productList.length-1; i++) {
+            if (num == productList[i].getId()) {
+                System.out.println(" Nhập tên ");
+                String name = scanner.nextLine();
+                System.out.println("Nhập giá");
+                int price = Integer.parseInt(scanner.nextLine());
+                System.out.println("Nhập số lượng");
+                int amount = Integer.parseInt(scanner.nextLine());
+                System.out.println("Nhập hãng sãn xuất");
+                String production = scanner.nextLine();
+                productList[i].setId(productList[i].getId());
+                productList[i].setName(name);
+                productList[i].setPrice(price);
+                productList[i].setAmount(amount);
+                productList[i].setProduction(production);
+                break;
+            }
+        }
     }
+
     public static void addNewProduct() {
         String name = scanner.nextLine();
         System.out.println("Nhập gia");
