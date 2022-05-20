@@ -1,7 +1,5 @@
 package ss12__tree_map.exercise;
 
-import org.omg.PortableInterceptor.INACTIVE;
-
 import java.util.*;
 
 public class ProductManager extends ProductList {
@@ -36,6 +34,7 @@ public class ProductManager extends ProductList {
         for (ProductList product : productLists) {
             if (product == null) {
                 System.out.println("Mảng đang trống");
+                break;
             } else {
                 System.out.println(product);
             }
@@ -97,7 +96,7 @@ public class ProductManager extends ProductList {
                 System.out.println(productLists.get(i));
                 break;
             } else {
-                System.out.println("Tên sản phẩm không được tìm thấy mời bạn chọn tìm lại:");
+                System.out.println("Tên sản phẩm không được tìm thấy: ");
                 break;
             }
         }
