@@ -86,7 +86,5 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
 
     @Override
     public void delete() {
-
-
     }
 }

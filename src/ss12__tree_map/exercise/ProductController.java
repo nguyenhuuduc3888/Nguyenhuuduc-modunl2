@@ -40,7 +40,7 @@ public class ProductController {
                     productManager.display();
                     break;
                 case 5:
-                    System.out.println("Tìm sản phẩm: ");
+                    System.out.println("Tìm sản phẩm : ");
                     productManager.search();
                     break;
                 case 6:

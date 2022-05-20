@@ -3,7 +3,7 @@ package ss12__tree_map.exercise;
 import java.util.*;
 
 public class ProductManager extends ProductList {
-    public static List<ProductList> productLists = new ArrayList<>();
+    public static List<ProductList> productLists = new LinkedList<>();
     public static Scanner scanner = new Scanner(System.in);
 
     static {
