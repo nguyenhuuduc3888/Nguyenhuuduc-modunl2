@@ -32,19 +32,14 @@ public class ProductManager extends ProductList {
 
     public void display() {
         for (ProductList product : productLists) {
-            if (product == null) {
-                System.out.println("Mảng đang trống");
-                break;
-            } else {
-                System.out.println(product);
-            }
-
+            System.out.println(product);
         }
     }
 
     public void update() {
         System.out.println("Nhập id để để tìm vị trí cần sửa: ");
         int num = Integer.parseInt(scanner.nextLine());
+        boolean check = true;
         for (int i = 0; i < productLists.size(); i++) {
             if (num == productLists.get(i).getId()) {
                 System.out.print("Nhập id sản phẩm: ");
@@ -63,42 +58,43 @@ public class ProductManager extends ProductList {
                 productLists.get(i).setAmount(amount);
                 productLists.get(i).setProduction(production);
                 System.out.println("Cập nhật thành công");
-                break;
-            } else {
-                System.out.println("Không tìm thấy");
-                break;
+                check = false;
             }
+        }
+        if (check) {
+            System.out.println("Không tìm thấy id sản phẩm muốn sửa: ");
         }
     }
 
     public void delete() {
         System.out.println("Nhập id vị trí muốn xoá: ");
         int input = Integer.parseInt(scanner.nextLine());
+        boolean check = true;
         for (int i = 0; i < productLists.size(); i++) {
             if (input == productLists.get(i).getId()) {
-                for (int j = 0; j < productLists.size(); j++) {
-                    productLists.remove(productLists.get(i));
-                    System.out.println("Xoá thành công");
-                    break;
-                }
-            } else {
-                System.out.println("Không tìm thấy id: ");
-                break;
+                productLists.remove(productLists.get(i));
+                System.out.println("Xoá thành công");
+                check = false;
             }
+        }
+        if (check) {
+            System.out.println("Không tìm thấy id: ");
         }
     }
 
     public void search() {
         System.out.println("Nhập tên để tìm kiếm sản phẩm: ");
         String inputName = scanner.nextLine();
+        inputName = inputName.toUpperCase();
+        boolean check = true;
         for (int i = 0; i < productLists.size(); i++) {
             if (productLists.get(i).getName().contains(inputName)) {
                 System.out.println(productLists.get(i));
-                break;
-            } else {
-                System.out.println("Tên sản phẩm không được tìm thấy: ");
-                break;
+                check = false;
             }
+        }
+        if (check) {
+            System.out.println("Không tìm thấy");
         }
     }
 

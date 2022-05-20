@@ -77,14 +77,11 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
                 employeelist.get(i).setLocation(location);
                 employeelist.get(i).setSalary(salary);
                 System.out.println("Cập nhật sản phẩm thành công: ");
-                break;
-
             }else {
                 System.out.println("Không tìm thấy id sản phẩm này: ");
-                break;
             }
+            break;
         }
-
     }
 
     @Override

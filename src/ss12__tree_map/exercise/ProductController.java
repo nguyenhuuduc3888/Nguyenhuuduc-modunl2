@@ -23,20 +23,20 @@ public class ProductController {
                 case 1:
                     System.out.println("Thêm sản phẩm: ");
                     productManager.add();
-                    System.out.println("Mảng sau khi thêm  là: "); productManager.display();
+                    System.out.println("Danh sách sản phẩm sau khi thêm  là: "); productManager.display();
                     break;
                 case 2:
                     System.out.println("Sửa sản phẩm: ");
                     productManager.update();
-                    System.out.println("Mảng sau khi sửa  là: "); productManager.display();
+                    System.out.println("Danh sách sản phẩm sau khi sửa  là: "); productManager.display();
                     break;
                 case 3:
                     System.out.println("Xoá sản phẩm: ");
                     productManager.delete();
-                    System.out.println("Mảng sau khi  xoá là: "); productManager.display();
+                    System.out.println("Danh sách sản phẩm sau khi  xoá là: "); productManager.display();
                     break;
                 case 4:
-                    System.out.println("Hiển thị sanh sách sản phẩm: ");
+                    System.out.println("Hiển thị danh sách sản phẩm: ");
                     productManager.display();
                     break;
                 case 5:
@@ -52,11 +52,11 @@ public class ProductController {
                     switch (num) {
                         case 1:
                             productManager.sortUp();
-                            System.out.println("Mảng sau khi sắp xếp là: "); productManager.display();
+                            System.out.println("Danh sách sản phẩm sau khi sắp xếp là: "); productManager.display();
                             break;
                         case 2:
                             productManager.sortLow();
-                            System.out.println("Mảng sau khi sắp xếp là: "); productManager.display();
+                            System.out.println("Danh sách sản phẩm sau khi sắp xếp là: "); productManager.display();
                             break;
                     }
                     break;
