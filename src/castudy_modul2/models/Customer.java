@@ -99,7 +99,7 @@ public class Customer extends Person implements CustomerService {
     }
 
     @Override
-    public void upDate() {
+    public void update() {
 
     }
 

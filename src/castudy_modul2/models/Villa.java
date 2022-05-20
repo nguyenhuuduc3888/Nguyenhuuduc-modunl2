@@ -72,7 +72,7 @@ public class Villa extends Facility {
     }
 
     @Override
-    public void upDate() {
+    public void update() {
 
     }
 

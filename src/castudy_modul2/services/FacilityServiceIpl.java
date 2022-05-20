@@ -17,7 +17,7 @@ public class FacilityServiceIpl implements  FacilityService {
     }
 
     @Override
-    public void upDate() {
+    public void update() {
 
     }
 

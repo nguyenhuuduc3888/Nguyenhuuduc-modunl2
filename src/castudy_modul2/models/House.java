@@ -57,7 +57,7 @@ public class House extends Facility {
     }
 
     @Override
-    public void upDate() {
+    public void update() {
 
     }
 

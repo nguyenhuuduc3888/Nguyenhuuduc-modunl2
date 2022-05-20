@@ -1,4 +1,5 @@
 package ss12__tree_map.exercise;
+
 import java.util.Comparator;
 
 public class ProductList implements Comparator {

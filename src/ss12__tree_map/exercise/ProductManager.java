@@ -40,8 +40,8 @@ public class ProductManager extends ProductList {
         System.out.println("Nhập id để để tìm vị trí cần sửa: ");
         int num = Integer.parseInt(scanner.nextLine());
         boolean check = true;
-        for (int i = 0; i < productLists.size(); i++) {
-            if (num == productLists.get(i).getId()) {
+        for (ProductList productList : productLists) {
+            if (num == productList.getId()) {
                 System.out.print("Nhập id sản phẩm: ");
                 int id = Integer.parseInt(scanner.nextLine());
                 System.out.print("Nhập tên sản phẩm: ");
@@ -52,11 +52,11 @@ public class ProductManager extends ProductList {
                 int amount = Integer.parseInt(scanner.nextLine());
                 System.out.print("Nhập nhà sản xuất: ");
                 String production = scanner.nextLine();
-                productLists.get(i).setId(id);
-                productLists.get(i).setName(name);
-                productLists.get(i).setPrice(money);
-                productLists.get(i).setAmount(amount);
-                productLists.get(i).setProduction(production);
+                productList.setId(id);
+                productList.setName(name);
+                productList.setPrice(money);
+                productList.setAmount(amount);
+                productList.setProduction(production);
                 System.out.println("Cập nhật thành công");
                 check = false;
             }
@@ -87,9 +87,9 @@ public class ProductManager extends ProductList {
         String inputName = scanner.nextLine();
         inputName = inputName.toUpperCase();
         boolean check = true;
-        for (int i = 0; i < productLists.size(); i++) {
-            if (productLists.get(i).getName().contains(inputName)) {
-                System.out.println(productLists.get(i));
+        for (ProductList productList : productLists) {
+            if (productList.getName().contains(inputName)) {
+                System.out.println(productList);
                 check = false;
             }
         }
@@ -99,21 +99,11 @@ public class ProductManager extends ProductList {
     }
 
     public void sortLow() {
-        Collections.sort(productLists, new Comparator<ProductList>() {
-            @Override
-            public int compare(ProductList o1, ProductList o2) {
-                return (int) (o2.getPrice() - o1.getPrice());
-            }
-        });
+        productLists.sort((o1, o2) -> (int) (o2.getPrice() - o1.getPrice()));
     }
 
     public void sortUp() {
-        Collections.sort(productLists, new Comparator<ProductList>() {
-            @Override
-            public int compare(ProductList o1, ProductList o2) {
-                return (int) (o1.getPrice() - o2.getPrice());
-            }
-        });
+        productLists.sort((o1, o2) -> (int) (o1.getPrice() - o2.getPrice()));
     }
 }
 

@@ -88,7 +88,7 @@ public class Booking implements BookingService {
     }
 
     @Override
-    public void upDate() {
+    public void update() {
 
     }
 

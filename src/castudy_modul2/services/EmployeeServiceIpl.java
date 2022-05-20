@@ -12,6 +12,11 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
     static List<Employee> employeelist = new ArrayList<>();
     static Scanner scanner = new Scanner(System.in);
 
+  static {
+      employeelist.add(new Employee(379,"DUC NGUYEN","Nam",1,52622, "duc@123","ĐẠi Học","Nhân viên",20));
+      employeelist.add(new Employee(548,"TOAN NGUYEN","Nam",2,555660, "TOAN@123","ĐẠi Học","Nhân viên",20));
+      employeelist.add(new Employee(234,"HAU NGUYEN","Nam",3,4660, "HAU@123","ĐẠi Học","Nhân viên",20));
+  }
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
@@ -46,7 +51,7 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
         employeelist.add(employee);
     }
     @Override
-    public void upDate() {
+    public void update() {
         System.out.println("Nhập mã số nhân viên để tìm: ");
         int input=Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < employeelist.size(); i++) {

@@ -1,6 +1,7 @@
 package castudy_modul2.controllers;
 
 import castudy_modul2.services.BookingServiceIpl;
+import castudy_modul2.services.CustomerServiceIpl;
 import castudy_modul2.services.EmployeeServiceIpl;
 
 import java.util.Scanner;
@@ -13,7 +14,7 @@ public class FuramaController {
     public static void displayMainMenu() {
         do {
             EmployeeServiceIpl employeeServiceIpl = new EmployeeServiceIpl();
-            BookingServiceIpl bookingServiceIpl = new BookingServiceIpl();
+            CustomerServiceIpl customerServiceIpl=new CustomerServiceIpl();
             System.out.println("Menu\n" +
                     "1. Employee Management\n" +
                     "2. Customer Management\n" +
@@ -45,7 +46,7 @@ public class FuramaController {
                                 break;
                             case 3:
                                 System.out.println("3.Edit employee");
-                                employeeServiceIpl.upDate();
+                                employeeServiceIpl.update();
                                 break;
                             case 4:
                                 displayMainMenu();
@@ -62,12 +63,15 @@ public class FuramaController {
                         switch (input1) {
                             case 1:
                                 System.out.println("1.Display list customers");
+                                customerServiceIpl.display();
                                 break;
                             case 2:
                                 System.out.println("2.Add new customer");
+                                customerServiceIpl.add();
                                 break;
                             case 3:
                                 System.out.println("3.Edit customer");
+                                customerServiceIpl.update();
                                 break;
                             case 4:
                                 displayMainMenu();

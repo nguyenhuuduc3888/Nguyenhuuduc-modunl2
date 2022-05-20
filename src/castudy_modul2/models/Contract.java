@@ -80,7 +80,7 @@ public class Contract implements ContractService {
     }
 
     @Override
-    public void upDate() {
+    public void update() {
 
     }
 
