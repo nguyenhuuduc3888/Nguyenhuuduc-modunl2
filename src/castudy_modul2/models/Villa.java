@@ -67,6 +67,26 @@ public class Villa extends Facility {
     }
 
     @Override
+    public void displayMaintain() {
+
+    }
+
+    @Override
+    public void addNewVilla() {
+
+    }
+
+    @Override
+    public void addNewHouse() {
+
+    }
+
+    @Override
+    public void addNewRoom() {
+
+    }
+
+    @Override
     public void add() {
 
     }

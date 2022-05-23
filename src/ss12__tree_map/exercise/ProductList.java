@@ -2,7 +2,7 @@ package ss12__tree_map.exercise;
 
 import java.util.Comparator;
 
-public class ProductList implements Comparator {
+public class ProductList  {
     private int id = 0;
     private String name;
     private int price;
@@ -67,10 +67,5 @@ public class ProductList implements Comparator {
                 " ---Giá là: " + price + "TRIỆU VND" +
                 " ---Số lượng là: " + amount + "Cái" +
                 "--- Nhà sản xuất là: " + production;
-    }
-
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
     }
 }

@@ -49,9 +49,9 @@ public class Customer extends Person implements CustomerService {
                     case 5:
                         return "member";
                 }
-                break;//nhap dung 1 trong cac so ten thi thoat vong lap...
+                break;
             } else {
-                System.out.println("Bạn chọn lại nha");// neu nhap sai thi nhap lai...
+                System.out.println("Bạn chọn lại nha");
             }
         } while (true);
         return "";

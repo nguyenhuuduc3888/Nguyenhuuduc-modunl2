@@ -52,7 +52,7 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
     }
     @Override
     public void update() {
-        System.out.println("Nhập mã số nhân viên để tìm: ");
+        System.out.println("Nhập ID để tìm nhân viên: ");
         int input=Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < employeelist.size(); i++) {
             if(input==employeelist.get(i).getId()){
@@ -88,7 +88,6 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
             break;
         }
     }
-
     @Override
     public void delete() {
     }
