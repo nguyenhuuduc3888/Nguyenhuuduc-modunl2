@@ -7,9 +7,7 @@ import big_exercise.personlist.QuảnLýNhânSự;
 
 import java.util.*;
 
-public class
-
-PersonArrayList implements ServiceAll {
+public class PersonArrayList implements ServiceAll {
     static Scanner scanner = new Scanner(System.in);
     public static List<Person> person = new ArrayList<>();
 

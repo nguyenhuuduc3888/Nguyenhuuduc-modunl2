@@ -1,7 +1,5 @@
 package big_exercise.personlist;
 
-import java.util.Comparator;
-
 public abstract class Person {
     private String fullName;
     private int birthDay;

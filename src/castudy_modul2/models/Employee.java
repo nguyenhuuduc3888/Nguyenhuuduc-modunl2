@@ -6,8 +6,8 @@ import java.util.Scanner;
 
 public class Employee extends Person implements EmployeeService {
     Scanner scanner = new Scanner(System.in);
-    private String level;// trình độ...
-    private String location;//địa chỉ...
+    private String level;
+    private String location;
     private float salary;
 
     public Employee() {
@@ -36,23 +36,19 @@ public class Employee extends Person implements EmployeeService {
 
         do {
             int input = Integer.parseInt(scanner.nextLine());
-            if (input >= 1 && input <= 4) {
-                switch (input) {
-                    case 1:
-                        return "Trung cấp";
-                    case 2:
-                        return "Cao đẳng";
-                    case 3:
-                        return "Đại học";
-                    case 4:
-                        return "Sau đại học";
-                }
-                break;
-            } else {
-                System.out.println("Bạn đang chọn sai mời bạn chọn lại");
+            switch (input) {
+                case 1:
+                    return "Trung cấp";
+                case 2:
+                    return "Cao đẳng";
+                case 3:
+                    return "Đại học";
+                case 4:
+                    return "Sau đại học";
+                default:
+                    System.out.println("Bạn chọn lại nha");
             }
         } while (true);
-        return " ";
     }
 
     public void setLevel(String level) {
@@ -69,27 +65,24 @@ public class Employee extends Person implements EmployeeService {
                 "6.Giám đốc");
         do {
             int input = Integer.parseInt(scanner.nextLine());
-            if (input >= 1 && input <= 6) {
-                switch (input) {
-                    case 1:
-                        return "Lễ tân";
-                    case 2:
-                        return "Phục vụ";
-                    case 3:
-                        return "Chuyên viên";
-                    case 4:
-                        return "Giám sát";
-                    case 5:
-                        return "Quản lý";
-                    case 6:
-                        return "Giám đốc";
-                }
-                break;
-            } else {
-                System.out.println("Bạn chọn sai mời bạn chọn lại");
+
+            switch (input) {
+                case 1:
+                    return "Lễ tân";
+                case 2:
+                    return "Phục vụ";
+                case 3:
+                    return "Chuyên viên";
+                case 4:
+                    return "Giám sát";
+                case 5:
+                    return "Quản lý";
+                case 6:
+                    return "Giám đốc";
+                default:
+                    System.out.println("Bạn chon sai mời bạn chọn lại...");
             }
         } while (true);
-        return "";
     }
 
     public void setLocation(String location) {

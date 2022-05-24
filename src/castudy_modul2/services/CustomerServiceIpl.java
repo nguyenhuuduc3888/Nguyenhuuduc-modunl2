@@ -51,9 +51,10 @@ public class CustomerServiceIpl extends Customer implements CustomerService {
     @Override
     public void update() {
         System.out.println("Nhập mã số khách hàng cần sửa: ");
-        int input=Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i <customers.size() ; i++) {
-            if(input==customers.get(i).getId()){
+        int input = Integer.parseInt(scanner.nextLine());
+        boolean check = true;
+        for (int i = 0; i < customers.size(); i++) {
+            if (input == customers.get(i).getId()) {
                 System.out.print("Nhập mã số khách hàng: ");
                 int code = Integer.parseInt(scanner.nextLine());
                 System.out.print("Nhập họ tên khách hàng: ");
@@ -78,9 +79,11 @@ public class CustomerServiceIpl extends Customer implements CustomerService {
                 customers.get(i).setEmail(email);
                 customers.get(i).setGenDer(gender);
                 System.out.println("Cập nhật thành công....");
-                break;
+                check = false;
             }
-
+        }
+        if (check) {
+            System.out.println("Không tìm thấy");
         }
     }
 

@@ -61,7 +61,6 @@ public abstract class Facility implements FacilityService {
                 "2.Thuê theo tháng: \n" +
                 "3.Thuê theo ngày: \n" +
                 "4.Theo theo giờ: ");
-
         do {
             int input = Integer.parseInt(scanner.nextLine());
             if (input >= 1 && input <= 4) {
@@ -82,6 +81,10 @@ public abstract class Facility implements FacilityService {
         } while (true);
         return " ";
 
+    }
+
+    public String getRentalType2() {
+        return rentalType;
     }
 
     public void setRentalType(String rentalType) {

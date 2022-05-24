@@ -54,7 +54,7 @@ public class Villa extends Facility {
                 " Diện tích sử dụng: " + getUsableArea() +
                 " Chi phí thuê: " + getRentalCosts() +
                 " Sô người ở tối đa:" + getPeopleMaximum() +
-                " Kiểu thuê: " + getRentalType();
+                " Kiểu thuê: " + getRentalType2();
     }
 
     public Villa(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType) {

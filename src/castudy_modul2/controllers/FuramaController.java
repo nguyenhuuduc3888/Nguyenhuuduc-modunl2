@@ -30,79 +30,14 @@ public class FuramaController {
             choice = Integer.parseInt(scanner.nextLine());
             switch (choice) {
                 case 1:
-                    do {
-                        System.out.println("1.Display list employees\n" +
-                                "2.Add new employee\n" +
-                                "3.Edit employee\n" +
-                                "4.Return main menu");
-                        System.out.println("Nhập để chọn tính năng: ");
-                        int input = Integer.parseInt(scanner.nextLine());
-                        switch (input) {
-                            case 1:
-                                System.out.println("1.Display list employees");
-                                employeeServiceIpl.display();
-                                break;
-                            case 2:
-                                System.out.println("2.Add new employee");
-                                employeeServiceIpl.add();
-                                break;
-                            case 3:
-                                System.out.println("3.Edit employee");
-                                employeeServiceIpl.update();
-                                break;
-                            case 4:
-                                displayMainMenu();
-                        }
-                    } while (true);
+                    case_1(employeeServiceIpl, scanner);
+                    return;
                 case 2:
-                    do {
-                        System.out.println("1.Display list customers\n" +
-                                "2.Add new customer\n" +
-                                "3.Edit customer\n" +
-                                "4.Return main menu\n");
-                        System.out.println("Nhập để chọn tính năng: ");
-                        int input1 = Integer.parseInt(scanner.nextLine());
-                        switch (input1) {
-                            case 1:
-                                System.out.println("1.Display list customers");
-                                customerServiceIpl.display();
-                                break;
-                            case 2:
-                                System.out.println("2.Add new customer");
-                                customerServiceIpl.add();
-                                break;
-                            case 3:
-                                System.out.println("3.Edit customer");
-                                customerServiceIpl.update();
-                                break;
-                            case 4:
-                                displayMainMenu();
-                        }
-                    } while (true);
+                    case_2(customerServiceIpl, scanner);
+                    return;
                 case 3:
-                    do {
-                        System.out.println("1.Display list facility\n" +
-                                "2.Add new facility\n" +
-                                "3.Display list facility maintenance\n" +
-                                "4.Return main menu");
-                        System.out.println("Nhập để chọn tính năng: ");
-                        int input2 = Integer.parseInt(scanner.nextLine());
-                        switch (input2) {
-                            case 1:
-                                System.out.println("1.Display list facility");
-                                facilityServiceIpl.display();
-                                break;
-                            case 2:
-                                System.out.println("2.Add new facility");
-                                facilityServiceIpl.addNewVilla();
-                                break;
-                            case 3:
-                                System.out.println("3.Display list facility maintenance");
-                                break;
-                            case 4:
-                                displayMainMenu();
-                        }
-                    } while (true);
+                    case_3(facilityServiceIpl, scanner);
+                    return;
                 case 4:
                     do {
                         System.out.println("1.Add new booking\n" +
@@ -131,6 +66,8 @@ public class FuramaController {
 
                             case 6:
                                 displayMainMenu();
+                            default:
+                                System.out.println("MỜI BẠN CHỌN LẠI");
                         }
                     } while (true);
                 case 5:
@@ -149,12 +86,125 @@ public class FuramaController {
                                 break;
                             case 3:
                                 displayMainMenu();
+                            default:
+                                System.out.println("MỜI BẠN CHỌN LẠI");
                         }
                     } while (true);
                 case 6:
                     System.out.println("Kết thúc chương trình   ---Good Bye---");
                     System.exit(0);
+                default:
+                    System.out.println("MỜI BẠN CHỌN LẠI");
             }
         } while (true);
+    }
+
+    public static void case_3(FacilityServiceIpl facilityServiceIpl, Scanner scanner) {
+        do {
+            backMenu();
+            int input2 = Integer.parseInt(scanner.nextLine());
+            switch (input2) {
+                case 1:
+                    System.out.println("-------Display list facility--------");
+                    facilityServiceIpl.display();
+                    break;
+                case 2:
+                    System.out.println("----Add new facility----\n" +
+                            "1.Add New Villa\n" +
+                            "2.Add New House\n" +
+                            "3.Add New Room\n" +
+                            "4.Back to menu");
+                    System.out.println("Nhập để chọn kiểu muốn thêm");
+                    int input = Integer.parseInt(scanner.nextLine());
+                    switch (input) {
+                        case 1:
+                            facilityServiceIpl.addNewVilla();
+                            break;
+                        case 2:
+                            facilityServiceIpl.addNewHouse();
+                            break;
+                        case 3:
+                            facilityServiceIpl.addNewRoom();
+                            break;
+                        case 4:
+                            break;
+                        default:
+                            System.out.println("Bạn chon lại nha");
+                    }
+                    break;
+                case 3:
+                    System.out.println("3.Display list facility maintenance");
+                    break;
+                case 4:
+                    displayMainMenu();
+                default:
+                    System.out.println("MỜI BẠN CHỌN LẠI");
+            }
+        } while (true);
+    }
+
+    public static void case_2(CustomerServiceIpl customerServiceIpl, Scanner scanner) {
+        do {
+            System.out.println("1.Display list customers\n" +
+                    "2.Add new customer\n" +
+                    "3.Edit customer\n" +
+                    "4.Return main menu\n");
+            System.out.println("Nhập để chọn tính năng: ");
+            int input1 = Integer.parseInt(scanner.nextLine());
+            switch (input1) {
+                case 1:
+                    System.out.println("1.Display list customers");
+                    customerServiceIpl.display();
+                    break;
+                case 2:
+                    System.out.println("2.Add new customer");
+                    customerServiceIpl.add();
+                    break;
+                case 3:
+                    System.out.println("3.Edit customer");
+                    customerServiceIpl.update();
+                    break;
+                case 4:
+                    displayMainMenu();
+                default:
+                    System.out.println("MỜI BẠN CHỌN LẠI");
+            }
+        } while (true);
+    }
+
+    public static void case_1(EmployeeServiceIpl employeeServiceIpl, Scanner scanner) {
+        do {
+            System.out.println("1.Display list employees\n" +
+                    "2.Add new employee\n" +
+                    "3.Edit employee\n" +
+                    "4.Return main menu");
+            System.out.println("Nhập để chọn tính năng: ");
+            int input = Integer.parseInt(scanner.nextLine());
+            switch (input) {
+                case 1:
+                    System.out.println("1.Display list employees");
+                    employeeServiceIpl.display();
+                    break;
+                case 2:
+                    System.out.println("2.Add new employee");
+                    employeeServiceIpl.add();
+                    break;
+                case 3:
+                    System.out.println("3.Edit employee");
+                    employeeServiceIpl.update();
+                    break;
+                case 4:
+                    displayMainMenu();
+                default:
+                    System.out.println("MỜI BẠN CHỌN LẠI");
+            }
+        } while (true);
+    }
+
+    public static void backMenu() {
+        System.out.println("1.Display list facility\n" +
+                "2.Add new facility\n" +
+                "3.Display list facility maintenance\n" +
+                "4.Return main menu");
     }
 }

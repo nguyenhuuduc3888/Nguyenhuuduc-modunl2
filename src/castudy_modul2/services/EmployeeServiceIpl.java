@@ -9,18 +9,19 @@ import java.util.Scanner;
 
 public class EmployeeServiceIpl extends Employee implements EmployeeService {
 
-    static List<Employee> employeelist = new ArrayList<>();
-    static Scanner scanner = new Scanner(System.in);
+    private static List<Employee> employeelist = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
 
-  static {
-      employeelist.add(new Employee(379,"DUC NGUYEN","Nam",1,52622, "duc@123","ĐẠi Học","Nhân viên",20));
-      employeelist.add(new Employee(548,"TOAN NGUYEN","Nam",2,555660, "TOAN@123","ĐẠi Học","Nhân viên",20));
-      employeelist.add(new Employee(234,"HAU NGUYEN","Nam",3,4660, "HAU@123","ĐẠi Học","Nhân viên",20));
-  }
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    static {
+        employeelist.add(new Employee(379, "DUC NGUYEN", "Nam", 1, 52622, "duc@123", "ĐẠi Học", "Nhân viên", 20));
+        employeelist.add(new Employee(548, "TOAN NGUYEN", "Nam", 2, 555660, "TOAN@123", "ĐẠi Học", "Nhân viên", 20));
+        employeelist.add(new Employee(234, "HAU NGUYEN", "Nam", 3, 4660, "HAU@123", "ĐẠi Học", "Nhân viên", 20));
     }
+//
+//    @Override
+//    protected Object clone() throws CloneNotSupportedException {
+//        return super.clone();
+//    }
 
     @Override
     public void display() {
@@ -47,15 +48,17 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
         String location = getLocation();
         System.out.print("Nhập lương nhân viên: ");
         int salary = Integer.parseInt(scanner.nextLine());
-        Employee employee = new Employee(code, name, gender, id, phone, email, level, location,salary );
+        Employee employee = new Employee(code, name, gender, id, phone, email, level, location, salary);
         employeelist.add(employee);
     }
+
     @Override
     public void update() {
         System.out.println("Nhập ID để tìm nhân viên: ");
-        int input=Integer.parseInt(scanner.nextLine());
+        int input = Integer.parseInt(scanner.nextLine());
+        boolean check = true;
         for (int i = 0; i < employeelist.size(); i++) {
-            if(input==employeelist.get(i).getId()){
+            if (input == employeelist.get(i).getId()) {
                 System.out.print("Nhập mã số nhân viên nhân viên: ");
                 int code = Integer.parseInt(scanner.nextLine());
                 System.out.print("Nhập họ tên nhân viên: ");
@@ -82,13 +85,15 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
                 employeelist.get(i).setLocation(location);
                 employeelist.get(i).setSalary(salary);
                 System.out.println("Cập nhật sản phẩm thành công: ");
-            }else {
-                System.out.println("Không tìm thấy id sản phẩm này: ");
+                check = false;
             }
-            break;
+        }
+        if (check) {
+            System.out.println("Không tìm thấy id:");
         }
     }
-    @Override
-    public void delete() {
-    }
+
+//    @Override
+//    public void delete() {
+//    }
 }
