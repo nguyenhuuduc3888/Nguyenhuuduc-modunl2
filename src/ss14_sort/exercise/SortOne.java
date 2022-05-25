@@ -25,7 +25,7 @@ public class SortOne {
             }
             arr[index] = arrIndex;
 
-            System.out.println("Mảng sau khi sắp xếp theo từng bước " + i +" là " + Arrays.toString(arr));
+            System.out.println("Mảng sau khi sắp xếp theo từng bước " + i + " là " + Arrays.toString(arr));
         }
     }
 }

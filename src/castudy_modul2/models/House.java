@@ -56,20 +56,6 @@ public class House extends Facility {
 
     }
 
-    @Override
-    public void addNewVilla() {
-
-    }
-
-    @Override
-    public void addNewHouse() {
-
-    }
-
-    @Override
-    public void addNewRoom() {
-
-    }
 
     @Override
     public void add() {

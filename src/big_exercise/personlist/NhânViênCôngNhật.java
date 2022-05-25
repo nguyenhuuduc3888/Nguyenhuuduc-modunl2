@@ -2,7 +2,8 @@ package big_exercise.personlist;
 
 import java.util.Comparator;
 
-public class NhânViênCôngNhật extends Person {
+public class
+NhânViênCôngNhật extends Person {
     private double soNgayCong;
 
     public NhânViênCôngNhật() {
