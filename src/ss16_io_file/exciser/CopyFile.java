@@ -10,13 +10,16 @@ public class CopyFile {
              BufferedReader bufferedReader = new BufferedReader(fileReader);
              FileWriter fileWriter = new FileWriter(fileTarget);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-            if (!fileSource.exists()) {
+            if (!fileSource.exists() && !fileTarget.exists()) {
                 throw new FileNotFoundException();
             }
-            String[] arr;
             String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                arr = line.split("");
+            while (true) {
+                line = bufferedReader.readLine();
+                if (line == null) {
+                    break;
+                }
+                String[] arr = line.split("");
                 for (String copy : arr) {
                     bufferedWriter.write(copy);
                 }
