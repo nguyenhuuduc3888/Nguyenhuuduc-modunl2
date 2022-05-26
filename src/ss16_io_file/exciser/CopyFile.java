@@ -23,7 +23,7 @@ public class CopyFile {
                 bufferedWriter.newLine();
             }
         } catch (Exception e) {
-            System.err.println("Fie không tồn tại or nội dung có lỗi!");
+            System.err.println("Fie không tồn tại hoặc nội dung có lỗi!");
         }
     }
 
