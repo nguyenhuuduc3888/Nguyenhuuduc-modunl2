@@ -3,8 +3,9 @@ package ss15_try_catch.exercise;
 import java.util.Scanner;
 
 public class TriangleEdgesCheck {
+    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         boolean check;
         do {
             try {
@@ -30,6 +31,8 @@ public class TriangleEdgesCheck {
                 System.out.println("Sai: không đúng định dạng!");
                 System.out.println("Nhập lại: ");
                 check = true;
+            } finally {
+                System.out.println("Toi luon duoc chay tru khi co System.exit()");
             }
         } while (check);
     }
