@@ -4,7 +4,6 @@ import java.io.*;
 
 public class CopyFile {
     public static void readAndCopyFile(String source, String target) {
-        String[] arr;
         File fileSource = new File(source);
         File fileTarget = new File(target);
         try (FileReader fileReader = new FileReader(fileSource);
@@ -14,6 +13,7 @@ public class CopyFile {
             if (!fileSource.exists()) {
                 throw new FileNotFoundException();
             }
+            String[] arr;
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 arr = line.split("");
