@@ -24,15 +24,12 @@ public class TriangleEdgesCheck {
                     }
                 } catch (TriangleEdgesException ex) {
                     System.out.println(ex.getMessage());
-                    ex.printStackTrace();
                     check = true;
                 }
             } catch (Exception ex) {
                 System.out.println("Sai: không đúng định dạng!");
                 System.out.println("Nhập lại: ");
                 check = true;
-            } finally {
-                System.out.println("Toi luon duoc chay tru khi co System.exit()");
             }
         } while (check);
     }
