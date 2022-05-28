@@ -9,7 +9,7 @@ public class DocFile {
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
             String line;
             while (true) {
-                line = bufferedReader.readLine();// doc qua tung line
+                line = bufferedReader.readLine();
                 if (line == null) {
                     break;
                 }
