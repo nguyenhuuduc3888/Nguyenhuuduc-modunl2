@@ -13,13 +13,15 @@ public class Main {
     private static void copyFileUsingStream(File source, File dest) throws IOException {
         InputStream is = null;
         OutputStream os = null;
+        int count=0;
         try {
             is = new FileInputStream(source);
             os = new FileOutputStream(dest);
-            byte[] buffer = new byte[10];
+            byte[] buffer = new byte[100];
             int length;
             while ((length = is.read(buffer)) > 0) {
                 os.write(buffer, 0, length);
+                count++;
             }
         } finally {
             is.close(); 
@@ -40,7 +42,7 @@ public class Main {
 
         try {
             copyFileUsingJava7Files(sourceFile, destFile);
-            System.out.printf("Copy thành công: ");
+            System.out.printf("Copy thành công ");
         } catch (IOException ioe) {
             System.out.printf("File không tông tại:");
             System.out.printf(ioe.getMessage());

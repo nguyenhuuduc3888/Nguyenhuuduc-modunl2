@@ -10,7 +10,7 @@ public class ProductImpl implements Service {
     static List<Product> products = new ArrayList<>();
     @Override
     public void display() {
-        products=readFile();
+        products = (List<Product>) ReadAndWriteFile.readFile("src\\ss17_io_binary\\exercise\\product_file.csv");
         for (Product list : products) {
             System.out.println(list);
         }
@@ -28,13 +28,13 @@ public class ProductImpl implements Service {
         int amount = Integer.parseInt(scanner.nextLine());
         Product product = new Product(products.size()+1, name, production, price, amount);
         products.add(product);
-        writerFile();
+        ReadAndWriteFile.writerFile("src\\ss17_io_binary\\exercise\\product_file.csv", products);
         System.out.println("Thêm thành công");
     }
 
     @Override
     public void search() {
-        products = readFile();
+        products = (List<Product>) ReadAndWriteFile.readFile("src\\ss17_io_binary\\exercise\\product_file.csv");
         System.out.println("Nhập tên để tìm kiếm sản phẩm");
         String input = scanner.nextLine();
         boolean check = true;
@@ -46,27 +46,6 @@ public class ProductImpl implements Service {
         }
         if (check) {
             System.out.println("Không tìm thấy");
-        }
-    }
-
-    public static List<Product> readFile() {
-        File file = new File("src\\ss17_io_binary\\exercise\\product_file.csv");
-        try (FileInputStream fileInputStream = new FileInputStream(file);
-             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
-            products = (List<Product>) objectInputStream.readObject();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return products;
-    }
-
-    public static void writerFile() {
-        File file = new File("src\\ss17_io_binary\\exercise\\product_file.csv");
-        try (FileOutputStream fileOutputStream = new FileOutputStream(file);
-             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream)) {
-            objectOutputStream.writeObject(products);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 }
