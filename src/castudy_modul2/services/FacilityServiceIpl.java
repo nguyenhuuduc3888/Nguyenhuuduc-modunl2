@@ -4,6 +4,7 @@ import castudy_modul2.models.Facility;
 import castudy_modul2.models.House;
 import castudy_modul2.models.Room;
 import castudy_modul2.models.Villa;
+import castudy_modul2.until.FacilityRentalType;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -28,70 +29,76 @@ public class FacilityServiceIpl extends Facility implements FacilityService {
 
     @Override
     public void add() {
-        System.out.println("---Chọn kiiểu muốn thêm---\n" +
-                "1.Add villa\n" +
-                "2.Add house\n" +
-                "3.Add room\n" +
-                "4.Thoát");
-        int input = Integer.parseInt(scanner.nextLine());
-        switch (input) {
-            case 1:
-                System.out.print("Nhập tên dịch vụ: ");
-                String serviceName = scanner.nextLine();
-                System.out.print("Nhập diện tích sử dụng: ");
-                int useArea = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập chi phí thuê: ");
-                int costs = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập số người ở tối đa: ");
-                int peopleMax = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập tiêu chuẩn phòng: ");
-                String romStandard = scanner.nextLine();
-                System.out.print("Nhập diện tích hồ bơi: ");
-                int poolArea = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập số tầng: ");
-                int numFloors = Integer.parseInt(scanner.nextLine());
-                Villa villa = new Villa(serviceName, useArea, costs, peopleMax, getRentalType(), romStandard, poolArea, numFloors);
-                facilityIntegerMap.put(villa, 0);
-                System.out.println("Đã thêm mới thành công");
-                break;
-            case 2:
-                System.out.print("Nhập tên dịch vụ: ");
-                String serviceName1 = scanner.nextLine();
-                System.out.print("Nhập diện tích sử dụng: ");
-                int useArea1 = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập chi phí thuê: ");
-                int costs1 = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập số người ở tối đa: ");
-                int peopleMax1 = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập tiêu chuẩn phòng: ");
-                String romStandard1 = scanner.nextLine();
-                System.out.print("Nhập số tầng: ");
-                int numFloors1 = Integer.parseInt(scanner.nextLine());
-                House house = new House(serviceName1, useArea1, costs1, peopleMax1, getRentalType(), romStandard1, numFloors1);
-                facilityIntegerMap.put(house, 0);
-                System.out.println("Đã thêm mới thành công");
-                break;
-            case 3:
-                System.out.print("Nhập tên dịch vụ: ");
-                String serviceName2 = scanner.nextLine();
-                System.out.print("Nhập diện tích sử dụng: ");
-                int useArea2 = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập chi phí thuê: ");
-                int costs2 = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập số người ở tối đa: ");
-                int peopleMax2 = Integer.parseInt(scanner.nextLine());
-                System.out.print("Nhập dịch vụ miễn phí: ");
-                String freeService = scanner.nextLine();
-                Room room = new Room(serviceName2, useArea2, costs2, peopleMax2, getRentalType(), freeService);
-                facilityIntegerMap.put(room, 0);
-                System.out.println("Đã thêm mới thành công");
-                break;
-            case 4:
-                System.out.println("Thoat menu");
-                return;
-            default:
-                System.out.println("Chon lai di nha");
-        }
+        do {
+            try {
+                System.out.println("---Chọn kiểu muốn thêm---\n" +
+                        "1.Add villa\n" +
+                        "2.Add house\n" +
+                        "3.Add room\n" +
+                        "4.Thoát");
+                int input = Integer.parseInt(scanner.nextLine());
+                switch (input) {
+                    case 1:
+                        System.out.print("Nhập tên dịch vụ: ");
+                        String serviceName = scanner.nextLine();
+                        System.out.print("Nhập diện tích sử dụng: ");
+                        int useArea = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập chi phí thuê: ");
+                        int costs = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập số người ở tối đa: ");
+                        int peopleMax = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập tiêu chuẩn phòng: ");
+                        String romStandard = scanner.nextLine();
+                        System.out.print("Nhập diện tích hồ bơi: ");
+                        int poolArea = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập số tầng: ");
+                        int numFloors = Integer.parseInt(scanner.nextLine());
+                        Villa villa = new Villa(serviceName, useArea, costs, peopleMax, FacilityRentalType.rentalType(), romStandard, poolArea, numFloors);
+                        facilityIntegerMap.put(villa, 0);
+                        System.out.println("Đã thêm mới thành công");
+                        break;
+                    case 2:
+                        System.out.print("Nhập tên dịch vụ: ");
+                        String serviceName1 = scanner.nextLine();
+                        System.out.print("Nhập diện tích sử dụng: ");
+                        int useArea1 = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập chi phí thuê: ");
+                        int costs1 = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập số người ở tối đa: ");
+                        int peopleMax1 = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập tiêu chuẩn phòng: ");
+                        String romStandard1 = scanner.nextLine();
+                        System.out.print("Nhập số tầng: ");
+                        int numFloors1 = Integer.parseInt(scanner.nextLine());
+                        House house = new House(serviceName1, useArea1, costs1, peopleMax1, getRentalType(), romStandard1, numFloors1);
+                        facilityIntegerMap.put(house, 0);
+                        System.out.println("Đã thêm mới thành công");
+                        break;
+                    case 3:
+                        System.out.print("Nhập tên dịch vụ: ");
+                        String serviceName2 = scanner.nextLine();
+                        System.out.print("Nhập diện tích sử dụng: ");
+                        int useArea2 = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập chi phí thuê: ");
+                        int costs2 = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập số người ở tối đa: ");
+                        int peopleMax2 = Integer.parseInt(scanner.nextLine());
+                        System.out.print("Nhập dịch vụ miễn phí: ");
+                        String freeService = scanner.nextLine();
+                        Room room = new Room(serviceName2, useArea2, costs2, peopleMax2, getRentalType(), freeService);
+                        facilityIntegerMap.put(room, 0);
+                        System.out.println("Đã thêm mới thành công");
+                        break;
+                    case 4:
+                        System.out.println("THOÁT CHỌN");
+                        return;
+                    default:
+                        System.err.println("ChƯƠNG TRÌNH YÊU CẦU CHỌN 1---4");
+                }
+            } catch (Exception e) {
+                System.err.println("SAI ĐỊNH DẠNG\n" + "CHƯƠNG TRÌNH YÊU CẦU NHẬP SỐ ..");
+            }
+        } while (true);
     }
 
     @Override
@@ -105,15 +112,10 @@ public class FacilityServiceIpl extends Facility implements FacilityService {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
-    }
-
-    @Override
     public void displayMaintain() {
         for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
             if (element.getValue() >= 5) {
-                System.out.println("can bao tri " + element.getKey());
+                System.err.println("Đang kiểm tra....\n"+ element.getKey() + "\n--- Quá tải cần bảo trì ");
             }
         }
     }

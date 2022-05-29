@@ -1,12 +1,13 @@
 package castudy_modul2.services;
 
 import castudy_modul2.models.Customer;
+import castudy_modul2.until.CustomerGuestType;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CustomerServiceIpl extends Customer implements CustomerService {
+public class CustomerServiceIpl implements CustomerService {
     private static List<Customer> customers = new LinkedList<>();
     private Scanner scanner = new Scanner(System.in);
 
@@ -35,15 +36,14 @@ public class CustomerServiceIpl extends Customer implements CustomerService {
         String name = scanner.nextLine();
         System.out.print("Nhập giới tính khách hàng: ");
         String gender = scanner.nextLine();
-        System.out.print("Nhập id khách hàng: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = customers.size() + 1;
         System.out.print("Nhập số điện thoại: ");
         int phone = Integer.parseInt(scanner.nextLine());
         System.out.print("Nhập Email: ");
         String email = scanner.nextLine();
         System.out.print("Nhập địa chỉ khách hàng: ");
         String address = scanner.nextLine();
-        String type = getGuestType();
+        String type = CustomerGuestType.guestType();
         Customer customer = new Customer(code, name, gender, id, phone, email, type, address);
         customers.add(customer);
     }
@@ -69,7 +69,7 @@ public class CustomerServiceIpl extends Customer implements CustomerService {
                 String email = scanner.nextLine();
                 System.out.print("Nhập địa chỉ khách hàng: ");
                 String address = scanner.nextLine();
-                String type = getGuestType();
+                String type = CustomerGuestType.guestType();
                 customers.get(i).setCode(code);
                 customers.get(i).setAddress(address);
                 customers.get(i).setFullName(name);
@@ -89,6 +89,5 @@ public class CustomerServiceIpl extends Customer implements CustomerService {
 
     @Override
     public void delete() {
-
     }
 }

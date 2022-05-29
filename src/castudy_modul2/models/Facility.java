@@ -4,7 +4,7 @@ import castudy_modul2.services.FacilityService;
 
 import java.util.Scanner;
 
-public abstract class Facility implements FacilityService {
+public abstract class Facility {
     private String serviceName;// ten dich vu..
     private int usableArea;//dien tich su dung..
     private int rentalCosts;//chi phi thue..
@@ -55,30 +55,7 @@ public abstract class Facility implements FacilityService {
     }
 
     public String getRentalType() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nhập kiểu thuê:\n" +
-                "1.Thuê theo năm: \n" +
-                "2.Thuê theo tháng: \n" +
-                "3.Thuê theo ngày: \n" +
-                "4.Theo theo giờ: ");
-        do {
-            int input = Integer.parseInt(scanner.nextLine());
-            if (input >= 1 && input <= 4) {
-                switch (input) {
-                    case 1:
-                        return "Thuê theo năm";
-                    case 2:
-                        return "Thuê theo tháng ";
-                    case 3:
-                        return "Thuê theo ngày";
-                    case 4:
-                        return "Thuê theo giờ";
-                }
-                break;
-            } else {
-                System.out.println("Bạn đang chọn sai mời bạn chọn lại");
-            }
-        } while (true);
+
         return " ";
 
     }
@@ -93,10 +70,10 @@ public abstract class Facility implements FacilityService {
 
     @Override
     public String toString() {
-        return "Tên dịch vụ: " + serviceName +
-                " Diện tích sử dụng: " + usableArea +
-                " Chi phí thuê: " + rentalCosts +
-                " Sô người ở tối đa:" + peopleMaximum +
-                " Kiểu thuê: " + rentalType;
+        return "Facility: " + serviceName +
+                " --Diện tích sử dụng: " + usableArea +
+                " --Chi phí thuê: " + rentalCosts +
+                " --Sô người ở tối đa:" + peopleMaximum +
+                " --Kiểu thuê: " + rentalType;
     }
 }

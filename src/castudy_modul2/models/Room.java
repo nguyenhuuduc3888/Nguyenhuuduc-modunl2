@@ -33,30 +33,4 @@ public class Room extends Facility {
                 " Sô người ở tối đa:" + getPeopleMaximum() +
                 " Kiểu thuê: " + getRentalType2();
     }
-
-    @Override
-    public void display() {
-
-    }
-
-    @Override
-    public void displayMaintain() {
-
-    }
-
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
 }

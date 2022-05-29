@@ -2,18 +2,18 @@ package castudy_modul2.models;
 
 import castudy_modul2.services.BookingService;
 
-public class Booking implements BookingService {
+public class Booking {
     private int bookingCode;//ma booking...
-    private int dayStart;
-    private int daySop;
+    private String dayStart;//ngay bat dau
+    private String daySop;//ngay ket thuc
     private int customerCode;//ma khahc hang...
-    private String serviceName;
-    private String typeOfService;
+    private String serviceName;//ten dich vu
+    private String typeOfService;//loai dich vu
 
     public Booking() {
     }
 
-    public Booking(int bookingCode, int dayStart, int daySop,
+    public Booking(int bookingCode, String dayStart, String daySop,
                    int customerCode, String serviceName, String typeOfService) {
         this.bookingCode = bookingCode;
         this.dayStart = dayStart;
@@ -21,6 +21,9 @@ public class Booking implements BookingService {
         this.customerCode = customerCode;
         this.serviceName = serviceName;
         this.typeOfService = typeOfService;
+    }
+
+    public Booking(int id, String startDay, String stopDay, Customer customer, Facility facility) {
     }
 
     public int getBookingCode() {
@@ -31,19 +34,19 @@ public class Booking implements BookingService {
         this.bookingCode = bookingCode;
     }
 
-    public int getDayStart() {
+    public String getDayStart() {
         return dayStart;
     }
 
-    public void setDayStart(int dayStart) {
+    public void setDayStart(String dayStart) {
         this.dayStart = dayStart;
     }
 
-    public int getDaySop() {
+    public String getDaySop() {
         return daySop;
     }
 
-    public void setDaySop(int daySop) {
+    public void setDaySop(String daySop) {
         this.daySop = daySop;
     }
 
@@ -69,32 +72,6 @@ public class Booking implements BookingService {
 
     public void setTypeOfService(String typeOfService) {
         this.typeOfService = typeOfService;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-
-    @Override
-    public void display() {
-
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
     }
 
     @Override

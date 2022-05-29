@@ -1,13 +1,14 @@
 package castudy_modul2.services;
 
 import castudy_modul2.models.Employee;
+import castudy_modul2.until.EmployeeLevelAndLocation;
 
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class EmployeeServiceIpl extends Employee implements EmployeeService {
+public class EmployeeServiceIpl implements EmployeeService {
 
     private static List<Employee> employeelist = new ArrayList<>();
     private static Scanner scanner = new Scanner(System.in);
@@ -17,11 +18,6 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
         employeelist.add(new Employee(548, "TOAN NGUYEN", "Nam", 2, 555660, "TOAN@123", "ĐẠi Học", "Nhân viên", 20));
         employeelist.add(new Employee(234, "HAU NGUYEN", "Nam", 3, 4660, "HAU@123", "ĐẠi Học", "Nhân viên", 20));
     }
-//
-//    @Override
-//    protected Object clone() throws CloneNotSupportedException {
-//        return super.clone();
-//    }
 
     @Override
     public void display() {
@@ -38,17 +34,14 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
         String name = scanner.nextLine();
         System.out.print("Nhập giới tính nhân viên: ");
         String gender = scanner.nextLine();
-        System.out.print("Nhập id: ");
-        int id = Integer.parseInt(scanner.nextLine());
+        int id = employeelist.size() + 1;
         System.out.print("Nhập số điện thoại: ");
         int phone = Integer.parseInt(scanner.nextLine());
         System.out.print("Nhập Email: ");
         String email = scanner.nextLine();
-        String level = getLevel();
-        String location = getLocation();
         System.out.print("Nhập lương nhân viên: ");
         int salary = Integer.parseInt(scanner.nextLine());
-        Employee employee = new Employee(code, name, gender, id, phone, email, level, location, salary);
+        Employee employee = new Employee(code, name, gender, id, phone, email, EmployeeLevelAndLocation.level(), EmployeeLevelAndLocation.location(), salary);
         employeelist.add(employee);
     }
 
@@ -71,8 +64,8 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
                 int phone = Integer.parseInt(scanner.nextLine());
                 System.out.print("Nhập Email: ");
                 String email = scanner.nextLine();
-                String level = getLevel();
-                String location = getLocation();
+                String level = EmployeeLevelAndLocation.level();
+                String location = EmployeeLevelAndLocation.location();
                 System.out.print("Nhập lương nhân viên: ");
                 int salary = Integer.parseInt(scanner.nextLine());
                 employeelist.get(i).setCode(code);
@@ -93,7 +86,8 @@ public class EmployeeServiceIpl extends Employee implements EmployeeService {
         }
     }
 
-//    @Override
-//    public void delete() {
-//    }
+    @Override
+    public void delete() {
+
+    }
 }

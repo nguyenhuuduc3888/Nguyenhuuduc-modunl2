@@ -2,7 +2,7 @@ package castudy_modul2.models;
 
 import castudy_modul2.services.ContractService;
 
-public class Contract implements ContractService {
+public class Contract {
     private int someContracts;//so hop dong ...
     private int bookingCode;// ma booking ...
     private int moneyDeposit;//so tien coc truoc...
@@ -67,25 +67,5 @@ public class Contract implements ContractService {
                 " Tiền cọc trước là: " + moneyDeposit +
                 " Tổng tiền thanh toán là: " + sumMoney +
                 " Mã khách hàng là: " + customerCode;
-    }
-
-    @Override
-    public void display() {
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
     }
 }

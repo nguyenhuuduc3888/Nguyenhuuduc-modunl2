@@ -60,29 +60,4 @@ public class Villa extends Facility {
     public Villa(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType) {
         super(serviceName, usableArea, rentalCosts, peopleMaximum, rentalType);
     }
-
-    @Override
-    public void display() {
-
-    }
-
-    @Override
-    public void displayMaintain() {
-
-    }
-
-    @Override
-    public void add() {
-
-    }
-
-    @Override
-    public void update() {
-
-    }
-
-    @Override
-    public void delete() {
-
-    }
 }
