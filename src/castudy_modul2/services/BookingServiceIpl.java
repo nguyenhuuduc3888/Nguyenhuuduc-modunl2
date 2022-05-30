@@ -5,6 +5,7 @@ import castudy_modul2.models.Customer;
 import castudy_modul2.models.Facility;
 import castudy_modul2.models.Villa;
 import castudy_modul2.until.BookingComparator;
+
 import java.util.*;
 
 public class BookingServiceIpl implements BookingService {
@@ -15,12 +16,16 @@ public class BookingServiceIpl implements BookingService {
     static {
         customers.add(new Customer(1, "Huu Duc", "Nam", 1, 66466,
                 "Huu duc @131", "Dianmond", "ha noi"));
+
         customers.add(new Customer(2, "Hau", "Nam", 2, 8146466,
                 "Huu duc @131", "Dianmond", "ha noi"));
+
         customers.add(new Customer(3, "Phuoc", "Nam", 3, 9146466,
                 "Huu duc @131", "Dianmond", "ha noi"));
+
         facilityIntegerMap.put(new Villa("Vip", 30, 200,
                 4, "gdd", "fgg", 20, 8), 0);
+
         facilityIntegerMap.put(new Villa("pro", 33, 200,
                 4, "gdd", "fgg", 20, 8), 0);
     }

@@ -33,25 +33,30 @@ public class FuramaController {
                     choice = Integer.parseInt(scanner.nextLine());
                     switch (choice) {
                         case 1:
+                            System.err.println("---Employee Management---");
                             case_1(employeeServiceIpl, scanner);
                             return;
                         case 2:
+                            System.err.println("---Customer Management---");
                             case_2(customerServiceIpl, scanner);
                             return;
                         case 3:
+                            System.err.println(" ---Facility Management---");
                             case_3(facilityServiceIpl, scanner);
                             return;
                         case 4:
+                            System.err.println("---Booking Management---");
                             case_4(bookingServiceIpl, scanner);
                             return;
                         case 5:
+                            System.err.println(" ---Promotion Management---");
                             case_5(scanner);
                             return;
                         case 6:
                             System.err.println("Kết thúc chương trình   ---Good Bye---");
                             System.exit(0);
                         default:
-                            System.err.println("CHỨC NĂNG NÀY KHÔNG CÓ \n" + "MỜI BẠN CHỌN LẠI TRONG KHOẢNG 1-->6");
+                            System.err.println("CHỨC NĂNG NÀY KHÔNG CÓ \n" + "MỜI BẠN CHỌN LẠI TRONG KHOẢNG 1-->6\n" + "NHẬP LẠI");
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("SAI ĐỊNH DẠNG \n" + "CHƯƠNG TRÌNH ĐANG YÊU CẦU NHẬP SỐ ĐỂ CHỌN CHỨC NĂNG...\n" + "NHẬP LẠI..");
@@ -137,21 +142,21 @@ public class FuramaController {
                     int input2 = Integer.parseInt(scanner.nextLine());
                     switch (input2) {
                         case 1:
-                            System.out.println("-------Display list facility--------");
+                            System.err.println("-------Display list facility--------");
                             facilityServiceIpl.display();
                             break;
                         case 2:
-                            System.out.println("-----Add new facility-----");
+                            System.err.println("-----Add new facility-----");
                             facilityServiceIpl.add();
                             break;
                         case 3:
-                            System.out.println("------Display list facility maintenance--------");
+                            System.err.println("------Display list facility maintenance--------");
                             facilityServiceIpl.displayMaintain();
                             break;
                         case 4:
                             displayMainMenu();
                         default:
-                            System.err.println("MỜI BẠN CHỌN LẠI\n" + "CHƯƠNG TRÌNH MỜI BẠN CHỌN TỪ 1--->4");
+                            System.err.println("MỜI BẠN CHỌN LẠI\n" + "CHƯƠNG TRÌNH MỜI BẠN CHỌN TỪ 1--->4\n" + "NHẬP LẠI");
                     }
                 } catch (Exception e) {
                     System.err.println("SAI ĐỊNH DẠNG\n" + "CHƯƠNG TRÌNH ĐANG YÊU CẦU NHẬP SỐ\n" + "NHẬP LẠI");
@@ -176,21 +181,21 @@ public class FuramaController {
                     int input1 = Integer.parseInt(scanner.nextLine());
                     switch (input1) {
                         case 1:
-                            System.out.println("----Display list customers-----");
+                            System.err.println("----Display list customers-----");
                             customerServiceIpl.display();
                             break;
                         case 2:
-                            System.out.println("-----Add new customer-----");
+                            System.err.println("-----Add new customer-----");
                             customerServiceIpl.add();
                             break;
                         case 3:
-                            System.out.println("------Edit customer----");
+                            System.err.println("------Edit customer----");
                             customerServiceIpl.update();
                             break;
                         case 4:
                             displayMainMenu();
                         default:
-                            System.out.println("MỜI BẠN CHỌN LẠI\n" + "\"CHƯƠNG TRÌNH MỜI BẠN CHỌN TỪ 1--->4");
+                            System.err.println("MỜI BẠN CHỌN LẠI\n" + "\"CHƯƠNG TRÌNH MỜI BẠN CHỌN TỪ 1--->4\n" + "NHẬP LẠI");
                     }
                 } catch (Exception e) {
                     System.err.println("SAI ĐỊNH DẠNG\n" + "CHƯƠNG TRÌNH ĐANG YÊU CẦU NHẬP SỐ\n" + "NHẬP LẠI");
@@ -214,21 +219,21 @@ public class FuramaController {
                     int input = Integer.parseInt(scanner.nextLine());
                     switch (input) {
                         case 1:
-                            System.out.println("----Display list employees-----");
+                            System.err.println("----Display list employees-----");
                             employeeServiceIpl.display();
                             break;
                         case 2:
-                            System.out.println("----Add new employee----");
+                            System.err.println("----Add new employee----");
                             employeeServiceIpl.add();
                             break;
                         case 3:
-                            System.out.println("----Edit employee----");
+                            System.err.println("----Edit employee----");
                             employeeServiceIpl.update();
                             break;
                         case 4:
                             displayMainMenu();
                         default:
-                            System.err.println("CHỨC NĂNG KHÔNG CÓ\n" + "CHƯƠNG TRÌNH MỜI BẠN CHỌN TỪ 1--->4");
+                            System.err.println("CHỨC NĂNG KHÔNG CÓ\n" + "CHƯƠNG TRÌNH MỜI BẠN CHỌN TỪ 1--->4\n" + "NHẬP LẠI");
                     }
                 } catch (Exception e) {
                     System.err.println("SAI ĐỊNH DẠNG\n" + "CHƯƠNG TRÌNH ĐANG YÊU CẦU NHẬP SỐ\n" + "NHẬP LẠI");

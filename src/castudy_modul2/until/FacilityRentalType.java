@@ -25,7 +25,7 @@ public class FacilityRentalType {
                 }
                 break;
             } else {
-                System.out.println("Bạn đang chọn sai mời bạn chọn lại");
+                System.err.println("CHƯƠNG TRÌNH YÊU CẦU CHỌN TỪ 1---->4");
             }
         } while (true);
         return " ";

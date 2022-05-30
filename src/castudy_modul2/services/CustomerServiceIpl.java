@@ -46,6 +46,7 @@ public class CustomerServiceIpl implements CustomerService {
         String type = CustomerGuestType.guestType();
         Customer customer = new Customer(code, name, gender, id, phone, email, type, address);
         customers.add(customer);
+        System.err.println("Thêm mới thành công");
     }
 
     @Override
@@ -61,8 +62,7 @@ public class CustomerServiceIpl implements CustomerService {
                 String name = scanner.nextLine();
                 System.out.print("Nhập giới tính khách hàng: ");
                 String gender = scanner.nextLine();
-                System.out.print("Nhập id khách hàng: ");
-                int id = Integer.parseInt(scanner.nextLine());
+                int id = customers.size() + 1;
                 System.out.print("Nhập số điện thoại: ");
                 int phone = Integer.parseInt(scanner.nextLine());
                 System.out.print("Nhập Email: ");
@@ -78,12 +78,12 @@ public class CustomerServiceIpl implements CustomerService {
                 customers.get(i).setId(id);
                 customers.get(i).setEmail(email);
                 customers.get(i).setGenDer(gender);
-                System.out.println("Cập nhật thành công....");
+                System.err.println("Cập nhật thành công....");
                 check = false;
             }
         }
         if (check) {
-            System.out.println("Không tìm thấy");
+            System.err.println("Không tìm thấy");
         }
     }
 

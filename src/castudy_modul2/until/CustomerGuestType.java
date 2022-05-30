@@ -28,7 +28,7 @@ public class CustomerGuestType {
                 }
                 break;
             } else {
-                System.out.println("Bạn chọn lại nha");
+                System.err.println("CHƯƠNG TRINHG YÊU CẦU CHỌN TRONG KHOẢN TỪ 1---->5");
             }
         } while (true);
         return "";

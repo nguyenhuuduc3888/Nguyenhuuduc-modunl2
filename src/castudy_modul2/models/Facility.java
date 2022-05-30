@@ -8,7 +8,7 @@ public abstract class Facility {
     private String serviceName;// ten dich vu..
     private int usableArea;//dien tich su dung..
     private int rentalCosts;//chi phi thue..
-    private int peopleMaximum;//so luowng nguoi o toi da..
+    private int peopleMaximum;//so luong nguoi o toi da..
     private String rentalType; //kieu thue..
 
     public Facility() {

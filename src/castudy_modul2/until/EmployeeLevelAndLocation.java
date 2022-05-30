@@ -3,7 +3,8 @@ package castudy_modul2.until;
 import java.util.Scanner;
 
 public class EmployeeLevelAndLocation {
-    static  Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
+
     public static String level() {
         System.out.println("Nhập trình độ:\n" +
                 "1.Trung cấp\n" +
@@ -23,7 +24,7 @@ public class EmployeeLevelAndLocation {
                 case 4:
                     return "Sau đại học";
                 default:
-                    System.out.println("Bạn chọn lại nha");
+                    System.err.println("CHƯƠNG TRÌNH YÊU CẦU CHỌN TRONG KHOẢN TỪ 1--->4");
             }
         } while (true);
     }
@@ -53,7 +54,7 @@ public class EmployeeLevelAndLocation {
                 case 6:
                     return "Giám đốc";
                 default:
-                    System.out.println("Bạn chon sai mời bạn chọn lại...");
+                    System.err.println("CHƯƠNG TRÌNH YÊU CẦU CHỌN TRONG KHOẢN TỪ 1--->6");
             }
         } while (true);
     }
