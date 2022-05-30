@@ -12,7 +12,7 @@ public class TestRegex {
             System.out.println("Sđt: " + str + " --Hợp lệ");
         } else System.out.println("Sđt: " + str + " --Không hợp lệ");
 
-        String str1 = "+84-21234567";
+        String str1 = "+84-95355535";
         boolean check2 = Pattern.matches(phoneNumberRegex, str1);
         if (check2) {
             System.out.println("Sđt: " + str1 + " --Hợp lệ");

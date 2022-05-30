@@ -1,5 +1,7 @@
 package castudy_modul2.until;
+
 import castudy_modul2.models.Booking;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
@@ -16,12 +18,12 @@ public class BookingComparator implements Comparator<Booking> {
             return 1;
         } else if (startDate1.compareTo(startDate2) < 1) {
             return -1;
-        }else {
-            if(stopDate1.compareTo(stopDate2)>0){
+        } else {
+            if (stopDate1.compareTo(stopDate2) > 0) {
                 return 1;
-            }else  if(stopDate1.compareTo(startDate2)<0){
+            } else if (stopDate1.compareTo(startDate2) < 0) {
                 return -1;
-            }else return 0;
+            } else return 0;
         }
     }
 }
