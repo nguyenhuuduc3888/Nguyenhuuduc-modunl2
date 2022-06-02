@@ -5,7 +5,6 @@ import java.io.*;
 public class ReadAndWriteFile {
     public static Object readFile(String pathFile) {
         File file = new File(pathFile);
-//        Object obj = null;
         try (FileInputStream fileInputStream = new FileInputStream(file);
              ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream)) {
             Object obj = objectInputStream.readObject();
