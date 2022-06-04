@@ -2,7 +2,7 @@ package castudymodul2.models;
 
 public class House extends Facility {
     private String romStandard;//tieu chuan phong...
-    private int numberFloors;// so tang ...
+    private String numberFloors;// so tang ...
 
     public House() {
 
@@ -20,12 +20,12 @@ public class House extends Facility {
                 getNumberFloors());
     }
 
-    public House(String romStandard, int numberFloors) {
+    public House(String romStandard, String numberFloors) {
         this.romStandard = romStandard;
         this.numberFloors = numberFloors;
     }
 
-    public House(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType, String romStandard, int numberFloors) {
+    public House(String serviceName, String usableArea, String rentalCosts, String peopleMaximum, String rentalType, String romStandard, String numberFloors) {
         super(serviceName, usableArea, rentalCosts, peopleMaximum, rentalType);
         this.romStandard = romStandard;
         this.numberFloors = numberFloors;
@@ -39,11 +39,11 @@ public class House extends Facility {
         this.romStandard = romStandard;
     }
 
-    public int getNumberFloors() {
+    public String getNumberFloors() {
         return numberFloors;
     }
 
-    public void setNumberFloors(int numberFloors) {
+    public void setNumberFloors(String numberFloors) {
         this.numberFloors = numberFloors;
     }
 

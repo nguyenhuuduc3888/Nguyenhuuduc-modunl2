@@ -2,19 +2,19 @@ package castudymodul2.models;
 
 public class Villa extends Facility {
     private String romStandard;//tieu chuan phong...
-    private int poolArea;//dien tich ho boi...
-    private int numberFloors;// so tang ...
+    private String poolArea;//dien tich ho boi...
+    private String numberFloors;// so tang ...
 
     public Villa() {
     }
 
-    public Villa(String romStandard, int poolArea, int numberFloors) {
+    public Villa(String romStandard, String poolArea, String numberFloors) {
         this.romStandard = romStandard;
         this.poolArea = poolArea;
         this.numberFloors = numberFloors;
     }
 
-    public Villa(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType, String romStandard, int poolArea, int numberFloors) {
+    public Villa(String serviceName, String usableArea, String rentalCosts, String peopleMaximum, String rentalType, String romStandard, String poolArea, String numberFloors) {
         super(serviceName, usableArea, rentalCosts, peopleMaximum, rentalType);
         this.romStandard = romStandard;
         this.poolArea = poolArea;
@@ -29,19 +29,19 @@ public class Villa extends Facility {
         this.romStandard = romStandard;
     }
 
-    public int getPoolArea() {
+    public String getPoolArea() {
         return poolArea;
     }
 
-    public void setPoolArea(int poolArea) {
+    public void setPoolArea(String poolArea) {
         this.poolArea = poolArea;
     }
 
-    public int getNumberFloors() {
+    public String getNumberFloors() {
         return numberFloors;
     }
 
-    public void setNumberFloors(int numberFloors) {
+    public void setNumberFloors(String numberFloors) {
         this.numberFloors = numberFloors;
     }
 
@@ -57,7 +57,7 @@ public class Villa extends Facility {
                 " Kiểu thuê: " + getRentalType();
     }
 
-    public Villa(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType) {
+    public Villa(String serviceName, String usableArea, String rentalCosts, String peopleMaximum, String rentalType) {
         super(serviceName, usableArea, rentalCosts, peopleMaximum, rentalType);
     }
 

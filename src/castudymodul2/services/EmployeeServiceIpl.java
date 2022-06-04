@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceIpl implements EmployeeService {
-    final String path = "src\\castudymodul2\\data\\employee_file.csv";
+    final String PATH_EMPLOYEE = "src\\castudymodul2\\data\\employee_file.csv";
     private Scanner scanner = new Scanner(System.in);
 
     @Override
     public void display() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(path);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_EMPLOYEE);
         List<Employee> employeeList = new ArrayList<>();
 
         for (String[] item : listLine) {
@@ -38,7 +38,7 @@ public class EmployeeServiceIpl implements EmployeeService {
     @Override
     public void add() {
 
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(path);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_EMPLOYEE);
         List<Employee> employeeList = new ArrayList<>();
 
         for (String[] item : listLine) {
@@ -56,47 +56,47 @@ public class EmployeeServiceIpl implements EmployeeService {
             employeeList.add(employee);
         }
 
-            try {
-                System.out.print("Nhập mã số nhân viên nhân viên: ");
-                int code = Integer.parseInt(scanner.nextLine());
+        try {
+            System.out.print("Nhập mã số nhân viên nhân viên: ");
+            int code = Integer.parseInt(scanner.nextLine());
 
-                System.out.println("Nhap ho ten nhan vien ");
-                String name = scanner.nextLine();
+            System.out.println("Nhap ho ten nhan vien ");
+            String name = scanner.nextLine();
 
-                System.out.print("Nhập giới tính nhân viên: ");
-                String gender = scanner.nextLine();
+            System.out.print("Nhập giới tính nhân viên: ");
+            String gender = scanner.nextLine();
 
-                int id = employeeList.size() + 1;
+            int id = employeeList.size() + 1;
 
-                System.out.print("Nhập số điện thoại: ");
-                int phone = Integer.parseInt(scanner.nextLine());
+            System.out.print("Nhập số điện thoại: ");
+            int phone = Integer.parseInt(scanner.nextLine());
 
-                String level = level();
+            String level = level();
 
-                String location = location();
+            String location = location();
 
-                System.out.print("Nhập Email: ");
-                String email = scanner.nextLine();
+            System.out.print("Nhập Email: ");
+            String email = scanner.nextLine();
 
-                System.out.print("Nhập lương nhân viên: ");
-                int salary = Integer.parseInt(scanner.nextLine());
+            System.out.print("Nhập lương nhân viên: ");
+            int salary = Integer.parseInt(scanner.nextLine());
 
-                employeeList.add(new Employee(code, name, gender, id, phone, email, level, location, salary));
-                String str = "";
-                for (Employee employee : employeeList) {
-                    String line = employee.getInfo();
-                    str += line + "\n";
-                }
-                ReadAndWriteFileCsv.writeFile(path, str);
-                System.out.println("Them thanh cong ");
-            } catch (Exception E) {
-                System.err.println("--Nhập sai định dạng--");
+            employeeList.add(new Employee(code, name, gender, id, phone, email, level, location, salary));
+            String str = "";
+            for (Employee employee : employeeList) {
+                String line = employee.getInfo();
+                str += line + "\n";
             }
+            ReadAndWriteFileCsv.writeFile(PATH_EMPLOYEE, str);
+            System.out.println("Them thanh cong ");
+        } catch (Exception e) {
+            System.err.println("--Nhập sai định dạng--");
+        }
     }
 
     @Override
     public void update() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(path);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_EMPLOYEE);
         List<Employee> employeeList = new ArrayList<>();
         for (String[] item : listLine) {
             int code = Integer.parseInt(item[0]);
@@ -121,7 +121,6 @@ public class EmployeeServiceIpl implements EmployeeService {
             for (int i = 0; i < employeeList.size(); i++) {
 
                 if (input == employeeList.get(i).getId()) {
-
                     System.out.print("Nhập mã số nhân viên nhân viên: ");
                     int code = Integer.parseInt(scanner.nextLine());
 
@@ -144,7 +143,6 @@ public class EmployeeServiceIpl implements EmployeeService {
                     String location = location();
 
                     System.out.print("Nhập lương nhân viên: ");
-
                     int salary = Integer.parseInt(scanner.nextLine());
 
                     employeeList.get(i).setCode(code);
@@ -162,7 +160,7 @@ public class EmployeeServiceIpl implements EmployeeService {
                         String line = employee.getInfo();
                         str += line + "\n";
                     }
-                    ReadAndWriteFileCsv.writeFile(path, str);
+                    ReadAndWriteFileCsv.writeFile(PATH_EMPLOYEE, str);
                     System.out.println("Cập nhật sản phẩm thành công: ");
                     check = false;
                 }

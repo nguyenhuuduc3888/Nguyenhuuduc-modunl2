@@ -1,12 +1,13 @@
 package castudymodul2.services;
 
+import castudymodul2.exeption.*;
 import castudymodul2.models.Facility;
 import castudymodul2.models.House;
 import castudymodul2.models.Room;
 import castudymodul2.models.Villa;
 import castudymodul2.until.FacilityRentalType;
 import castudymodul2.until.ReadAndWriteFileCsv;
-
+import castudymodul2.regex.Regex;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -15,9 +16,9 @@ import java.util.Scanner;
 
 public class FacilityServiceIpl implements FacilityService {
 
-    final String pathVilla = "src\\castudymodul2\\data\\villa_file.csv";
-    final String pathHouse = "src\\castudymodul2\\data\\house_file.csv";
-    final String pathRoom = "src\\castudymodul2\\data\\room_file.csv";
+    final String PATH_VILLA = "src\\castudymodul2\\data\\villa_file.csv";
+    final String PATH_HOUSE = "src\\castudymodul2\\data\\house_file.csv";
+    final String PATH_ROOM = "src\\castudymodul2\\data\\room_file.csv";
 
     private static Scanner scanner = new Scanner(System.in);
 
@@ -26,23 +27,24 @@ public class FacilityServiceIpl implements FacilityService {
     private static Map<House, Integer> houseIntegerMap = new LinkedHashMap<>();
     private static Map<Room, Integer> roomIntegerMap = new LinkedHashMap<>();
 
+
     @Override
     public void display() {
         List<String[]> list;
         /**
          * Villa....
          */
-        list = ReadAndWriteFileCsv.readFile(pathVilla);
+        list = ReadAndWriteFileCsv.readFile(PATH_VILLA);
         facilityIntegerMap.clear();
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String romStandard = item[5];
-            int poolArea = Integer.parseInt(item[6]);
-            int numberFloors = Integer.parseInt(item[7]);
+            String poolArea = item[6];
+            String numberFloors = item[7];
             int num = Integer.parseInt(item[8]);
 
             Villa villa = new Villa(serviceName, usableArea, rentalCosts, peopleMaximum,
@@ -54,16 +56,16 @@ public class FacilityServiceIpl implements FacilityService {
         /**
          * House
          */
-        list.clear();
-        list = ReadAndWriteFileCsv.readFile(pathHouse);
+//        list.clear();
+        list = ReadAndWriteFileCsv.readFile(PATH_HOUSE);
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String romStandard = item[5];
-            int numberFloors = Integer.parseInt(item[6]);
+            String numberFloors = item[6];
             int num = Integer.parseInt(item[7]);
 
             House house = new House(serviceName, usableArea, rentalCosts, peopleMaximum,
@@ -75,13 +77,13 @@ public class FacilityServiceIpl implements FacilityService {
         /**
          * Room
          */
-        list.clear();
-        list = ReadAndWriteFileCsv.readFile(pathRoom);
+//        list.clear();
+        list = ReadAndWriteFileCsv.readFile(PATH_ROOM);
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String serviceFree = item[5];
             int num = Integer.parseInt(item[6]);
@@ -98,19 +100,19 @@ public class FacilityServiceIpl implements FacilityService {
 
     @Override
     public void add() {
-        List<String[]> list = ReadAndWriteFileCsv.readFile(pathVilla);
+        List<String[]> list = ReadAndWriteFileCsv.readFile(PATH_VILLA);
         /**
          * Villa....
          */
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String romStandard = item[5];
-            int poolArea = Integer.parseInt(item[6]);
-            int numberFloors = Integer.parseInt(item[7]);
+            String poolArea = item[6];
+            String numberFloors = item[7];
             int num = Integer.parseInt(item[8]);
 
             Villa villa = new Villa(serviceName, usableArea, rentalCosts, peopleMaximum,
@@ -121,16 +123,16 @@ public class FacilityServiceIpl implements FacilityService {
         /**
          * House
          */
-        list = ReadAndWriteFileCsv.readFile(pathHouse);
+        list = ReadAndWriteFileCsv.readFile(PATH_HOUSE);
 
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String romStandard = item[5];
-            int numberFloors = Integer.parseInt(item[6]);
+            String numberFloors = item[6];
             int num = Integer.parseInt(item[7]);
 
             House house = new House(serviceName, usableArea, rentalCosts, peopleMaximum,
@@ -142,12 +144,12 @@ public class FacilityServiceIpl implements FacilityService {
         /**
          * Room
          */
-        list = ReadAndWriteFileCsv.readFile(pathRoom);
+        list = ReadAndWriteFileCsv.readFile(PATH_ROOM);
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String serviceFree = item[5];
             int num = Integer.parseInt(item[6]);
@@ -156,6 +158,7 @@ public class FacilityServiceIpl implements FacilityService {
                     peopleMaximum, rentalType, serviceFree);
             roomIntegerMap.put(room, num);
         }
+
         do {
             try {
                 System.out.println("---Chọn kiểu muốn thêm---\n" +
@@ -167,27 +170,96 @@ public class FacilityServiceIpl implements FacilityService {
                 String input = scanner.nextLine();
                 switch (input) {
                     case "1":
-                        System.out.print("Nhập tên dịch vụ: ");
-                        String serviceName = scanner.nextLine();
+                        String serviceName;
+                        do {
+                            try {
+                                System.out.print("Nhập tên dịch vụ: bát đầu bằng VSVL-XXXX với X là số từ 0-9 ");
+                                serviceName = scanner.nextLine();
+                                if (Regex.codeVilla(serviceName)) {
+                                    break;
+                                } else throw new VillaException("Sai dinh dang");
+                            } catch (VillaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập diện tích sử dụng: ");
-                        int useArea = Integer.parseInt(scanner.nextLine());
+                        String useArea;
+                        do {
+                            try {
+                                System.out.print("Nhập diện tích sử dụng: là số nguyên ");
+                                useArea = scanner.nextLine();
+                                if (Regex.intNum(useArea)) {
+                                    break;
+                                } else throw new AreaException("SAI DINH DANG");
+                            } catch (AreaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập chi phí thuê: ");
-                        int costs = Integer.parseInt(scanner.nextLine());
+                        String costs;
+                        do {
+                            try {
+                                System.out.print("Nhập chi phí thuê: ");
+                                costs = scanner.nextLine();
+                                if (Regex.intNum(costs)) {
+                                    break;
+                                } else throw new AmuontException("SAI DINH DANG");
+                            } catch (AmuontException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập số người ở tối đa: ");
-                        int peopleMax = Integer.parseInt(scanner.nextLine());
+                        String peopleMax;
+                        do {
+                            try {
+                                System.out.print("Nhập số người ở tối đa: ");
+                                peopleMax = scanner.nextLine();
+                                if (Regex.peopleMax(peopleMax)) {
+                                    break;
+                                } else throw new PeopleException("SAI DINH DANG");
+                            } catch (PeopleException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập tiêu chuẩn phòng: ");
-                        String romStandard = scanner.nextLine();
+                        String romStandard;
+                        do {
+                            try {
+                                System.out.print("Nhập tiêu chuẩn phòng viet hoa chu cai dau : ");
+                                romStandard = scanner.nextLine();
+                                if (Regex.nameService(romStandard)) {
+                                    break;
+                                } else throw new RoomStandardException("Sai dinh dang");
+                            } catch (RoomStandardException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập diện tích hồ bơi: ");
-                        int poolArea = Integer.parseInt(scanner.nextLine());
+                        String poolArea;
+                        do {
+                            try {
+                                System.out.print("Nhập diện tích hồ bơi: ");
+                                poolArea = scanner.nextLine();
+                                if (Regex.poolArea(poolArea)) {
+                                    break;
+                                } else throw new AreaException("Sai dinh dang");
+                            } catch (AreaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập số tầng: ");
-                        int numFloors = Integer.parseInt(scanner.nextLine());
-
+                        String numFloors;
+                        do {
+                            try {
+                                System.out.print("Nhập số tầng: ");
+                                numFloors = scanner.nextLine();
+                                if (Regex.intNum(numFloors)) {
+                                    break;
+                                } else throw new FloorsException("SAI DINH DANG");
+                            } catch (FloorsException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
                         Villa villa = new Villa(serviceName, useArea, costs, peopleMax,
                                 FacilityRentalType.rentalType(), romStandard, poolArea, numFloors);
@@ -199,28 +271,100 @@ public class FacilityServiceIpl implements FacilityService {
                             str += line + "\n";
                         }
 
-
-                        ReadAndWriteFileCsv.writeFile(pathVilla, str);
+                        ReadAndWriteFileCsv.writeFile(PATH_VILLA, str);
                         System.out.println("Đã thêm mới thành công");
                         break;
                     case "2":
-                        System.out.print("Nhập tên dịch vụ: ");
-                        String serviceName1 = scanner.nextLine();
+                        String serviceName1;
+                        do {
+                            try {
+                                System.out.print("Nhập tên dịch vụ: bát đầu bằng VSVL-XXXX với X là số từ 0-9 ");
+                                serviceName1 = scanner.nextLine();
+                                if (Regex.codeVilla(serviceName1)) {
+                                    break;
+                                } else throw new VillaException("Sai dinh dang");
+                            } catch (VillaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập diện tích sử dụng: ");
-                        int useArea1 = Integer.parseInt(scanner.nextLine());
+                        String useArea1;
+                        do {
+                            try {
+                                System.out.print("Nhập diện tích sử dụng: là số nguyên ");
+                                useArea1 = scanner.nextLine();
+                                if (Regex.intNum(useArea1)) {
+                                    break;
+                                } else throw new AreaException("SAI DINH DANG");
+                            } catch (AreaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập chi phí thuê: ");
-                        int costs1 = Integer.parseInt(scanner.nextLine());
+                        String costs1;
+                        do {
+                            try {
+                                System.out.print("Nhập chi phí thuê: ");
+                                costs1 = scanner.nextLine();
+                                if (Regex.intNum(costs1)) {
+                                    break;
+                                } else throw new AmuontException("SAI DINH DANG");
+                            } catch (AmuontException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập số người ở tối đa: ");
-                        int peopleMax1 = Integer.parseInt(scanner.nextLine());
+                        String peopleMax1;
+                        do {
+                            try {
+                                System.out.print("Nhập số người ở tối đa: ");
+                                peopleMax1 = scanner.nextLine();
+                                if (Regex.peopleMax(peopleMax1)) {
+                                    break;
+                                } else throw new PeopleException("SAI DINH DANG");
+                            } catch (PeopleException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập tiêu chuẩn phòng: ");
-                        String romStandard1 = scanner.nextLine();
+                        String romStandard1;
+                        do {
+                            try {
+                                System.out.print("Nhập tiêu chuẩn phòng viet hoa chu cai dau : ");
+                                romStandard1 = scanner.nextLine();
+                                if (Regex.nameService(romStandard1)) {
+                                    break;
+                                } else throw new RoomStandardException("Sai dinh dang");
+                            } catch (RoomStandardException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập số tầng: ");
-                        int numFloors1 = Integer.parseInt(scanner.nextLine());
+                        String poolArea1;
+                        do {
+                            try {
+                                System.out.print("Nhập diện tích hồ bơi: ");
+                                poolArea1 = scanner.nextLine();
+                                if (Regex.poolArea(poolArea1)) {
+                                    break;
+                                } else throw new AreaException("Sai dinh dang");
+                            } catch (AreaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
+
+                        String numFloors1;
+                        do {
+                            try {
+                                System.out.print("Nhập số tầng: ");
+                                numFloors1 = scanner.nextLine();
+                                if (Regex.intNum(numFloors1)) {
+                                    break;
+                                } else throw new FloorsException("SAI DINH DANG");
+                            } catch (FloorsException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
                         House house = new House(serviceName1, useArea1, costs1, peopleMax1, FacilityRentalType.rentalType(), romStandard1, numFloors1);
                         houseIntegerMap.put(house, 0);
@@ -230,25 +374,75 @@ public class FacilityServiceIpl implements FacilityService {
                             String line = item.getKey().cover() + "," + item.getValue();
                             str1 += line + "\n";
                         }
-                        ReadAndWriteFileCsv.writeFile(pathHouse, str1);
+                        ReadAndWriteFileCsv.writeFile(PATH_HOUSE, str1);
                         System.out.println("Đã thêm mới thành công");
 
                         break;
                     case "3":
-                        System.out.print("Nhập tên dịch vụ: ");
-                        String serviceName2 = scanner.nextLine();
+                        String serviceName2;
+                        do {
+                            try {
+                                System.out.print("Nhập tên dịch vụ: bát đầu bằng VSVL-XXXX với X là số từ 0-9 ");
+                                serviceName2 = scanner.nextLine();
+                                if (Regex.codeVilla(serviceName2)) {
+                                    break;
+                                } else throw new VillaException("Sai dinh dang");
+                            } catch (VillaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập diện tích sử dụng: ");
-                        int useArea2 = Integer.parseInt(scanner.nextLine());
+                        String useArea2;
+                        do {
+                            try {
+                                System.out.print("Nhập diện tích sử dụng: là số nguyên ");
+                                useArea2 = scanner.nextLine();
+                                if (Regex.intNum(useArea2)) {
+                                    break;
+                                } else throw new AreaException("SAI DINH DANG");
+                            } catch (AreaException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập chi phí thuê: ");
-                        int costs2 = Integer.parseInt(scanner.nextLine());
+                        String costs2;
+                        do {
+                            try {
+                                System.out.print("Nhập chi phí thuê: ");
+                                costs2 = scanner.nextLine();
+                                if (Regex.intNum(costs2)) {
+                                    break;
+                                } else throw new AmuontException("SAI DINH DANG");
+                            } catch (AmuontException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập số người ở tối đa: ");
-                        int peopleMax2 = Integer.parseInt(scanner.nextLine());
+                        String peopleMax2;
+                        do {
+                            try {
+                                System.out.print("Nhập số người ở tối đa: ");
+                                peopleMax2 = scanner.nextLine();
+                                if (Regex.peopleMax(peopleMax2)) {
+                                    break;
+                                } else throw new PeopleException("SAI DINH DANG");
+                            } catch (PeopleException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
-                        System.out.print("Nhập dịch vụ miễn phí: ");
-                        String freeService = scanner.nextLine();
+                        String freeService;
+                        do {
+                            try {
+                                System.out.print("Nhập dịch vụ miễn phí: ");
+                                freeService = scanner.nextLine();
+                                if (Regex.nameService(freeService)) {
+                                    break;
+                                } else throw new ServiceException("SAI DINH DANG");
+                            } catch (ServiceException e) {
+                                e.printStackTrace();
+                            }
+                        } while (true);
 
                         Room room = new Room(serviceName2, useArea2, costs2, peopleMax2, FacilityRentalType.rentalType(), freeService);
                         roomIntegerMap.put(room, 0);
@@ -258,7 +452,7 @@ public class FacilityServiceIpl implements FacilityService {
                             line += item.getKey().cover() + "," + item.getValue() + "\n";
 
                         }
-                        ReadAndWriteFileCsv.writeFile(pathRoom, line);
+                        ReadAndWriteFileCsv.writeFile(PATH_ROOM, line);
                         System.out.println("Đã thêm mới thành công");
 
                         break;
@@ -286,17 +480,17 @@ public class FacilityServiceIpl implements FacilityService {
         /**
          * Villa....
          */
-        list = ReadAndWriteFileCsv.readFile(pathVilla);
+        list = ReadAndWriteFileCsv.readFile(PATH_VILLA);
         facilityIntegerMap.clear();
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String romStandard = item[5];
-            int poolArea = Integer.parseInt(item[6]);
-            int numberFloors = Integer.parseInt(item[7]);
+            String poolArea = item[6];
+            String numberFloors = item[7];
             int num = Integer.parseInt(item[8]);
 
             Villa villa = new Villa(serviceName, usableArea, rentalCosts, peopleMaximum,
@@ -309,15 +503,15 @@ public class FacilityServiceIpl implements FacilityService {
          * House
          */
         list.clear();
-        list = ReadAndWriteFileCsv.readFile(pathHouse);
+        list = ReadAndWriteFileCsv.readFile(PATH_HOUSE);
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String romStandard = item[5];
-            int numberFloors = Integer.parseInt(item[6]);
+            String numberFloors = item[6];
             int num = Integer.parseInt(item[7]);
 
             House house = new House(serviceName, usableArea, rentalCosts, peopleMaximum,
@@ -330,12 +524,12 @@ public class FacilityServiceIpl implements FacilityService {
          * Room
          */
         list.clear();
-        list = ReadAndWriteFileCsv.readFile(pathRoom);
+        list = ReadAndWriteFileCsv.readFile(PATH_ROOM);
         for (String[] item : list) {
             String serviceName = item[0];
-            int usableArea = Integer.parseInt(item[1]);
-            int rentalCosts = Integer.parseInt(item[2]);
-            int peopleMaximum = Integer.parseInt(item[3]);
+            String usableArea = item[1];
+            String rentalCosts = item[2];
+            String peopleMaximum = item[3];
             String rentalType = item[4];
             String serviceFree = item[5];
             int num = Integer.parseInt(item[6]);

@@ -10,12 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CustomerServiceIpl implements CustomerService {
+
     private Scanner scanner = new Scanner(System.in);
-    final String path = "src\\castudymodul2\\data\\customer_file.csv";
+    final String PATH_CUSTOMER = "src\\castudymodul2\\data\\customer_file.csv";
 
     @Override
     public void display() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(path);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_CUSTOMER);
         List<Customer> customers = new LinkedList<>();
 
         for (String[] list : listLine) {
@@ -38,7 +39,7 @@ public class CustomerServiceIpl implements CustomerService {
 
     @Override
     public void add() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(path);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_CUSTOMER);
         List<Customer> customers = new LinkedList<>();
 
         for (String[] list : listLine) {
@@ -84,7 +85,7 @@ public class CustomerServiceIpl implements CustomerService {
                 String line = item.getInfo();
                 str += line + "\n";
             }
-            ReadAndWriteFileCsv.writeFile(path, str);
+            ReadAndWriteFileCsv.writeFile(PATH_CUSTOMER, str);
             System.err.println("Thêm mới thành công");
         } catch (Exception E) {
             System.err.println("--Lỗi định dạng--");
@@ -94,7 +95,7 @@ public class CustomerServiceIpl implements CustomerService {
 
     @Override
     public void update() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(path);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_CUSTOMER);
         List<Customer> customers = new LinkedList<>();
         try {
             System.out.println("Nhập mã số khách hàng cần sửa: ");
@@ -138,11 +139,13 @@ public class CustomerServiceIpl implements CustomerService {
                     customers.get(i).setEmail(email);
                     customers.get(i).setGenDer(gender);
                     String str = "";
+
                     for (Customer item : customers) {
                         String line = item.getInfo();
                         str += line + "\n";
                     }
-                    ReadAndWriteFile.writerFile(path, str);
+
+                    ReadAndWriteFile.writerFile(PATH_CUSTOMER, str);
                     System.err.println("Cập nhật thành công....");
                     check = false;
                 }
@@ -153,6 +156,5 @@ public class CustomerServiceIpl implements CustomerService {
         } catch (Exception e) {
             System.err.println("--Sai dịnh dạng--");
         }
-
     }
 }

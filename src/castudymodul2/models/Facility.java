@@ -2,15 +2,15 @@ package castudymodul2.models;
 
 public abstract class Facility {
     private String serviceName;// ten dich vu..
-    private int usableArea;//dien tich su dung..
-    private int rentalCosts;//chi phi thue..
-    private int peopleMaximum;//so luong nguoi o toi da..
+    private String usableArea;//dien tich su dung..
+    private String rentalCosts;//chi phi thue..
+    private String peopleMaximum;//so luong nguoi o toi da..
     private String rentalType; //kieu thue..
 
     public Facility() {
     }
 
-    public Facility(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType) {
+    public Facility(String serviceName, String usableArea, String rentalCosts, String peopleMaximum, String rentalType) {
         this.serviceName = serviceName;
         this.usableArea = usableArea;
         this.rentalCosts = rentalCosts;
@@ -26,27 +26,27 @@ public abstract class Facility {
         this.serviceName = serviceName;
     }
 
-    public int getUsableArea() {
+    public String getUsableArea() {
         return usableArea;
     }
 
-    public void setUsableArea(int usableArea) {
+    public void setUsableArea(String usableArea) {
         this.usableArea = usableArea;
     }
 
-    public int getRentalCosts() {
+    public String getRentalCosts() {
         return rentalCosts;
     }
 
-    public void setRentalCosts(int rentalCosts) {
+    public void setRentalCosts(String rentalCosts) {
         this.rentalCosts = rentalCosts;
     }
 
-    public int getPeopleMaximum() {
+    public String getPeopleMaximum() {
         return peopleMaximum;
     }
 
-    public void setPeopleMaximum(int peopleMaximum) {
+    public void setPeopleMaximum(String peopleMaximum) {
         this.peopleMaximum = peopleMaximum;
     }
 

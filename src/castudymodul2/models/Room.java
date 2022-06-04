@@ -22,7 +22,7 @@ public class Room extends Facility {
         this.serviceFree = serviceFree;
     }
 
-    public Room(String serviceName, int usableArea, int rentalCosts, int peopleMaximum, String rentalType, String serviceFree) {
+    public Room(String serviceName, String usableArea, String rentalCosts, String peopleMaximum, String rentalType, String serviceFree) {
         super(serviceName, usableArea, rentalCosts, peopleMaximum, rentalType);
         this.serviceFree = serviceFree;
     }

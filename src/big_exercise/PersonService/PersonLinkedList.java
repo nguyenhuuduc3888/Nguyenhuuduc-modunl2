@@ -68,7 +68,7 @@ public class PersonLinkedList implements ServiceAll {
             } else System.out.println("Bạn chọn sai mời bạn chọn lại...");
         } while (true);
     }
-
+ //class amonius...
     public void sortUp() {
         Collections.sort(person, new Comparator<Person>() {
             @Override
