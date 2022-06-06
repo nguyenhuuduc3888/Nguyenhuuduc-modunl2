@@ -115,11 +115,11 @@ public class PersonIpml implements Service {
                     System.out.println("Nhap ho ten");
                     String fullName = scanner.nextLine();
 
-
                     String dayOfBirth;
+
                     do {
                         try {
-                            System.out.print("Input birthday  : (Ex : dd/MM/yyyy) ");
+                            System.out.print("Nhap  ngay thang nam sinh  : (VI DU : dd/MM/yyyy) ");
                             dayOfBirth = scanner.nextLine();
 
                             LocalDate dayNow = LocalDate.now();
@@ -129,11 +129,11 @@ public class PersonIpml implements Service {
                             if (Regex.dateFormat(dayOfBirth) && birthDay.plusYears(18).isBefore(dayNow)) {
                                 break;
                             } else {
-                                throw new BirthdayException("Wrong Format Input\n" +
-                                        "(Age <18)");
+                                throw new BirthdayException("TUOI DANG BE HON 18 ");
                             }
                         } catch (BirthdayException e) {
                             System.out.println(e.getMessage());
+                            e.printStackTrace();
                         }
                     } while (true);
 
@@ -193,28 +193,25 @@ public class PersonIpml implements Service {
                     System.out.println("Nhap ho ten");
                     String fullName1 = scanner.nextLine();
 
-
                     String dayOfBirth1;
+
                     do {
                         try {
-                            System.out.print("Input birthday  : (Ex : dd/MM/yyyy) ");
+                            System.out.print("Nhap  ngay thang nam sinh  : (VI DU : dd/MM/yyyy) ");
                             dayOfBirth1 = scanner.nextLine();
 
-                            LocalDate dayNow = LocalDate.now();//NGAY HIEN TAI
+                            LocalDate dayNow = LocalDate.now();
 
-                            //CHUYEN TU STRING QUA LOCALDATE..THAY GANH NGANG- BANG GACH CHEO
                             LocalDate birthDay = LocalDate.parse(dayOfBirth1, DateTimeFormatter.ofPattern("dd/LL/yyyy"));
 
-                            //plusYears cong them 18 nam ma van nam truoc "isBefore" thoi gian hien tai thi ok..
-                            // vi du 2003 + 18 <2022.. ok du 18 tuoi
                             if (Regex.dateFormat(dayOfBirth1) && birthDay.plusYears(18).isBefore(dayNow)) {
                                 break;
                             } else {
-                                throw new BirthdayException("Wrong Format Input\n" +
-                                        "(Age <18)");
+                                throw new BirthdayException("TUOI DANG BE HON 18 ");
                             }
                         } catch (BirthdayException e) {
                             System.out.println(e.getMessage());
+                            e.printStackTrace();
                         }
                     } while (true);
 
