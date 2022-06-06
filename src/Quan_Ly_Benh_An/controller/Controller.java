@@ -1,15 +1,14 @@
-package Quan_Ly_Benh_An.Until;
+package Quan_Ly_Benh_An.controller;
 
-import Quan_Ly_Benh_An.models.BenhAnThuong;
 import Quan_Ly_Benh_An.service.BenhAnThuongIpml;
 
 import java.util.Scanner;
 
-public class Main {
+public class Controller {
     private Scanner scanner = new Scanner(System.in);
 
     public void displayMainMenu() {
-        BenhAnThuongIpml benhAnThuongIpml=new BenhAnThuongIpml();
+        BenhAnThuongIpml benhAnThuongIpml = new BenhAnThuongIpml();
         do {
             System.out.println("Menu\n" +
                     "1.Thêm mới\n" +
@@ -25,10 +24,10 @@ public class Main {
                     add();
                     break;
                 case "2":
-                    benhAnThuongIpml.remove();
+//                    benhAnThuongIpml.remove();
                     break;
                 case "3":
-                    benhAnThuongIpml.display();
+//                    benhAnThuongIpml.display();
                     break;
                 case "4":
                     System.exit(0);
@@ -54,7 +53,6 @@ public class Main {
                 break;
             case "2":
                 System.out.println("Add vip");
-                addVip();
                 break;
             case "3":
                 displayMainMenu();
@@ -62,40 +60,13 @@ public class Main {
             default:
                 System.out.println("Nhap lai");
         }
+    }
+
+    public void remove (){
 
     }
 
     protected void display() {
 
     }
-
-    public void addVip() {
-        System.out.println("Chon\n" +
-                "1.vip 1\n" +
-                "2.vip 2\n" +
-                "3.vip 3\n" +
-                "4.back menu");
-        String num = scanner.nextLine();
-        switch (num) {
-            case "1":
-                System.out.println("Thêm vip 1");
-
-                break;
-            case "2":
-                System.out.println("Thêm vip 2");
-
-                break;
-            case "3":
-                System.out.println("Thêm vip 3");
-
-                break;
-            case "4":
-                add();
-
-                return;
-            default:
-                System.out.println("Nhap lai");
-        }
-    }
-
 }

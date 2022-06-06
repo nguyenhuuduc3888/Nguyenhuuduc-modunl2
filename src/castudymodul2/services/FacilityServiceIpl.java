@@ -160,313 +160,308 @@ public class FacilityServiceIpl implements FacilityService {
         }
 
         do {
-            try {
-                System.out.println("---Chọn kiểu muốn thêm---\n" +
-                        "1.Add villa\n" +
-                        "2.Add house\n" +
-                        "3.Add room\n" +
-                        "4.Thoát\n" +
-                        "Nhập để chọn: ");
-                String input = scanner.nextLine();
-                switch (input) {
-                    case "1":
-                        String serviceName;
-                        do {
-                            try {
-                                System.out.print("Nhập tên dịch vụ: bát đầu bằng VSVL-XXXX với X là số từ 0-9 ");
-                                serviceName = scanner.nextLine();
-                                if (Regex.codeVilla(serviceName)) {
-                                    break;
-                                } else throw new VillaException("Sai dinh dang");
-                            } catch (VillaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String useArea;
-                        do {
-                            try {
-                                System.out.print("Nhập diện tích sử dụng: là số nguyên ");
-                                useArea = scanner.nextLine();
-                                if (Regex.intNum(useArea)) {
-                                    break;
-                                } else throw new AreaException("SAI DINH DANG");
-                            } catch (AreaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String costs;
-                        do {
-                            try {
-                                System.out.print("Nhập chi phí thuê: ");
-                                costs = scanner.nextLine();
-                                if (Regex.intNum(costs)) {
-                                    break;
-                                } else throw new AmuontException("SAI DINH DANG");
-                            } catch (AmuontException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String peopleMax;
-                        do {
-                            try {
-                                System.out.print("Nhập số người ở tối đa: ");
-                                peopleMax = scanner.nextLine();
-                                if (Regex.peopleMax(peopleMax)) {
-                                    break;
-                                } else throw new PeopleException("SAI DINH DANG");
-                            } catch (PeopleException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String romStandard;
-                        do {
-                            try {
-                                System.out.print("Nhập tiêu chuẩn phòng viet hoa chu cai dau : ");
-                                romStandard = scanner.nextLine();
-                                if (Regex.nameService(romStandard)) {
-                                    break;
-                                } else throw new RoomStandardException("Sai dinh dang");
-                            } catch (RoomStandardException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String poolArea;
-                        do {
-                            try {
-                                System.out.print("Nhập diện tích hồ bơi: ");
-                                poolArea = scanner.nextLine();
-                                if (Regex.poolArea(poolArea)) {
-                                    break;
-                                } else throw new AreaException("Sai dinh dang");
-                            } catch (AreaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String numFloors;
-                        do {
-                            try {
-                                System.out.print("Nhập số tầng: ");
-                                numFloors = scanner.nextLine();
-                                if (Regex.intNum(numFloors)) {
-                                    break;
-                                } else throw new FloorsException("SAI DINH DANG");
-                            } catch (FloorsException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        Villa villa = new Villa(serviceName, useArea, costs, peopleMax,
-                                FacilityRentalType.rentalType(), romStandard, poolArea, numFloors);
-                        villaIntegerMap.put(villa, 0);
-
-                        String str = "";
-                        for (Map.Entry<Villa, Integer> item : villaIntegerMap.entrySet()) {
-                            String line = item.getKey().cover() + "," + item.getValue();
-                            str += line + "\n";
+            System.out.println("---Chọn kiểu muốn thêm---\n" +
+                    "1.Add villa\n" +
+                    "2.Add house\n" +
+                    "3.Add room\n" +
+                    "4.Thoát\n" +
+                    "Nhập để chọn: ");
+            String input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    String serviceName;
+                    do {
+                        try {
+                            System.out.print("Nhập tên dịch vụ: bát đầu bằng VSVL-XXXX với X là số từ 0-9 ");
+                            serviceName = scanner.nextLine();
+                            if (Regex.codeVilla(serviceName)) {
+                                break;
+                            } else throw new VillaException("Sai dinh dang");
+                        } catch (VillaException e) {
+                            e.printStackTrace();
                         }
+                    } while (true);
 
-                        ReadAndWriteFileCsv.writeFile(PATH_VILLA, str);
-                        System.out.println("Đã thêm mới thành công");
-                        break;
-                    case "2":
-                        String serviceName1;
-                        do {
-                            try {
-                                System.out.print("Nhập tên dịch vụ: bát đầu bằng VSVL-XXXX với X là số từ 0-9 ");
-                                serviceName1 = scanner.nextLine();
-                                if (Regex.codeVilla(serviceName1)) {
-                                    break;
-                                } else throw new VillaException("Sai dinh dang");
-                            } catch (VillaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String useArea1;
-                        do {
-                            try {
-                                System.out.print("Nhập diện tích sử dụng: là số nguyên ");
-                                useArea1 = scanner.nextLine();
-                                if (Regex.intNum(useArea1)) {
-                                    break;
-                                } else throw new AreaException("SAI DINH DANG");
-                            } catch (AreaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String costs1;
-                        do {
-                            try {
-                                System.out.print("Nhập chi phí thuê: ");
-                                costs1 = scanner.nextLine();
-                                if (Regex.intNum(costs1)) {
-                                    break;
-                                } else throw new AmuontException("SAI DINH DANG");
-                            } catch (AmuontException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String peopleMax1;
-                        do {
-                            try {
-                                System.out.print("Nhập số người ở tối đa: ");
-                                peopleMax1 = scanner.nextLine();
-                                if (Regex.peopleMax(peopleMax1)) {
-                                    break;
-                                } else throw new PeopleException("SAI DINH DANG");
-                            } catch (PeopleException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String romStandard1;
-                        do {
-                            try {
-                                System.out.print("Nhập tiêu chuẩn phòng viet hoa chu cai dau : ");
-                                romStandard1 = scanner.nextLine();
-                                if (Regex.nameService(romStandard1)) {
-                                    break;
-                                } else throw new RoomStandardException("Sai dinh dang");
-                            } catch (RoomStandardException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String poolArea1;
-                        do {
-                            try {
-                                System.out.print("Nhập diện tích hồ bơi: ");
-                                poolArea1 = scanner.nextLine();
-                                if (Regex.poolArea(poolArea1)) {
-                                    break;
-                                } else throw new AreaException("Sai dinh dang");
-                            } catch (AreaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String numFloors1;
-                        do {
-                            try {
-                                System.out.print("Nhập số tầng: ");
-                                numFloors1 = scanner.nextLine();
-                                if (Regex.intNum(numFloors1)) {
-                                    break;
-                                } else throw new FloorsException("SAI DINH DANG");
-                            } catch (FloorsException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        House house = new House(serviceName1, useArea1, costs1, peopleMax1, FacilityRentalType.rentalType(), romStandard1, numFloors1);
-                        houseIntegerMap.put(house, 0);
-
-                        String str1 = "";
-                        for (Map.Entry<House, Integer> item : houseIntegerMap.entrySet()) {
-                            String line = item.getKey().cover() + "," + item.getValue();
-                            str1 += line + "\n";
+                    String useArea;
+                    do {
+                        try {
+                            System.out.print("Nhập diện tích sử dụng: là số nguyên ");
+                            useArea = scanner.nextLine();
+                            if (Regex.intNum(useArea)) {
+                                break;
+                            } else throw new AreaException("SAI DINH DANG");
+                        } catch (AreaException e) {
+                            e.printStackTrace();
                         }
-                        ReadAndWriteFileCsv.writeFile(PATH_HOUSE, str1);
-                        System.out.println("Đã thêm mới thành công");
+                    } while (true);
 
-                        break;
-                    case "3":
-                        String serviceName2;
-                        do {
-                            try {
-                                System.out.print("Nhập tên dịch vụ: bát đầu bằng VSVL-XXXX với X là số từ 0-9 ");
-                                serviceName2 = scanner.nextLine();
-                                if (Regex.codeVilla(serviceName2)) {
-                                    break;
-                                } else throw new VillaException("Sai dinh dang");
-                            } catch (VillaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String useArea2;
-                        do {
-                            try {
-                                System.out.print("Nhập diện tích sử dụng: là số nguyên ");
-                                useArea2 = scanner.nextLine();
-                                if (Regex.intNum(useArea2)) {
-                                    break;
-                                } else throw new AreaException("SAI DINH DANG");
-                            } catch (AreaException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String costs2;
-                        do {
-                            try {
-                                System.out.print("Nhập chi phí thuê: ");
-                                costs2 = scanner.nextLine();
-                                if (Regex.intNum(costs2)) {
-                                    break;
-                                } else throw new AmuontException("SAI DINH DANG");
-                            } catch (AmuontException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String peopleMax2;
-                        do {
-                            try {
-                                System.out.print("Nhập số người ở tối đa: ");
-                                peopleMax2 = scanner.nextLine();
-                                if (Regex.peopleMax(peopleMax2)) {
-                                    break;
-                                } else throw new PeopleException("SAI DINH DANG");
-                            } catch (PeopleException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        String freeService;
-                        do {
-                            try {
-                                System.out.print("Nhập dịch vụ miễn phí: ");
-                                freeService = scanner.nextLine();
-                                if (Regex.nameService(freeService)) {
-                                    break;
-                                } else throw new ServiceException("SAI DINH DANG");
-                            } catch (ServiceException e) {
-                                e.printStackTrace();
-                            }
-                        } while (true);
-
-                        Room room = new Room(serviceName2, useArea2, costs2, peopleMax2, FacilityRentalType.rentalType(), freeService);
-                        roomIntegerMap.put(room, 0);
-
-                        String line = "";
-                        for (Map.Entry<Room, Integer> item : roomIntegerMap.entrySet()) {
-                            line += item.getKey().cover() + "," + item.getValue() + "\n";
-
+                    String costs;
+                    do {
+                        try {
+                            System.out.print("Nhập chi phí thuê: ");
+                            costs = scanner.nextLine();
+                            if (Regex.intNum(costs)) {
+                                break;
+                            } else throw new AmuontException("SAI DINH DANG");
+                        } catch (AmuontException e) {
+                            e.printStackTrace();
                         }
-                        ReadAndWriteFileCsv.writeFile(PATH_ROOM, line);
-                        System.out.println("Đã thêm mới thành công");
+                    } while (true);
 
-                        break;
-                    case "4":
-                        System.out.println("THOÁT CHỌN");
-                        return;
-                    default:
-                        System.err.println("ChƯƠNG TRÌNH YÊU CẦU CHỌN 1---4");
-                }
-            } catch (Exception E) {
-                System.err.println("--Nhập sai định dạng--");
+                    String peopleMax;
+                    do {
+                        try {
+                            System.out.print("Nhập số người ở tối đa: ");
+                            peopleMax = scanner.nextLine();
+                            if (Regex.peopleMax(peopleMax)) {
+                                break;
+                            } else throw new PeopleException("SAI DINH DANG");
+                        } catch (PeopleException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String romStandard;
+                    do {
+                        try {
+                            System.out.print("Nhập tiêu chuẩn phòng viet hoa chu cai dau : ");
+                            romStandard = scanner.nextLine();
+                            if (Regex.nameService(romStandard)) {
+                                break;
+                            } else throw new RoomStandardException("Sai dinh dang");
+                        } catch (RoomStandardException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String poolArea;
+                    do {
+                        try {
+                            System.out.print("Nhập diện tích hồ bơi: ");
+                            poolArea = scanner.nextLine();
+                            if (Regex.poolArea(poolArea)) {
+                                break;
+                            } else throw new AreaException("Sai dinh dang");
+                        } catch (AreaException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String numFloors;
+                    do {
+                        try {
+                            System.out.print("Nhập số tầng: ");
+                            numFloors = scanner.nextLine();
+                            if (Regex.intNum(numFloors)) {
+                                break;
+                            } else throw new FloorsException("SAI DINH DANG");
+                        } catch (FloorsException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    Villa villa = new Villa(serviceName, useArea, costs, peopleMax,
+                            FacilityRentalType.rentalType(), romStandard, poolArea, numFloors);
+                    villaIntegerMap.put(villa, 0);
+
+                    String str = "";
+                    for (Map.Entry<Villa, Integer> item : villaIntegerMap.entrySet()) {
+                        String line = item.getKey().cover() + "," + item.getValue();
+                        str += line + "\n";
+                    }
+
+                    ReadAndWriteFileCsv.writeFile(PATH_VILLA, str);
+                    System.out.println("Đã thêm mới thành công");
+                    break;
+                case "2":
+                    String serviceName1;
+                    do {
+                        try {
+                            System.out.print("Nhập tên dịch vụ: bát đầu bằng VSHO-XXXX với X là số từ 0-9 ");
+                            serviceName1 = scanner.nextLine();
+                            if (Regex.codeVilla(serviceName1)) {
+                                break;
+                            } else throw new VillaException("Sai dinh dang");
+                        } catch (VillaException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String useArea1;
+                    do {
+                        try {
+                            System.out.print("Nhập diện tích sử dụng: là số nguyên ");
+                            useArea1 = scanner.nextLine();
+                            if (Regex.intNum(useArea1)) {
+                                break;
+                            } else throw new AreaException("SAI DINH DANG");
+                        } catch (AreaException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String costs1;
+                    do {
+                        try {
+                            System.out.print("Nhập chi phí thuê: ");
+                            costs1 = scanner.nextLine();
+                            if (Regex.intNum(costs1)) {
+                                break;
+                            } else throw new AmuontException("SAI DINH DANG");
+                        } catch (AmuontException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String peopleMax1;
+                    do {
+                        try {
+                            System.out.print("Nhập số người ở tối đa: ");
+                            peopleMax1 = scanner.nextLine();
+                            if (Regex.peopleMax(peopleMax1)) {
+                                break;
+                            } else throw new PeopleException("SAI DINH DANG");
+                        } catch (PeopleException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String romStandard1;
+                    do {
+                        try {
+                            System.out.print("Nhập tiêu chuẩn phòng viet hoa chu cai dau : ");
+                            romStandard1 = scanner.nextLine();
+                            if (Regex.nameService(romStandard1)) {
+                                break;
+                            } else throw new RoomStandardException("Sai dinh dang");
+                        } catch (RoomStandardException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String poolArea1;
+                    do {
+                        try {
+                            System.out.print("Nhập diện tích hồ bơi: ");
+                            poolArea1 = scanner.nextLine();
+                            if (Regex.poolArea(poolArea1)) {
+                                break;
+                            } else throw new AreaException("Sai dinh dang");
+                        } catch (AreaException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String numFloors1;
+                    do {
+                        try {
+                            System.out.print("Nhập số tầng: ");
+                            numFloors1 = scanner.nextLine();
+                            if (Regex.intNum(numFloors1)) {
+                                break;
+                            } else throw new FloorsException("SAI DINH DANG");
+                        } catch (FloorsException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    House house = new House(serviceName1, useArea1, costs1, peopleMax1, FacilityRentalType.rentalType(), romStandard1, numFloors1);
+                    houseIntegerMap.put(house, 0);
+
+                    String str1 = "";
+                    for (Map.Entry<House, Integer> item : houseIntegerMap.entrySet()) {
+                        String line = item.getKey().cover() + "," + item.getValue();
+                        str1 += line + "\n";
+                    }
+                    ReadAndWriteFileCsv.writeFile(PATH_HOUSE, str1);
+                    System.out.println("Đã thêm mới thành công");
+
+                    break;
+                case "3":
+                    String serviceName2;
+                    do {
+                        try {
+                            System.out.print("Nhập tên dịch vụ: bát đầu bằng VSRO-XXXX với X là số từ 0-9 ");
+                            serviceName2 = scanner.nextLine();
+                            if (Regex.codeVilla(serviceName2)) {
+                                break;
+                            } else throw new VillaException("Sai dinh dang");
+                        } catch (VillaException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String useArea2;
+                    do {
+                        try {
+                            System.out.print("Nhập diện tích sử dụng: là số nguyên ");
+                            useArea2 = scanner.nextLine();
+                            if (Regex.intNum(useArea2)) {
+                                break;
+                            } else throw new AreaException("SAI DINH DANG");
+                        } catch (AreaException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String costs2;
+                    do {
+                        try {
+                            System.out.print("Nhập chi phí thuê: ");
+                            costs2 = scanner.nextLine();
+                            if (Regex.intNum(costs2)) {
+                                break;
+                            } else throw new AmuontException("SAI DINH DANG");
+                        } catch (AmuontException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String peopleMax2;
+                    do {
+                        try {
+                            System.out.print("Nhập số người ở tối đa: ");
+                            peopleMax2 = scanner.nextLine();
+                            if (Regex.peopleMax(peopleMax2)) {
+                                break;
+                            } else throw new PeopleException("SAI DINH DANG");
+                        } catch (PeopleException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    String freeService;
+                    do {
+                        try {
+                            System.out.print("Nhập dịch vụ miễn phí: ");
+                            freeService = scanner.nextLine();
+                            if (Regex.nameService(freeService)) {
+                                break;
+                            } else throw new ServiceException("SAI DINH DANG");
+                        } catch (ServiceException e) {
+                            e.printStackTrace();
+                        }
+                    } while (true);
+
+                    Room room = new Room(serviceName2, useArea2, costs2, peopleMax2, FacilityRentalType.rentalType(), freeService);
+                    roomIntegerMap.put(room, 0);
+
+                    String line = "";
+                    for (Map.Entry<Room, Integer> item : roomIntegerMap.entrySet()) {
+                        line += item.getKey().cover() + "," + item.getValue() + "\n";
+
+                    }
+                    ReadAndWriteFileCsv.writeFile(PATH_ROOM, line);
+                    System.out.println("Đã thêm mới thành công");
+
+                    break;
+                case "4":
+                    System.out.println("THOÁT CHỌN");
+                    return;
+                default:
+                    System.err.println("ChƯƠNG TRÌNH YÊU CẦU CHỌN 1---4");
             }
         } while (true);
-
     }
 
     @Override
@@ -541,7 +536,10 @@ public class FacilityServiceIpl implements FacilityService {
 
         for (Map.Entry<Facility, Integer> element : facilityIntegerMap.entrySet()) {
             if (element.getValue() >= 5) {
-                System.err.println("Đang kiểm tra....\n" + element.getKey() + "\n--- Quá tải cần bảo trì ");
+                System.err.println("Đang kiểm tra....\n" + element.getKey() + "\n" +
+                        " so lan da su dung \n " +
+                        element.getValue() +
+                        "\n--- Quá tải cần bảo trì ");
             }
         }
     }

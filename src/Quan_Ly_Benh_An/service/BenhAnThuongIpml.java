@@ -1,6 +1,6 @@
 package Quan_Ly_Benh_An.service;
 
-import Quan_Ly_Benh_An.Until.ReadAndWrite;
+import Quan_Ly_Benh_An.until.ReadAndWrite;
 import Quan_Ly_Benh_An.models.BenhAnThuong;
 import castudymodul2.until.ReadAndWriteFileCsv;
 
@@ -10,13 +10,13 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BenhAnThuongIpml implements Service {
-    final String PATH_FILE = "src\\Quan_Ly_Benh_An\\data\\file_thuong.csv";
+    final String PATH_All = "src\\Quan_Ly_Benh_An\\data\\medical_records.csv";
     private Scanner scanner = new Scanner(System.in);
 
 
     @Override
     public void display() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_FILE);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_All);
         List<BenhAnThuong> benhAnThuong = new ArrayList<>();
 
         for (String[] item : listLine) {
@@ -41,7 +41,7 @@ public class BenhAnThuongIpml implements Service {
     @Override
     public void add() {
 
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_FILE);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_All);
         List<BenhAnThuong> benhAnThuong = new ArrayList<>();
 
         for (String[] item : listLine) {
@@ -77,7 +77,7 @@ public class BenhAnThuongIpml implements Service {
             int money1 = Integer.parseInt(scanner.nextLine());
 
             int max = 0;
-            int stt ;
+            int stt;
             if (benhAnThuong.isEmpty()) {
                 stt = 1;
             } else {
@@ -95,7 +95,7 @@ public class BenhAnThuongIpml implements Service {
                 String line = list.inFor();
                 str += line + "\n";
             }
-            ReadAndWriteFileCsv.writeFile(PATH_FILE, str);
+            ReadAndWriteFileCsv.writeFile(PATH_All, str);
             System.out.println("Them thanh cong ");
         } catch (Exception e) {
             System.err.println("--Nhập sai định dạng--");
@@ -104,7 +104,8 @@ public class BenhAnThuongIpml implements Service {
 
     @Override
     public void remove() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_FILE);
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_All
+        );
         List<BenhAnThuong> benhAnThuong = new ArrayList<>();
 
 
@@ -141,6 +142,6 @@ public class BenhAnThuongIpml implements Service {
         for (BenhAnThuong item : benhAnThuong) {
             line = item.inFor();
         }
-            ReadAndWrite.writeFile(PATH_FILE, line);
+        ReadAndWrite.writeFile(PATH_All, line);
     }
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class CustomerGuestType {
     public static String guestType() {
         Scanner scanner = new Scanner(System.in);
+
         do {
             System.out.println("Nhập kiểu khách...\n" +
                     "1.Diamond\n" +
@@ -13,7 +14,9 @@ public class CustomerGuestType {
                     "4.Sliver\n" +
                     "5.Member\n" +
                     "Nhập để chọn: ");
+
             String num = scanner.nextLine();
+
             switch (num) {
                 case "1":
                     return "diamond";

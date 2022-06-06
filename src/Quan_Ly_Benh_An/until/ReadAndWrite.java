@@ -1,4 +1,4 @@
-package Quan_Ly_Benh_An.Until;
+package Quan_Ly_Benh_An.until;
 
 import java.io.*;
 import java.util.ArrayList;
