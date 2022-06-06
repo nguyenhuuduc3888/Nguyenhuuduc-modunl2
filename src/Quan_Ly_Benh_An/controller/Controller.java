@@ -1,6 +1,6 @@
 package Quan_Ly_Benh_An.controller;
 
-import Quan_Ly_Benh_An.service.BenhAnThuongIpml;
+import Quan_Ly_Benh_An.service.BenhAnIpml;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ public class Controller {
     private Scanner scanner = new Scanner(System.in);
 
     public void displayMainMenu() {
-        BenhAnThuongIpml benhAnThuongIpml = new BenhAnThuongIpml();
+        BenhAnIpml benhAnThuongIpml = new BenhAnIpml();
         do {
             System.out.println("Menu\n" +
                     "1.Thêm mới\n" +
@@ -39,7 +39,7 @@ public class Controller {
     }
 
     public void add() {
-        BenhAnThuongIpml benhAnThuongIpml = new BenhAnThuongIpml();
+        BenhAnIpml benhAnThuongIpml = new BenhAnIpml();
 
         System.out.println("chon kieu muon them\n" +
                 "1.Thuong\n" +

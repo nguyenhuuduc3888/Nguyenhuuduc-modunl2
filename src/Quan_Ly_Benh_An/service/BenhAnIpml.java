@@ -1,5 +1,6 @@
 package Quan_Ly_Benh_An.service;
 
+import Quan_Ly_Benh_An.models.BenhAn;
 import Quan_Ly_Benh_An.until.ReadAndWrite;
 import Quan_Ly_Benh_An.models.BenhAnThuong;
 import castudymodul2.until.ReadAndWriteFileCsv;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class BenhAnThuongIpml implements Service {
+public class BenhAnIpml implements Service {
     final String PATH_All = "src\\Quan_Ly_Benh_An\\data\\medical_records.csv";
     private Scanner scanner = new Scanner(System.in);
 
@@ -17,22 +18,24 @@ public class BenhAnThuongIpml implements Service {
     @Override
     public void display() {
         List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_All);
-        List<BenhAnThuong> benhAnThuong = new ArrayList<>();
+        List<BenhAn> benhAn = new ArrayList<>();
 
         for (String[] item : listLine) {
-            int stt = Integer.parseInt(item[0]);
-            String tenBenhAn = item[1];
-            String tenBenhNhan = item[2];
-            LocalDate dayIn = LocalDate.parse(item[3]);
-            LocalDate dayOut = LocalDate.parse(item[4]);
-            String lyDo = item[5];
-            int money = Integer.parseInt(item[6]);
+            if (listLine.size() == 8) {
+                int stt = Integer.parseInt(item[0]);
+                String tenBenhAn = item[1];
+                String tenBenhNhan = item[2];
+                LocalDate dayIn = LocalDate.parse(item[3]);
+                LocalDate dayOut = LocalDate.parse(item[4]);
+                String lyDo = item[5];
+                int money = Integer.parseInt(item[6]);
 
-            BenhAnThuong benhAnThuongList = new BenhAnThuong(stt, tenBenhAn, tenBenhNhan, dayIn, dayOut, lyDo, money);
-            benhAnThuong.add(benhAnThuongList);
+                BenhAnThuong benhAnThuongList = new BenhAnThuong(stt, tenBenhAn, tenBenhNhan, dayIn, dayOut, lyDo, money);
+                benhAn.add(benhAnThuongList);
+            }
 
         }
-        for (BenhAnThuong item : benhAnThuong) {
+        for (BenhAn item : benhAn) {
             System.out.println(item);
         }
     }
@@ -45,16 +48,18 @@ public class BenhAnThuongIpml implements Service {
         List<BenhAnThuong> benhAnThuong = new ArrayList<>();
 
         for (String[] item : listLine) {
-            int stt = Integer.parseInt(item[0]);
-            String tenBenhAn = item[1];
-            String tenBenhNhan = item[2];
-            LocalDate dayIn = LocalDate.parse(item[3]);
-            LocalDate dayOut = LocalDate.parse(item[4]);
-            String lyDo = item[5];
-            int money = Integer.parseInt(item[6]);
+            if (listLine.size() - 1 == 7) {
+                int stt = Integer.parseInt(item[0]);
+                String tenBenhAn = item[1];
+                String tenBenhNhan = item[2];
+                LocalDate dayIn = LocalDate.parse(item[3]);
+                LocalDate dayOut = LocalDate.parse(item[4]);
+                String lyDo = item[5];
+                int money = Integer.parseInt(item[6]);
 
-            BenhAnThuong benhAnThuongList = new BenhAnThuong(stt, tenBenhAn, tenBenhNhan, dayIn, dayOut, lyDo, money);
-            benhAnThuong.add(benhAnThuongList);
+                BenhAnThuong benhAnThuongList = new BenhAnThuong(stt, tenBenhAn, tenBenhNhan, dayIn, dayOut, lyDo, money);
+                benhAnThuong.add(benhAnThuongList);
+            }
         }
 
         try {
@@ -91,6 +96,7 @@ public class BenhAnThuongIpml implements Service {
 
             benhAnThuong.add(new BenhAnThuong(stt, tenBenhAn1, nameBenhNhan, dayIn1, dayOut1, lyDO, money1));
             String str = "";
+
             for (BenhAnThuong list : benhAnThuong) {
                 String line = list.inFor();
                 str += line + "\n";
@@ -104,8 +110,7 @@ public class BenhAnThuongIpml implements Service {
 
     @Override
     public void remove() {
-        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_All
-        );
+        List<String[]> listLine = ReadAndWriteFileCsv.readFile(PATH_All);
         List<BenhAnThuong> benhAnThuong = new ArrayList<>();
 
 
