@@ -1,18 +1,18 @@
 package bai_tap_06_06_2022.models;
 
-public class Nvsx extends Person {
+public class ProductionStaff extends Person {
     private String numSp;
     private String moneySp;
 
-    public Nvsx() {
+    public ProductionStaff() {
     }
 
-    public Nvsx(String numSp, String moneySp) {
+    public ProductionStaff(String numSp, String moneySp) {
         this.numSp = numSp;
         this.moneySp = moneySp;
     }
 
-    public Nvsx(int id, String codePerson, String fullName, String dayOfBirth, String address, String numSp, String moneySp) {
+    public ProductionStaff(int id, String codePerson, String fullName, String dayOfBirth, String address, String numSp, String moneySp) {
         super(id, codePerson, fullName, dayOfBirth, address);
         this.numSp = numSp;
         this.moneySp = moneySp;

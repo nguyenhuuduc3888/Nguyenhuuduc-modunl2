@@ -143,6 +143,7 @@ public class BenhAnIpml implements Service {
         if (check == true) {
             System.out.println("Khong tim thấy");
         }
+
         String line = "";
         for (BenhAnThuong item : benhAnThuong) {
             line = item.inFor();

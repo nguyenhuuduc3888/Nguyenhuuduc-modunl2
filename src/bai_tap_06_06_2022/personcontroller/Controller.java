@@ -1,6 +1,5 @@
 package bai_tap_06_06_2022.personcontroller;
 
-import bai_tap_06_06_2022.exception.NotFoundEmployeeException;
 import bai_tap_06_06_2022.service.PersonIpml;
 
 import java.util.Scanner;
@@ -8,37 +7,42 @@ import java.util.Scanner;
 public class Controller {
     Scanner scanner = new Scanner(System.in);
 
-    public static void displayMainMenu() throws NotFoundEmployeeException {
+    public static void displayMainMenu() {
         PersonIpml personIpml = new PersonIpml();
+        Scanner scanner = new Scanner(System.in);
 
         do {
             System.out.println("Menu\n" +
-                    "1. Hien thi\n" +
-                    "2. Them moi\n" +
-                    "3. Xoa\n" +
-                    "4. Tim kiem\n" +
-                    "5.Exit\n" +
+                    "1.--HIỂN THỊ--\n" +
+                    "2.--THÊM MỚI--\n" +
+                    "3.--XOÁ--\n" +
+                    "4.--TÌM KIẾM--\n" +
+                    "5.--KẾT THÚC CHƯƠNG TRÌNH--\n" +
                     "Nhấn để chọn chức năng");
-            Scanner scanner = new Scanner(System.in);
+
             String choice = scanner.nextLine();
+
             switch (choice) {
                 case "1":
-                    System.err.println("--DANH SACH--");
+                    System.err.println("--DANH SÁCH NHÂN VIÊN--");
                     personIpml.display();
-                    break;
+                    displayMainMenu();
+                    return;
                 case "2":
-                    System.err.println("--THEM MOI--");
+                    System.err.println("--THÊM MỚI NHÂN VIÊN--");
                     personIpml.add();
-                    break;
+                    displayMainMenu();
+                    return;
                 case "3":
-                    System.err.println(" ---XOA---");
+                    System.err.println("--XOÁ NHÂN VIÊN--");
                     personIpml.remove();
                     displayMainMenu();
-                    break;
+                    return;
                 case "4":
+                    System.err.println("--TÌM KIẾM NHÂN VIÊN--");
                     personIpml.search();
-                    System.err.println("--TIM KIEM--");
-                    break;
+                    displayMainMenu();
+                    return;
                 case "5":
                     System.err.println("---Kết thúc chương trình---   ---Good Bye---");
                     System.exit(0);

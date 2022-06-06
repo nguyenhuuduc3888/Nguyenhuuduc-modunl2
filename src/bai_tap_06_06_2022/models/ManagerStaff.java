@@ -1,18 +1,18 @@
 package bai_tap_06_06_2022.models;
 
-public class Nvql extends Person {
+public class ManagerStaff extends Person {
     private String salaryCb;
     private String numSalary;
 
-    public Nvql() {
+    public ManagerStaff() {
     }
 
-    public Nvql(String salaryCb, String numSalary) {
+    public ManagerStaff(String salaryCb, String numSalary) {
         this.salaryCb = salaryCb;
         this.numSalary = numSalary;
     }
 
-    public Nvql(int id, String codePerson, String fullName, String dayOfBirth, String address, String salaryCb, String numSalary) {
+    public ManagerStaff(int id, String codePerson, String fullName, String dayOfBirth, String address, String salaryCb, String numSalary) {
         super(id, codePerson, fullName, dayOfBirth, address);
         this.salaryCb = salaryCb;
         this.numSalary = numSalary;
