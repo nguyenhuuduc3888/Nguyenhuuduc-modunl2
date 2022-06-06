@@ -1,6 +1,7 @@
 package bai_tap_06_06_2022.service;
 
 import Quan_Ly_Benh_An.until.ReadAndWrite;
+import bai_tap_06_06_2022.exception.BirthdayException;
 import bai_tap_06_06_2022.exception.NotFoundEmployeeException;
 import bai_tap_06_06_2022.models.Nvql;
 import bai_tap_06_06_2022.models.Nvsx;
@@ -8,6 +9,8 @@ import bai_tap_06_06_2022.models.Person;
 import bai_tap_06_06_2022.regex.Regex;
 import bai_tap_06_06_2022.until.ReadWrite;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -93,135 +96,182 @@ public class PersonIpml implements Service {
             personManager.add(new Nvql(id, codePerson, fullName, dayOfBird, address, salaryCb, numSalary));
         }
 
-        System.out.println("---Chọn NV muốn thêm---\n" +
-                "1.Them NVSX\n" +
-                "2.Them NVQL\n" +
-                "Nhap de chon");
+        do {
+            System.out.println("---Chọn NV muốn thêm---\n" +
+                    "1.Them NVSX\n" +
+                    "2.Them NVQL\n" +
+                    "3.Back Menu\n" +
+                    "Nhap de chon");
 
-        String input = scanner.nextLine();
+            String input = scanner.nextLine();
 
-        switch (input) {
-            case "1":
-                System.out.println("THEM MOI NVSX");
+            switch (input) {
+                case "1":
+                    System.out.println("THEM MOI NVSX");
 
-                System.out.println("Nhap ma nhan vien");
-                String codePerson = scanner.nextLine();
+                    System.out.println("Nhap ma nhan vien");
+                    String codePerson = scanner.nextLine();
 
-                System.out.println("Nhap ho ten");
-                String fullName = scanner.nextLine();
+                    System.out.println("Nhap ho ten");
+                    String fullName = scanner.nextLine();
 
-                System.out.println("Ngay sinh ");
-                String dayOfBirth = scanner.nextLine();
 
-                System.out.println("Nhap dia chi");
-                String address = scanner.nextLine();
+                    String dayOfBirth;
+                    do {
+                        try {
+                            System.out.print("Input birthday  : (Ex : dd/MM/yyyy) ");
+                            dayOfBirth = scanner.nextLine();
 
-                String numSp;
-                do {
-                    System.out.println("Nhap so san pham");
-                    numSp = scanner.nextLine();
-                    if (Regex.intNum(numSp)) {
-                        break;
-                    } else System.out.println("Phai la so nguyen duong");
-                } while (true);
+                            LocalDate dayNow = LocalDate.now();
 
-                String moneySp;
-                do {
-                    System.out.println("Nhap gia san pham");
-                    moneySp = scanner.nextLine();
-                    if (Regex.intNum(moneySp)) {
-                        break;
-                    } else System.out.println("Phai la so nguyen duong");
+                            LocalDate birthDay = LocalDate.parse(dayOfBirth, DateTimeFormatter.ofPattern("dd/LL/yyyy"));
 
-                } while (true);
-
-                int max = 0;
-                int id;
-                if (personProduct.isEmpty()) {
-                    id = 1;
-                } else {
-                    for (Nvsx item1 : personProduct) {
-                        if (item1.getId() > max) {
-                            max = item1.getId();
+                            if (Regex.dateFormat(dayOfBirth) && birthDay.plusYears(18).isBefore(dayNow)) {
+                                break;
+                            } else {
+                                throw new BirthdayException("Wrong Format Input\n" +
+                                        "(Age <18)");
+                            }
+                        } catch (BirthdayException e) {
+                            System.out.println(e.getMessage());
                         }
-                    }
-                    id = max + 1;
-                }
+                    } while (true);
 
-                personProduct.add(new Nvsx(id, codePerson, fullName, dayOfBirth, address, numSp, moneySp));
+                    System.out.println("Nhap dia chi");
+                    String address = scanner.nextLine();
 
-                String str = "";
-                for (Nvsx list : personProduct) {
-                    String line = list.inFor();
-                    str += line + "\n";
-                }
+                    String numSp;
+                    do {
+                        System.out.println("Nhap so san pham");
+                        numSp = scanner.nextLine();
+                        if (Regex.intNum(numSp)) {
+                            break;
+                        } else System.out.println("Phai la so nguyen duong");
+                    } while (true);
 
-                ReadWrite.writeFile(PATH_NVSX, str);
-                System.out.println("Them thanh cong ");
-                break;
+                    String moneySp;
+                    do {
+                        System.out.println("Nhap gia san pham");
+                        moneySp = scanner.nextLine();
+                        if (Regex.intNum(moneySp)) {
+                            break;
+                        } else System.out.println("Phai la so nguyen duong");
 
-            case "2":
-                System.out.println("THEM MOI NVQL");
+                    } while (true);
 
-                System.out.println("Nhap ma nhan vien");
-                String codePerson1 = scanner.nextLine();
-
-                System.out.println("Nhap ho ten");
-                String fullName1 = scanner.nextLine();
-
-                System.out.println("Ngay sinh ");
-                String dayOfBirth1 = scanner.nextLine();
-
-                System.out.println("Nhap dia chi");
-                String address1 = scanner.nextLine();
-
-                String salaryCb;
-                do {
-                    System.out.println("Nhap luong co ban");
-                    salaryCb = scanner.nextLine();
-                    if (Regex.intNum(salaryCb)) {
-                        break;
-                    } else System.out.println("Phai la so nguyen duong");
-                } while (true);
-
-                String numSalary;
-                do {
-                    System.out.println("Nhap he so luong");
-                    numSalary = scanner.nextLine();
-                    if (Regex.intNum(numSalary)) {
-                        break;
-                    } else System.out.println("Phai la so nguyen duong");
-                } while (true);
-
-                int max1 = 0;
-                int id1;
-                if (personManager.isEmpty()) {
-                    id1 = 1;
-                } else {
-                    for (Nvql item1 : personManager) {
-                        if (item1.getId() > max1) {
-                            max1 = item1.getId();
+                    int max = 0;
+                    int id;
+                    if (personProduct.isEmpty()) {
+                        id = 1;
+                    } else {
+                        for (Nvsx item1 : personProduct) {
+                            if (item1.getId() > max) {
+                                max = item1.getId();
+                            }
                         }
+                        id = max + 1;
                     }
-                    id1 = max1 + 1;
-                }
 
-                personManager.add(new Nvql(id1, codePerson1, fullName1, dayOfBirth1, address1, salaryCb, numSalary));
+                    personProduct.add(new Nvsx(id, codePerson, fullName, dayOfBirth, address, numSp, moneySp));
 
-                String str1 = "";
-                for (Nvql list : personManager) {
-                    String line = list.inFor();
-                    str1 += line + "\n";
-                }
+                    String str = "";
+                    for (Nvsx list : personProduct) {
+                        String line = list.inFor();
+                        str += line + "\n";
+                    }
 
-                ReadWrite.writeFile(PATH_NVQL, str1);
-                System.out.println("Them thanh cong ");
-                break;
+                    ReadWrite.writeFile(PATH_NVSX, str);
+                    System.out.println("Them thanh cong ");
+                    break;
 
-            default:
-                System.out.println("CHON TU 1 OR 2");
+                case "2":
+                    System.out.println("THEM MOI NVQL");
 
-        }
+                    System.out.println("Nhap ma nhan vien");
+                    String codePerson1 = scanner.nextLine();
+
+                    System.out.println("Nhap ho ten");
+                    String fullName1 = scanner.nextLine();
+
+
+                    String dayOfBirth1;
+                    do {
+                        try {
+                            System.out.print("Input birthday  : (Ex : dd/MM/yyyy) ");
+                            dayOfBirth1 = scanner.nextLine();
+
+                            LocalDate dayNow = LocalDate.now();//NGAY HIEN TAI
+
+                            //CHUYEN TU STRING QUA LOCALDATE..THAY GANH NGANG- BANG GACH CHEO
+                            LocalDate birthDay = LocalDate.parse(dayOfBirth1, DateTimeFormatter.ofPattern("dd/LL/yyyy"));
+
+                            //plusYears cong them 18 nam ma van nam truoc "isBefore" thoi gian hien tai thi ok..
+                            // vi du 2003 + 18 <2022.. ok du 18 tuoi
+                            if (Regex.dateFormat(dayOfBirth1) && birthDay.plusYears(18).isBefore(dayNow)) {
+                                break;
+                            } else {
+                                throw new BirthdayException("Wrong Format Input\n" +
+                                        "(Age <18)");
+                            }
+                        } catch (BirthdayException e) {
+                            System.out.println(e.getMessage());
+                        }
+                    } while (true);
+
+                    System.out.println("Nhap dia chi");
+                    String address1 = scanner.nextLine();
+
+                    String salaryCb;
+                    do {
+                        System.out.println("Nhap luong co ban");
+                        salaryCb = scanner.nextLine();
+                        if (Regex.intNum(salaryCb)) {
+                            break;
+                        } else System.out.println("Phai la so nguyen duong");
+                    } while (true);
+
+                    String numSalary;
+                    do {
+                        System.out.println("Nhap he so luong");
+                        numSalary = scanner.nextLine();
+                        if (Regex.intNum(numSalary)) {
+                            break;
+                        } else System.out.println("Phai la so nguyen duong");
+                    } while (true);
+
+                    int max1 = 0;
+                    int id1;
+                    if (personManager.isEmpty()) {
+                        id1 = 1;
+                    } else {
+                        for (Nvql item1 : personManager) {
+                            if (item1.getId() > max1) {
+                                max1 = item1.getId();
+                            }
+                        }
+                        id1 = max1 + 1;
+                    }
+
+                    personManager.add(new Nvql(id1, codePerson1, fullName1, dayOfBirth1, address1, salaryCb, numSalary));
+
+                    String str1 = "";
+                    for (Nvql list : personManager) {
+                        String line = list.inFor();
+                        str1 += line + "\n";
+                    }
+
+                    ReadWrite.writeFile(PATH_NVQL, str1);
+                    System.out.println("Them thanh cong ");
+                    break;
+
+                case "3":
+                    return;
+
+                default:
+                    System.out.println("CHON TU 1 OR 2");
+            }
+        } while (true);
+
     }
 
 
@@ -262,8 +312,9 @@ public class PersonIpml implements Service {
                             check = true;
                         }
                     }
+
                     try {
-                        if (check == true) {
+                        if (!check) {
                             throw new NotFoundEmployeeException("KHONG TIM THAY");
                         }
                     } catch (Exception e) {

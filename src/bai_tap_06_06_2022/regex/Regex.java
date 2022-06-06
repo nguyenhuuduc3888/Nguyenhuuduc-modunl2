@@ -8,4 +8,10 @@ public class Regex {
         Pattern pattern = Pattern.compile(VALID_NUMBER);
         return pattern.matcher(str).matches();
     }
+
+    public static boolean dateFormat(String str) {
+        final String VALID_FORMAT_DATE = "^\\d{1,2}/\\d{1,2}/\\d{4}$";
+        Pattern pattern = Pattern.compile(VALID_FORMAT_DATE);
+        return pattern.matcher(str).matches();
+    }
 }
