@@ -36,7 +36,7 @@ public class ManagerStaff extends Person {
 
     @Override
     public String inFor() {
-         return String.format("%s,%s,%s,%s,%s,%s,%s",
+        return String.format("%s,%s,%s,%s,%s,%s,%s",
                 super.getId(),
                 super.getCodePerson(),
                 super.getFullName(),
@@ -49,9 +49,13 @@ public class ManagerStaff extends Person {
 
     @Override
     public String toString() {
-        return "Nvql{" + super.toString() +
-                "salaryCb=" + salaryCb +
-                ", numSalary=" + numSalary +
-                '}';
+        return "Nvql có tên :" + getFullName() +
+                " ID: " + getId() +
+                " Mã nhân viên: " + getCodePerson() +
+                " Ngày Sinh: " + getDayOfBirth() +
+                " Địa chỉ: " + getAddress() +
+                " Lương cơ bản: " + getSalaryCb() +
+                " Hệ số lương: " + getNumSalary()
+                ;
     }
 }

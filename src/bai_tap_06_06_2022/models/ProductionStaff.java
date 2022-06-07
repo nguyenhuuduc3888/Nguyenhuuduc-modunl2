@@ -49,9 +49,13 @@ public class ProductionStaff extends Person {
 
     @Override
     public String toString() {
-        return "Nvsx{" + super.toString() +
-                "numSp=" + numSp +
-                ", moneySp=" + moneySp +
-                '}';
+        return "Nvsx có tên :" + getFullName() +
+                " ID: " + getId() +
+                " Mã nhân viên: " + getCodePerson() +
+                " Ngày Sinh: " + getDayOfBirth() +
+                " Địa chỉ: " + getAddress() +
+                " Số sản phẩm: " + getNumSp() +
+                " Số tiền: " + getMoneySp()
+                ;
     }
 }

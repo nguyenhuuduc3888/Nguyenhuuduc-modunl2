@@ -1,6 +1,9 @@
 package bai_tap_06_06_2022.service;
 
 import Quan_Ly_Benh_An.until.ReadAndWrite;
+import bai_tap_06_06_2022.exception.BirthdayException;
+import bai_tap_06_06_2022.exception.CodeStaffException;
+import bai_tap_06_06_2022.exception.FullNameException;
 import bai_tap_06_06_2022.exception.NotFoundEmployeeException;
 import bai_tap_06_06_2022.models.ManagerStaff;
 import bai_tap_06_06_2022.models.ProductionStaff;
@@ -10,6 +13,7 @@ import bai_tap_06_06_2022.until.ReadWrite;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -18,17 +22,12 @@ public class PersonIpml implements Service {
     Scanner scanner = new Scanner(System.in);
     final String PATH_ALL_FILE = "src\\bai_tap_06_06_2022\\data\\person_all_file.csv";
 
-
     List<Person> person = new ArrayList<>();
-    List<ManagerStaff> personManager = new ArrayList<>();
-    List<ProductionStaff> personProduct = new ArrayList<>();
-
 
     @Override
-
     public void display() {
-        List<String[]> listLine;
-        listLine = ReadWrite.readFile(PATH_ALL_FILE);
+
+        List<String[]> listLine = ReadWrite.readFile(PATH_ALL_FILE);
         person.clear();
 
         for (String[] item : listLine) {
@@ -88,40 +87,49 @@ public class PersonIpml implements Service {
     }
 
     public void addManager() {
-        List<String[]> listLine;
-        listLine = ReadWrite.readFile(PATH_ALL_FILE);
-
-        for (String[] item : listLine) {
-            if (item[1].contains("NVSX")) {
-                int id = Integer.parseInt(item[0]);
-                String codePerson = item[1];
-                String fullName = item[2];
-                String dayOfBird = item[3];
-                String address = item[4];
-                String salaryCb = item[5];
-                String numSalary = item[6];
-
-                personManager.add(new ManagerStaff(id, codePerson, fullName, dayOfBird, address, salaryCb, numSalary));
-            }
-        }
+        readPerson();
 
         System.out.println("THEM MOI NVQL");
 
-        System.out.println("Nhap ma nhan vien");
-        String codePerson1 = scanner.nextLine();
+        String codePerson1;
+        do {
+            try {
+                System.out.println("Nhap ma nhan vien: NVQL-XXXX với x là số ");
+                codePerson1 = scanner.nextLine();
+                if (Regex.formatCodeManager(codePerson1)) {
+                    break;
+                } else throw new CodeStaffException("Phải nhập đúng mẫu ");
+            } catch (CodeStaffException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
 
-        System.out.println("Nhap ho ten");
-        String fullName1 = scanner.nextLine();
+        String fullName1;
+        do {
+            try {
+                System.out.println("Nhap ho ten: VÍ Dụ--Đức Nguyễn");
+                fullName1 = scanner.nextLine();
+                if (Regex.formatName(fullName1)) {
+                    break;
+                } else throw new FullNameException("Nhập đúng mẫu..");
+            } catch (FullNameException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
 
         String dayOfBirth1;
         do {
-            System.out.print("Nhap  ngay thang nam sinh  : (VI DU : dd/MM/yyyy) ");
-            dayOfBirth1 = scanner.nextLine();
-            LocalDate dayNow = LocalDate.now();
-            LocalDate birthDay = LocalDate.parse(dayOfBirth1, DateTimeFormatter.ofPattern("dd/LL/yyyy"));
-            if (Regex.dateFormat(dayOfBirth1) && birthDay.plusYears(18).isBefore(dayNow)) {
-                break;
-            } else System.out.println("TUỔI PHẢI LỚN HƠN 18");
+            try {
+                System.out.print("Nhap  ngay thang nam sinh  : (VI DU : dd/MM/yyyy) ");
+                dayOfBirth1 = scanner.nextLine();
+                LocalDate dayNow = LocalDate.now();
+                LocalDate birthDay = LocalDate.parse(dayOfBirth1, DateTimeFormatter.ofPattern("dd/LL/yyyy"));
+                if (Regex.dateFormat(dayOfBirth1) && birthDay.plusYears(18).isBefore(dayNow)) {
+                    break;
+                } else throw new BirthdayException("Tuổi phải lớn hơn 18");
+            } catch (BirthdayException e) {
+                System.out.println(e.getMessage());
+            }
         } while (true);
 
         System.out.println("Nhap dia chi");
@@ -147,10 +155,10 @@ public class PersonIpml implements Service {
 
         int max1 = 0;
         int id1;
-        if (personManager.isEmpty()) {
+        if (person.isEmpty()) {
             id1 = 1;
         } else {
-            for (Person item1 : personManager) {
+            for (Person item1 : person) {
                 if (item1.getId() > max1) {
                     max1 = item1.getId();
                 }
@@ -158,59 +166,64 @@ public class PersonIpml implements Service {
             id1 = max1 + 1;
         }
 
-        personManager.add(new ManagerStaff(id1, codePerson1, fullName1, dayOfBirth1, address1, salaryCb, numSalary));
+        person.add(new ManagerStaff(id1, codePerson1, fullName1, dayOfBirth1, address1, salaryCb, numSalary));
 
         String str1 = "";
-        for (ManagerStaff list : personManager) {
+        for (Person list : person) {
             String line = list.inFor();
             str1 += line + "\n";
         }
-
         ReadWrite.writeFile(PATH_ALL_FILE, str1);
         System.out.println("Them thanh cong ");
-
     }
 
     public void addProduct() {
-        List<String[]> listLine;
-        listLine = ReadWrite.readFile(PATH_ALL_FILE);
-        person.clear();
-
-        for (String[] item : listLine) {
-            if (item[1].contains("NVQL")) {
-                int id = Integer.parseInt(item[0]);
-                String codePerson = item[1];
-                String fullName = item[2];
-                String dayOfBird = item[3];
-                String address = item[4];
-                String numSp = item[5];
-                String moneySp = item[6];
-
-                personProduct.add(new ProductionStaff(id, codePerson, fullName, dayOfBird, address, numSp, moneySp));
-            }
-        }
+        readPerson();
 
         System.out.println("THEM MOI NVSX");
+        String codePerson;
+        do {
+            try {
+                System.out.println("Nhap ma nhan vien:NVSX-XXXX với x là số ");
+                codePerson = scanner.nextLine();
+                if (Regex.formatCodeProduct(codePerson)) {
+                    break;
+                } else throw new CodeStaffException("Phải nhập đúng mẫu ");
+            } catch (CodeStaffException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
 
-        System.out.println("Nhap ma nhan vien");
-        String codePerson = scanner.nextLine();
-
-        System.out.println("Nhap ho ten");
-        String fullName = scanner.nextLine();
+        String fullName;
+        do {
+            try {
+                System.out.println("Nhap ho ten: VÍ Dụ--Đức Nguyễn");
+                fullName = scanner.nextLine();
+                if (Regex.formatName(fullName)) {
+                    break;
+                } else throw new FullNameException("Nhập đúng mẫu..");
+            } catch (FullNameException e) {
+                System.out.println(e.getMessage());
+            }
+        } while (true);
 
         String dayOfBirth;
-
         do {
-            System.out.print("Nhap  ngay thang nam sinh  : (VI DU : dd/MM/yyyy) ");
-            dayOfBirth = scanner.nextLine();
+            try {
+                System.out.print("Nhap  ngay thang nam sinh  : (VI DU : dd/MM/yyyy) ");
+                dayOfBirth = scanner.nextLine();
 
-            LocalDate dayNow = LocalDate.now();
+                LocalDate dayNow = LocalDate.now();
 
-            LocalDate birthDay = LocalDate.parse(dayOfBirth, DateTimeFormatter.ofPattern("dd/LL/yyyy"));
+                LocalDate birthDay = LocalDate.parse(dayOfBirth, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-            if (Regex.dateFormat(dayOfBirth) && birthDay.plusYears(18).isBefore(dayNow)) {
-                break;
-            } else System.out.println("Tuổi phải lớn hơn 18");
+                if (Regex.dateFormat(dayOfBirth) && birthDay.plusYears(18).isBefore(dayNow)) {
+                    break;
+                } else throw new BirthdayException("Tuổi phải lớn hơn 18");
+            } catch (BirthdayException | DateTimeParseException e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
+            }
         } while (true);
 
         System.out.println("Nhap dia chi");
@@ -237,10 +250,10 @@ public class PersonIpml implements Service {
 
         int max = 0;
         int id;
-        if (personProduct.isEmpty()) {
+        if (person.isEmpty()) {
             id = 1;
         } else {
-            for (Person item1 : personProduct) {
+            for (Person item1 : person) {
                 if (item1.getId() > max) {
                     max = item1.getId();
                 }
@@ -248,10 +261,10 @@ public class PersonIpml implements Service {
             id = max + 1;
         }
 
-        personProduct.add(new ProductionStaff(id, codePerson, fullName, dayOfBirth, address, numSp, moneySp));
+        person.add(new ProductionStaff(id, codePerson, fullName, dayOfBirth, address, numSp, moneySp));
 
         String str = "";
-        for (ProductionStaff list : personProduct) {
+        for (Person list : person) {
             String line = list.inFor();
             str += line + "\n";
         }
@@ -263,57 +276,22 @@ public class PersonIpml implements Service {
 
     @Override
     public void remove() {
-        System.out.println("CHỌN NHÂN VIÊN MUỐN XOÁ\n" +
-                "1.NHÂN VIÊN SẢN XUẤT\n" +
-                "2.NHÂN VIÊN QUẢN LÝ\n" +
-                "3.BACK MENU" +
-                "NHẬP 1-3 ĐỂ CHỌN CHỨC NĂNG");
+        readPerson();
 
-        String input = scanner.nextLine();
-
-        switch (input) {
-            case "1":
-                removeProduct();
-                break;
-            case "2":
-                removeManager();
-                break;
-            default:
-                System.out.println("chon 1 or 2");
-        }
-    }
-
-    public void removeProduct() {
-        List<String[]> listLine;
-        listLine = ReadWrite.readFile(PATH_ALL_FILE);
-
-        for (String[] item : listLine) {
-            if (item[1].contains("NVSX")) {
-                int id = Integer.parseInt(item[0]);
-                String codePerson = item[1];
-                String fullName = item[2];
-                String dayOfBird = item[3];
-                String address = item[4];
-                String numSp = item[5];
-                String moneySp = item[6];
-
-                personProduct.add(new ProductionStaff(id, codePerson, fullName, dayOfBird, address, numSp, moneySp));
-            }
-        }
-        System.out.println("NHAP MA NHAN VIEN SAN XUAT MUON XOA..");
+        System.out.println("NHAP MA NHAN VIEN  MUON XOA..");
         String codeProduct = scanner.nextLine();
 
         boolean check = false;
-        for (int i = 0; i < personProduct.size(); i++) {
-            if (personProduct.get(i).getCodePerson() == codeProduct) {
+        for (int i = 0; i < person.size(); i++) {
+            if (person.get(i).getCodePerson().equals(codeProduct)) {
                 System.out.println("CHỌN 1-XOÁ\n" +
-                        "CHỌN 2-QUAY LẠI" +
+                        "CHỌN 2-QUAY LẠI\n" +
                         "NHẬP ĐỂ CHỌN");
 
                 String choice = scanner.nextLine();
                 switch (choice) {
                     case "1":
-                        personProduct.remove(i);
+                        person.remove(i);
                         System.out.println("Xoá thành công ");
                         break;
                     case "2":
@@ -326,23 +304,25 @@ public class PersonIpml implements Service {
             }
         }
         try {
-            if (!check) throw new NotFoundEmployeeException("KHONG TIM THAY");
-
+            if (check == true) {
+                throw new NotFoundEmployeeException("Không tìm thấy");
+            }
         } catch (NotFoundEmployeeException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
 
         String line = "";
-        for (ProductionStaff item1 : personProduct) {
-            line = item1.inFor();
+        for (Person item : person) {
+            line += item.inFor();
         }
         ReadAndWrite.writeFile(PATH_ALL_FILE, line);
+
     }
 
 
-    public void removeManager() {
-        List<String[]> listLine;
-        listLine = ReadWrite.readFile(PATH_ALL_FILE);
+    public void readPerson() {
+        List<String[]> listLine = ReadWrite.readFile(PATH_ALL_FILE);
+        person.clear();
 
         for (String[] item : listLine) {
             if (item[1].contains("NVQL")) {
@@ -354,136 +334,39 @@ public class PersonIpml implements Service {
                 String salaryCb = item[5];
                 String numSalary = item[6];
 
-                personManager.add(new ManagerStaff(id, codePerson, fullName, dayOfBird, address, salaryCb, numSalary));
-            }
-        }
-        System.out.println("NHAP MA NHAN VIEN QUAN LY MUON XOA..");
-        String codeManager = scanner.nextLine();
-
-        boolean check = false;
-        for (int i = 0; i < personManager.size(); i++) {
-            if (personManager.get(i).getCodePerson() == codeManager) {
-                System.out.println("CHỌN 1-XOÁ\n" +
-                        "CHỌN 2-QUAY LẠI" +
-                        "NHẬP ĐỂ CHỌN");
-
-                String choice = scanner.nextLine();
-                switch (choice) {
-                    case "1":
-                        personManager.remove(i);
-                        System.out.println("Xoá thành công ");
-                        break;
-                    case "2":
-                        return;
-                    default:
-                        System.out.println("CHỈ ĐƯỢC CHỌN 1-2");
-                }
+                person.add(new ManagerStaff(id, codePerson, fullName, dayOfBird, address, salaryCb, numSalary));
             } else {
-                check = true;
+                int id = Integer.parseInt(item[0]);
+                String codePerson = item[1];
+                String fullName = item[2];
+                String dayOfBird = item[3];
+                String address = item[4];
+                String numSp = item[5];
+                String moneySp = item[6];
+
+                person.add(new ProductionStaff(id, codePerson, fullName, dayOfBird, address, numSp, moneySp));
             }
         }
-        try {
-            if (check == true) throw new NotFoundEmployeeException("KHONG TIM THAY");
-
-        } catch (NotFoundEmployeeException e) {
-            e.printStackTrace();
-        }
-
-        String line = "";
-        for (ManagerStaff item1 : personManager) {
-            line = item1.inFor();
-        }
-        ReadAndWrite.writeFile(PATH_ALL_FILE, line);
     }
 
 
     @Override
     public void search() {
-        System.out.println("Chon nhan vien muon tim\n" +
-                "1.Nvsx\n" +
-                "2.Nvql\n" +
-                "Nhap de chon");
-
+        System.out.println(" NHẬP ĐỂ TÌM KIẾM ");
+        readPerson();
         String input = scanner.nextLine();
-        List<String[]> listLine;
-
-        switch (input) {
-            case "1":
-                listLine = ReadWrite.readFile(PATH_ALL_FILE);
-
-                for (String[] item : listLine) {
-                    if (item[1].contains("NVSX")) {
-                        int id = Integer.parseInt(item[0]);
-                        String codePerson = item[1];
-                        String fullName = item[2];
-                        String dayOfBird = item[3];
-                        String address = item[4];
-                        String numSp = item[5];
-                        String moneySp = item[6];
-
-                        personProduct.add(new ProductionStaff(id, codePerson, fullName, dayOfBird, address, numSp, moneySp));
-                    }
-                }
-
-                System.out.println("NHAP HO TEN MUON TIM..");
-                String code = scanner.nextLine();
-
-                boolean check = false;
-                for (int i = 0; i < personProduct.size(); i++) {
-                    if (personProduct.get(i).getCodePerson().contains(code)) {
-                        System.out.println(personProduct.get(i));
-                    } else {
-                        check = true;
-                    }
-                }
-                try {
-                    if (check == true) throw new NotFoundEmployeeException("Nhap lai");
-
-                } catch (NotFoundEmployeeException e) {
-                    System.out.println(e.getMessage());
-                }
-
-                break;
-
-            case "2":
-                listLine = ReadWrite.readFile(PATH_ALL_FILE);
-
-                for (String[] item : listLine) {
-                    if (item[1].contains("NVQL")) {
-                        int id = Integer.parseInt(item[0]);
-                        String codePerson = item[1];
-                        String fullName = item[2];
-                        String dayOfBird = item[3];
-                        String address = item[4];
-                        String salaryCb = item[5];
-                        String numSalary = item[6];
-
-                        personManager.add(new ManagerStaff(id, codePerson, fullName, dayOfBird, address, salaryCb, numSalary));
-                    }
-                }
-
-                System.out.println("NHAP HO TEN MUON TIM..");
-                String code1 = scanner.nextLine();
-
-                boolean check1 = false;
-                for (int i = 0; i < personManager.size(); i++) {
-                    if (personManager.get(i).getCodePerson().contains(code1)) {
-                        System.out.println(personManager.get(i));
-                    } else {
-                        if (check1 == true) {
-                        }
-                    }
-                }
-                try {
-                    if (check1 == true) throw new NotFoundEmployeeException("kHONG TIM THAY");
-
-                } catch (NotFoundEmployeeException e) {
-                    e.printStackTrace();
-                }
-                break;
-
-            default:
-                System.out.println("chon 1 or 2");
+        boolean check = false;
+        for (Person list : person) {
+            if (list.getCodePerson().contains(input) ||
+                    list.getFullName().contains(input) ||
+                    list.getAddress().contains(input) ||
+                    list.getDayOfBirth().contains(input)) {
+                System.out.println(list);
+                check = true;
+            }
+        }
+        if (check) {
+            System.out.println("Không tìm thấy");
         }
     }
 }

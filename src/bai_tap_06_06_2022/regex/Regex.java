@@ -31,4 +31,15 @@ public class Regex {
         return pattern.matcher(str).matches();
     }
 
+    public static boolean formatCodeProduct(String str) {
+        final String VALID_CODE_PRODUCT = "^NVSX-\\d{4}$";
+        Pattern pattern = Pattern.compile(VALID_CODE_PRODUCT);
+        return pattern.matcher(str).matches();
+    }
+
+    public static boolean formatCodeManager(String str) {
+        final String VALID_CODE_MANAGER = "^NVQL-\\d{4}$";
+        Pattern pattern = Pattern.compile(VALID_CODE_MANAGER);
+        return pattern.matcher(str).matches();
+    }
 }
