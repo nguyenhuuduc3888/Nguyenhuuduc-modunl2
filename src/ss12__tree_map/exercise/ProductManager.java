@@ -1,7 +1,5 @@
 package ss12__tree_map.exercise;
 
-import big_exercise.personlist.Person;
-
 import java.util.*;
 
 public class ProductManager extends ProductList {
