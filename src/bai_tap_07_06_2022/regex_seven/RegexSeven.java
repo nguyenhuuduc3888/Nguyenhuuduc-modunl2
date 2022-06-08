@@ -24,9 +24,8 @@ public class RegexSeven {
     }
 
     public static boolean point(String str) {
-        final String VALID_POINT = "^\\d{1}$";
+        final String VALID_POINT = "^[1-9]|10$";
         Pattern pattern = Pattern.compile(VALID_POINT);
         return pattern.matcher(str).matches();
     }
-
 }

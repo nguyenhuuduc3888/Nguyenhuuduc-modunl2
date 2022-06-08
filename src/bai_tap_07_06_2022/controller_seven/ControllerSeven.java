@@ -51,7 +51,7 @@ public class ControllerSeven {
                     System.err.println("---Kết thúc chương trình---   ---Good Bye---");
                     System.exit(0);
                 default:
-                    System.err.println("CHỨC NĂNG NÀY KHÔNG CÓ \n" + "MỜI BẠN CHỌN LẠI TRONG KHOẢNG 1-->5\n" + "NHẬP LẠI");
+                    System.err.println("CHỨC NĂNG NÀY KHÔNG CÓ \n" + "MỜI BẠN CHỌN LẠI TRONG KHOẢNG 1-->6\n" + "NHẬP LẠI");
             }
         } while (true);
     }

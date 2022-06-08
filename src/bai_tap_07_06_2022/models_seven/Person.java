@@ -1,9 +1,9 @@
 package bai_tap_07_06_2022.models_seven;
 
 public abstract class Person {
-    private  int id;
+    private int id;
     private String name;
-    private String  gender;
+    private String gender;
     private String dayOfBirth;
     private String address;
 
@@ -57,7 +57,9 @@ public abstract class Person {
     public void setAddress(String address) {
         this.address = address;
     }
- public abstract String inFor();
+
+    public abstract String inFor();
+
     @Override
     public String toString() {
         return "Person{" +

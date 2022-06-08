@@ -22,8 +22,8 @@ import java.util.Scanner;
 public class PersonIpml implements Service {
     static Scanner scanner = new Scanner(System.in);
 
-    final String PATH_FILE_ST = "src\\bai_tap_07_06_2022\\data\\student_file.csv";
-    final String PATH_FILE_TC = "src\\bai_tap_07_06_2022\\data\\teacher_file.csv";
+    final String PATH_FILE_ST = "src\\bai_tap_07_06_2022\\data_seven\\student_file.csv";
+    final String PATH_FILE_TC = "src\\bai_tap_07_06_2022\\data_seven\\teacher_file.csv";
 
     List<Person> people = new ArrayList<>();
     List<Student> students = new ArrayList<>();
@@ -55,7 +55,7 @@ public class PersonIpml implements Service {
             System.out.println("---Chọn kiểu muốn thêm---\n" +
                     "1.Add Student\n" +
                     "2.Add Teacher\n" +
-                    "3.Thoát" +
+                    "3.Thoát\n" +
                     "Nhập để chọn: ");
             String input = scanner.nextLine();
             switch (input) {
@@ -101,8 +101,9 @@ public class PersonIpml implements Service {
                             break;
                         } else System.out.println("Nhập lại");
                     } while (true);
-
-
+                    /**
+                     * ID TỰ TĂNG
+                     */
                     int max1 = 0;
                     int id;
                     if (students.isEmpty()) {
@@ -169,7 +170,9 @@ public class PersonIpml implements Service {
                         } else System.out.println("Nhập lại");
                     } while (true);
 
-
+                    /**
+                     * ID TỰ TĂNG
+                     */
                     int max = 0;
                     int id1;
                     if (teachers.isEmpty()) {
@@ -188,13 +191,15 @@ public class PersonIpml implements Service {
 
                     ReadWriteFileSeven.writeTeacher(PATH_FILE_TC, teachers);
                     System.out.println("Đã thêm mới thành công");
-
                     break;
+
                 case "3":
                     System.out.println("THOÁT CHỌN");
                     return;
+
                 default:
                     System.err.println("ChƯƠNG TRÌNH YÊU CẦU CHỌN 1---4");
+
             }
         } while (true);
     }
